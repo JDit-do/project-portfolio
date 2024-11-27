@@ -1,0 +1,13 @@
+.wrap {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 98;
+  background: #121212cc;
+  backdrop-filter: saturate(180%) blur(5px);
+}
+
+.bar {
+  height: 10px;
+  border-top: 4px solid var(--dark-line);
+}
