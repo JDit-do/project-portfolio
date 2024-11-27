@@ -1,0 +1,10 @@
+.wrap {
+  height: var(--height-header);
+  padding: var(--container-padding);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: #121212cc;
+  backdrop-filter: saturate(180%) blur(5px);
+  box-shadow: inset 0 -1px 0 0 var(--dark-line);
+}
