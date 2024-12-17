@@ -1,6 +1,7 @@
 import Icon from '@/components/icon';
 
 import style from './index.module.scss';
+import Gnb from './navigation/gnb';
 
 const Header = () => {
   return (
@@ -8,6 +9,8 @@ const Header = () => {
       <h1>
         <Icon type="logo" height={22} />
       </h1>
+
+      <Gnb />
     </header>
   );
 };

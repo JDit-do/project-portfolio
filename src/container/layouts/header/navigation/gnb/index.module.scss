@@ -1,0 +1,12 @@
+.wrap {
+  display: flex;
+  gap: 24px;
+
+  li {
+    color: var(--accents-5);
+
+    &:hover {
+      color: var(--accents-9);
+    }
+  }
+}

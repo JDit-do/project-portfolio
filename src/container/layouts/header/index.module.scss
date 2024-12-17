@@ -1,4 +1,7 @@
 .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: var(--height-header);
   padding: var(--container-padding);
   position: sticky;
