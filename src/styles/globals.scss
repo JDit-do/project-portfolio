@@ -8,7 +8,7 @@
 html,
 body {
   height: 100vh;
-  background: var(_variables.$thema-background-default);
+  background: var(--thema-background-default);
   scroll-behavior: smooth;
   text-size-adjust: 100%;
 }
