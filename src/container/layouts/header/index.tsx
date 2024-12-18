@@ -1,7 +1,9 @@
 import Icon from '@/components/icon';
+import Locale from '@/components/locale';
+
+import Gnb from './navigation/gnb';
 
 import style from './index.module.scss';
-import Gnb from './navigation/gnb';
 
 const Header = () => {
   return (
@@ -11,6 +13,8 @@ const Header = () => {
       </h1>
 
       <Gnb />
+
+      <Locale />
     </header>
   );
 };

@@ -1,7 +1,12 @@
 {
+  "event": { "click": "Click Me" },
   "navigation": {
     "home": "Home",
     "profilePortfolio": "Profile/Portfolio",
     "labs": "Labs"
+  },
+  "locale": {
+    "ko": "한국어",
+    "en": "영어"
   }
 }

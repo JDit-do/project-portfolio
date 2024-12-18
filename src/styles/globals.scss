@@ -11,4 +11,15 @@ body {
   background: var(--thema-background-default);
   scroll-behavior: smooth;
   text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+button,
+a,
+select {
+  color: var(--accents-5);
+
+  &:hover {
+    color: var(--accents-9);
+  }
 }

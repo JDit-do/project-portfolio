@@ -1,0 +1,93 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 4px;
+    border-bottom: 1px solid var(--accents-3);
+    font-size: 12px;
+
+    .evnet {
+      position: absolute;
+      top: 5px;
+      right: -5px;
+      font-size: 8px;
+      color: var(--point-orange);
+      transform: rotate(15deg);
+    }
+    &:hover {
+      .evnet {
+        animation: clickBounce 0.8s infinite;
+      }
+    }
+  }
+
+  ul {
+    width: 100%;
+    border: 1px solid var(--accents-3);
+    border-radius: 4px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 10;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: var(--accents-3);
+      position: absolute;
+      top: 50%;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      padding: 0 4px;
+      color: var(--accents-3);
+
+      &:hover {
+        color: var(--accents-9);
+        cursor: pointer;
+      }
+    }
+  }
+  &.down {
+    ul {
+      top: calc(100% + 4px);
+    }
+  }
+  &.up {
+    ul {
+      bottom: calc(100% + 4px);
+    }
+  }
+
+  &:hover {
+    button,
+    ul {
+      border-color: var(--accents-5);
+    }
+    button {
+      color: var(--accents-5);
+    }
+    ul:after {
+      background: var(--accents-5);
+    }
+  }
+}
+
+@keyframes clickBounce {
+  0%,
+  100% {
+    transform: rotate(15deg) translateY(0);
+  }
+  50% {
+    transform: rotate(15deg) translateY(-2px);
+  }
+}

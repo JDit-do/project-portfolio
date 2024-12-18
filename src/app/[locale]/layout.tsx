@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import { routing, TLocales } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';
+import { TLocales } from '@/types/common';
 
 import Main from '@/container/layouts/main';
 import Header from '@/container/layouts/header';
@@ -23,7 +24,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
