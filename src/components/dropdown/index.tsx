@@ -18,7 +18,7 @@ const Dropdown = ({
   return (
     <div className={`${style.wrap} ${style[direction]}`}>
       <button onClick={() => setIsOpen((prev) => !prev)}>
-        <span>{label}</span>
+        <span className={isOpen ? style.active : undefined}>{label}</span>
         <span className={style.evnet}>{t('click')}</span>
       </button>
 

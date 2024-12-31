@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  color: var(--accents-5);
 
   button {
     display: flex;
@@ -11,6 +12,10 @@
     padding: 0 4px;
     border-bottom: 1px solid var(--accents-3);
     font-size: 12px;
+
+    .active {
+      color: var(--accents-7);
+    }
 
     .evnet {
       position: absolute;
@@ -49,10 +54,9 @@
       align-items: center;
       height: 30px;
       padding: 0 4px;
-      color: var(--accents-3);
 
       &:hover {
-        color: var(--accents-9);
+        color: var(--accents-7);
         cursor: pointer;
       }
     }

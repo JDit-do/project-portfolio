@@ -2,7 +2,8 @@
   "event": { "click": "Click Me" },
   "navigation": {
     "home": "Home",
-    "profilePortfolio": "Profile/Portfolio",
+    "profile": "Profile",
+    "portfolio": "Portfolio",
     "labs": "Labs"
   },
   "locale": {

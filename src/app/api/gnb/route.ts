@@ -9,12 +9,17 @@ import { API_STATUS } from '@/constants/status';
 export async function GET() {
   try {
     const response = await getNotionQuery(NOTION_DB_GNB_ID);
-    const data: GnbItem[] = response.map((item) => ({
-      id: item.id,
-      langKey: NotionUtils.getString(item.properties.key),
-      url: NotionUtils.getString(item.properties.url),
-      order: NotionUtils.getNumber(item.properties.order)
-    }));
+    const data: GnbItem[] = response
+      .map((item) => ({
+        id: item.id,
+        langKey: NotionUtils.getString(item.properties.key),
+        url: NotionUtils.getString(item.properties.url),
+        order: NotionUtils.getNumber(item.properties.order)
+      }))
+      .sort(
+        ({ order: order1 }, { order: order2 }) =>
+          +(order1 > order2) || +(order1 === order2) - 1
+      );
     const responseData: APIResponse<GnbItem[]> = {
       code: 200,
       data,

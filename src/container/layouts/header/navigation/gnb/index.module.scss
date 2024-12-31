@@ -1,4 +1,8 @@
 .wrap {
   display: flex;
   gap: 24px;
+
+  .active a {
+    color: var(--accents-9);
+  }
 }
