@@ -1,0 +1,8 @@
+.wrap {
+  display: flex;
+  gap: 24px;
+
+  .active a {
+    color: var(--thema-active-text);
+  }
+}

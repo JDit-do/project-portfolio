@@ -1,14 +1,21 @@
 @use '_reset';
 @use '_variables';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html,
 body {
   height: 100vh;
-  background: var(_variables.$thema-background-default);
+  background: var(--thema-background-default);
   scroll-behavior: smooth;
   text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+button,
+a,
+select {
+  color: var(--thema-text-default);
+
+  &:hover {
+    color: var(--thema-active-text);
+  }
 }

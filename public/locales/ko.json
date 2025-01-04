@@ -7,12 +7,12 @@
     "labs": "Labs"
   },
   "locale": {
-    "ko": "Korean",
-    "en": "English"
+    "ko": "한국어",
+    "en": "영어"
   },
   "theme": {
-    "system": "System",
-    "dark": "Dark",
-    "light": "Light"
+    "system": "시스템",
+    "dark": "다크",
+    "light": "라이트"
   }
 }

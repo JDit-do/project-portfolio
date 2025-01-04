@@ -1,15 +1,22 @@
+import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import { routing, TLocales } from '@/i18n/routing';
+import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
+import { routing } from '@/i18n/routing';
+import { TLocales } from '@/types/common';
 
 import Main from '@/container/layouts/main';
 import Header from '@/container/layouts/header';
 import Footer from '@/container/layouts/footer';
 
 import '@/styles/globals.scss';
+import { ThemeProvider } from '@/components/provider/theme-provider';
+
+export const metadata: Metadata = METADATA;
+export const viewport: Viewport = VIEWPORT;
 
 export default async function RootLayout({
   children,
@@ -23,16 +30,18 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
