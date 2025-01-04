@@ -10,7 +10,8 @@ const Dropdown = ({
   label,
   options,
   onSelect,
-  direction = DROPDOWN_DIRECTION.DOWN
+  direction = DROPDOWN_DIRECTION.DOWN,
+  isShowClickMe
 }: DropdownProps) => {
   const t = useTranslations('event');
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -19,7 +20,7 @@ const Dropdown = ({
     <div className={`${style.wrap} ${style[direction]}`}>
       <button onClick={() => setIsOpen((prev) => !prev)}>
         <span className={isOpen ? style.active : undefined}>{label}</span>
-        <span className={style.evnet}>{t('click')}</span>
+        {isShowClickMe && <span className={style.evnet}>{t('click')}</span>}
       </button>
 
       {isOpen && (

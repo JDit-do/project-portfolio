@@ -9,5 +9,10 @@
   "locale": {
     "ko": "Korean",
     "en": "English"
+  },
+  "theme": {
+    "system": "System",
+    "dark": "Dark",
+    "light": "Light"
   }
 }

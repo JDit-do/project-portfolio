@@ -13,6 +13,7 @@ import Header from '@/container/layouts/header';
 import Footer from '@/container/layouts/footer';
 
 import '@/styles/globals.scss';
+import { ThemeProvider } from '@/components/provider/theme-provider';
 
 export const metadata: Metadata = METADATA;
 export const viewport: Viewport = VIEWPORT;
@@ -32,13 +33,15 @@ export default async function RootLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

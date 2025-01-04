@@ -1,32 +1,26 @@
+@import './themes/_dark.scss';
+@import './themes/_light.scss';
+
 :root {
-  /** 변수 정의 **/
-  --accents-9: #fff;
-  --accents-8: #fafafa;
-  --accents-7: #eaeaea;
-  --accents-6: #999;
-  --accents-5: #888;
-  --accents-4: #666;
-  --accents-3: #444;
-  --accents-2: #333;
-  --accents-1: #111;
-
-  /* background */
-  --background-default: #121212;
-  --background-primary: #2f2f2f;
-  --background-secondary: #1e3a8a;
-
-  /* point */
-  --point-orange: #ffb84d;
-  --point-amber: #ff5722;
-  --point-mint: #00b0b9;
-
-  /** 테마 정의(default: dark) **/
-  --thema-background-default: var(--accents-5);
+  /** common **/
+  // text
   --thema-text-default: var(--accents-5);
   --thema-text-secondary: var(--accents-8);
+
+  // background & foreground
   --thema-background-default: var(--background-default);
   --thema-background-primary: var(--background-primary);
   --thema-background-secondary: var(--background-secondary);
+  --thema-foreground: var(--accents-9);
+
+  // border
+  --thema-border-default: var(--accents-3);
+
+  // hover & active
+  --thema-hover-text: var(--accents-7);
+  --thema-active-text: var(--accents-7);
+
+  // point
   --thema-point-orange: var(--point-orange);
   --thema-point-amber: var(--point-amber);
   --thema-point-mint: var(--point-mint);
@@ -34,4 +28,7 @@
   /** Structure **/
   --height-header: 64px;
   --container-padding: 0 24px;
+
+  // Structure Color
+  --thema-header-background: var(--header-background);
 }
