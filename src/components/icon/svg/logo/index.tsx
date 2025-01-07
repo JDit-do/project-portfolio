@@ -1,10 +1,6 @@
-import { useTheme } from 'next-themes';
-
 import style from './index.module.scss';
 
 const Logo: React.FC<React.SVGProps<SVGSVGElement>> = ({ width, height }) => {
-  const { resolvedTheme } = useTheme();
-
   return (
     <svg
       width={width}

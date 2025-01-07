@@ -1,4 +1,9 @@
 {
+  "common": {
+    "button": "버튼",
+    "link": "link",
+    "download": "download"
+  },
   "event": { "click": "Click Me" },
   "navigation": {
     "home": "Home",
@@ -14,5 +19,78 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light"
+  },
+  "persona": {
+    "title": "JD's Persona",
+    "subTitle": "Who I Am",
+    "button": {
+      "data1": "Who is JD?",
+      "data2": "Click to find out!",
+      "close": "Close"
+    },
+    "jd": {
+      "name": {
+        "title": "Name",
+        "data": "Mihyun Ju"
+      },
+      "role": {
+        "title": "Role",
+        "data": "Frontend Developer"
+      },
+      "location": {
+        "title": "Location",
+        "data": "South korea"
+      }
+    },
+    "info": {
+      "resource": {
+        "title": "Resources",
+        "subTitle": "You can view it via the link or download it.",
+        "resume": "이력서",
+        "professionalProfile": "Professional Profile",
+        "portfolio": "Portfolio"
+      }
+    },
+    "aboutMe": {
+      "data1": "A frontend developer dedicated to creating better experiences",
+      "data2": "through user-centered development and collaboration."
+    },
+    "character": {
+      "title": "Character",
+      "userExperience": "User Experience",
+      "problemSolving": "Problem Solving",
+      "collaboration": "Collaboration",
+      "documentation": "Documentation",
+      "scalability": "Scalability"
+    },
+    "beliefsPhilosophy": {
+      "title": "Beliefs & Philosophy",
+      "data1": "Revisiting the obvious reveals better solutions.",
+      "data2": "Noticing even small inconveniences, I strive to create better experiences."
+    },
+    "goal": {
+      "title": "Goals",
+      "data1": "Enhance user experiences through data visualization and performance optimization.",
+      "data2": "Contribute to sustainable technology development and foster a better development culture."
+    },
+    "whatTheySay": {
+      "title": "What They day about Me",
+      "subTitle": "Who I Am",
+      "intro": "JD's Persona is a space where I showcase who I am...",
+      "feedbacks": {
+        "qa": {
+          "content": "A colleague with logical and analytical skills.",
+          "author": "P from QA Team"
+        },
+        "fe": {
+          "content": "A responsible individual who completes projects thoroughly and excels at systematic organization.",
+          "author": "R from FE Team"
+        },
+        "be": {
+          "content": "A reliable developer who collaborates effectively and works with passion.",
+          "author": "J from BE Team"
+        }
+      }
+    }
   }
 }

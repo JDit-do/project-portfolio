@@ -7,13 +7,13 @@ import { getMessages } from 'next-intl/server';
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
 import { routing } from '@/i18n/routing';
 import { TLocales } from '@/types/common';
+import { ThemeProvider } from '@/components/provider/theme-provider';
 
 import Main from '@/container/layouts/main';
 import Header from '@/container/layouts/header';
 import Footer from '@/container/layouts/footer';
 
 import '@/styles/globals.scss';
-import { ThemeProvider } from '@/components/provider/theme-provider';
 
 export const metadata: Metadata = METADATA;
 export const viewport: Viewport = VIEWPORT;

@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { DROPDOWN_DIRECTION, DropdownProps } from './index.type';
 import style from './index.module.scss';
-import { useTranslations } from 'next-intl';
 
 const Dropdown = ({
   label,

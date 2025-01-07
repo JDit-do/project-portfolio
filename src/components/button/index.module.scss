@@ -1,0 +1,11 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  @include m.font($font-size: 0.875rem);
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+}

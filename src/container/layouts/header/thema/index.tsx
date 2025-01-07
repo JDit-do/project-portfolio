@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { LOCALE, THEME } from '@/constants/common';
 
-import Dropdown from '../dropdown';
+import Dropdown from '../../../../components/dropdown';
 
 import style from './index.module.scss';
 
