@@ -4,18 +4,23 @@
 html,
 body {
   height: 100vh;
-  background: var(--thema-background-default);
+  background: var(--theme-background-default);
   scroll-behavior: smooth;
   text-size-adjust: 100%;
   font-size: 16px;
 }
 
+body {
+  display: grid;
+  grid-template-rows: var(--height-header) 1fr var(--height-footer);
+}
+
 button,
 a,
 select {
-  color: var(--thema-text-default);
+  color: var(--theme-text-default);
 
   &:hover {
-    color: var(--thema-active-text);
+    color: var(--theme-active-text);
   }
 }

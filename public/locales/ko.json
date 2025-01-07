@@ -1,4 +1,9 @@
 {
+  "common": {
+    "button": "버튼",
+    "link": "링크",
+    "download": "다운로드"
+  },
   "event": { "click": "Click Me" },
   "navigation": {
     "home": "Home",
@@ -14,5 +19,76 @@
     "system": "시스템",
     "dark": "다크",
     "light": "라이트"
+  },
+  "persona": {
+    "title": "JD's Persona",
+    "subTitle": "Who I Am",
+    "button": {
+      "data1": "JD가 누구인지",
+      "data2": "확인하려면 클릭하세요!",
+      "close": "닫기"
+    },
+    "jd": {
+      "name": {
+        "title": "이름",
+        "data": "주미현"
+      },
+      "role": {
+        "title": "직무",
+        "data": "Frontend Developer"
+      },
+      "location": {
+        "title": "위치",
+        "data": "한국"
+      }
+    },
+    "info": {
+      "resource": {
+        "title": "자료",
+        "subTitle": "링크를 통해 열람하거나 다운로드하실 수 있습니다.",
+        "resume": "이력서",
+        "professionalProfile": "경력기술서",
+        "portfolio": "포트폴리오"
+      }
+    },
+    "aboutMe": {
+      "data1": "사용자 중심의 개발과 협업을 통해",
+      "data2": "더 나은 경험을 만들어가는 프론트엔드 개발자입니다."
+    },
+    "character": {
+      "title": "특성",
+      "userExperience": "사용자 경험",
+      "problemSolving": "문제해결 능력",
+      "collaboration": "협업",
+      "documentation": "문서화",
+      "scalability": "확장성"
+    },
+    "beliefsPhilosophy": {
+      "title": "신념 & 철학",
+      "data1": "당연한 것을 다시 바라볼 때, 더 나은 해결책이 보입니다.",
+      "data2": "작은 불편에도 주목하며, 더 나은 경험을 고민합니다."
+    },
+    "goal": {
+      "title": "Goals",
+      "data1": "데이터 시각화와 성능 최적화를 통해, 사용자가 더 나은 경험을 할 수 있도록 UI/UX를 개선하겠습니다.",
+      "data2": "사용자와 환경 모두를 고려한 지속 가능한 기술 개발에 기여하며, 더 나은 개발 문화를 실현하겠습니다."
+    },
+    "whatTheySay": {
+      "title": "동료가 말하는 JD",
+      "feedbacks": {
+        "qa": {
+          "content": "합리적이고 논리적인 분석 능력을 갖춘 동료.",
+          "author": "QA팀 P님"
+        },
+        "fe": {
+          "content": "책임감 있게 프로젝트를 끝까지 완수하며, 체계적인 정리에 강점이 있는 사람.",
+          "author": "FE팀 N님"
+        },
+        "be": {
+          "content": "협업 과정에서 신뢰를 주며, 열정적으로 임하는 개발자.",
+          "author": "BE팀 J님"
+        }
+      }
+    }
   }
 }

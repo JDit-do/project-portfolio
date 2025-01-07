@@ -4,7 +4,7 @@ import Locale from '@/components/locale';
 import Gnb from './navigation/gnb';
 
 import style from './index.module.scss';
-import Theme from '@/components/thema';
+import Theme from '@/container/layouts/header/thema';
 
 const Header = () => {
   return (
