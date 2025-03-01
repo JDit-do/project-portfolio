@@ -1,3 +1,5 @@
+@use '@/styles/_function.scss' as fn;
+
 @import './themes/_dark.scss';
 @import './themes/_light.scss';
 
@@ -11,6 +13,7 @@
   --theme-background-primary: var(--background-primary);
   --theme-background-secondary: var(--background-secondary);
   --theme-foreground: var(--accents-9);
+  --theme-background-primary-inverse-rgb: var(--background-primary-inverse-rgb);
 
   // border
   --theme-border-default: var(--accents-3);
@@ -24,11 +27,18 @@
   --theme-point-amber: var(--point-amber);
   --theme-point-mint: var(--point-mint);
 
-  /** Structure **/
+  /************ Structure ************/
   --height-header: 64px;
   --height-footer: 64px;
   --container-padding: 0 24px;
 
   // Structure Color
   --theme-header-background: var(--header-background);
+
+  // spacing
+  --spacing-1: #{fn.spacing(1)};
+  --spacing-2: #{fn.spacing(2)};
+  --spacing-3: #{fn.spacing(3)};
+  --spacing-4: #{fn.spacing(4)};
+  --spacing-5: #{fn.spacing(5)};
 }

@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 
 import { DOCUMENT_URL } from '@/constants/url';
 import Button from '@/components/button';
-import IconDoubleQuote from '@/components/icon/svg/doubleQuote';
 
 import style from './index.module.scss';
 
@@ -22,7 +21,7 @@ const SectionPersona = () => {
   return (
     <section className={`${style.wrap} ${isActive ? style.active : ''}`}>
       <div className={style.toggle}>
-        <Button
+        {/* <Button
           button={{
             label: isActive ? (
               t('button.close')
@@ -35,7 +34,7 @@ const SectionPersona = () => {
             ),
             onClick: handleClickButton
           }}
-        />
+        /> */}
       </div>
       <div className={style.contents}>
         <div className={style.left}>
@@ -63,20 +62,20 @@ const SectionPersona = () => {
               <dl>
                 <dt>{t('info.resource.resume')}</dt>
                 <dd>
-                  <Button link={DOCUMENT_URL.resume.getView()} />
-                  <Button download={DOCUMENT_URL.resume.getDownload()} />
+                  {/* <Button link={DOCUMENT_URL.resume.getView()} /> */}
+                  {/* <Button download={DOCUMENT_URL.resume.getDownload()} /> */}
                 </dd>
                 <dt>{t('info.resource.professionalProfile')}</dt>
                 <dd>
-                  <Button link={DOCUMENT_URL.professionalProfile.getView()} />
+                  {/* <Button link={DOCUMENT_URL.professionalProfile.getView()} />
                   <Button
                     download={DOCUMENT_URL.professionalProfile.getDownload()}
-                  />
+                  /> */}
                 </dd>
                 <dt>{t('info.resource.portfolio')}</dt>
                 <dd>
-                  <Button link={DOCUMENT_URL.portfolio.getView()} />
-                  <Button download={DOCUMENT_URL.portfolio.getDownload()} />
+                  {/* <Button link={DOCUMENT_URL.portfolio.getView()} /> */}
+                  {/* <Button download={DOCUMENT_URL.portfolio.getDownload()} /> */}
                 </dd>
               </dl>
             </div>
@@ -85,7 +84,7 @@ const SectionPersona = () => {
 
         <div className={style.right}>
           <p className={style.intro}>
-            <span>
+            {/* <span>
               <IconDoubleQuote
                 width={20}
                 hanging={20}
@@ -100,7 +99,7 @@ const SectionPersona = () => {
                 hanging={20}
                 className={style.quoteRight}
               />
-            </span>
+            </span> */}
           </p>
 
           <div className={style.extra}>

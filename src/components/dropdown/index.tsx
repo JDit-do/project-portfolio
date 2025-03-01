@@ -1,26 +1,37 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+
+import useToggle from '@/hooks/useToggle';
+
+import Icon from '../icon';
+import { ICON_TYPE } from '../icon/index.type';
 
 import { DROPDOWN_DIRECTION, DropdownProps } from './index.type';
 import style from './index.module.scss';
+import useClickOutSide from '@/hooks/useClickOutSide';
 
 const Dropdown = ({
   label,
   options,
   onSelect,
-  direction = DROPDOWN_DIRECTION.DOWN,
-  isShowClickMe
+  direction = DROPDOWN_DIRECTION.DOWN
 }: DropdownProps) => {
-  const t = useTranslations('event');
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, handleToggle, handleClose } = useToggle();
+
+  const ref = useClickOutSide<HTMLDivElement>(handleClose);
 
   return (
-    <div className={`${style.wrap} ${style[direction]}`}>
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+    <div className={`${style.wrap} ${style[direction]}`} ref={ref}>
+      <button onClick={handleToggle}>
         <span className={isOpen ? style.active : undefined}>{label}</span>
-        {isShowClickMe && <span className={style.evnet}>{t('click')}</span>}
+        <Icon
+          type={
+            direction === DROPDOWN_DIRECTION.DOWN
+              ? ICON_TYPE.ICON_TYPE_DROPDOWN.down
+              : ICON_TYPE.ICON_TYPE_DROPDOWN.up
+          }
+        />
       </button>
 
       {isOpen && (
@@ -30,7 +41,7 @@ const Dropdown = ({
               key={String(option.value)}
               onClick={() => {
                 onSelect(option.value);
-                setIsOpen(false);
+                handleClose();
               }}
             >
               {option.label}

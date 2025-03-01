@@ -17,5 +17,4 @@ export interface DropdownProps {
   options: { value: string; label: string }[];
   onSelect: (value: string) => void;
   direction?: DROPDOWN_DIRECTION;
-  isShowClickMe?: boolean;
 }

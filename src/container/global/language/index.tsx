@@ -9,11 +9,11 @@ import { TLocales } from '@/types/common';
 
 import { useLanhuage } from '@/hooks/useLanuage';
 
-import Dropdown from '../dropdown';
-
 import style from './index.module.scss';
+import Dropdown from '@/components/dropdown';
+import { DROPDOWN_DIRECTION } from '@/components/dropdown/index.type';
 
-const Locale = () => {
+const Language = () => {
   const t = useTranslations('locale');
   const { onChangeLanguage, getLocale } = useLanhuage();
 
@@ -30,6 +30,7 @@ const Locale = () => {
     <div className={style.wrap}>
       <Dropdown
         label={t(locale)}
+        direction={DROPDOWN_DIRECTION.UP}
         options={[
           { value: LOCALE.KO, label: t(LOCALE.KO) },
           { value: LOCALE.EN, label: t(LOCALE.EN) }
@@ -40,4 +41,4 @@ const Locale = () => {
   );
 };
 
-export default Locale;
+export default Language;

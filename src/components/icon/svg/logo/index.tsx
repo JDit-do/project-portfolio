@@ -1,6 +1,9 @@
-import style from './index.module.scss';
+import { FC } from 'react';
 
-const Logo: React.FC<React.SVGProps<SVGSVGElement>> = ({ width, height }) => {
+import style from './index.module.scss';
+import { ISvgProps } from './index.type';
+
+const LogoFill: FC<ISvgProps> = ({ width, height }) => {
   return (
     <svg
       width={width}
@@ -19,4 +22,4 @@ const Logo: React.FC<React.SVGProps<SVGSVGElement>> = ({ width, height }) => {
   );
 };
 
-export default Logo;
+export default LogoFill;
