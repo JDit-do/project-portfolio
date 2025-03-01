@@ -1,21 +1,11 @@
-'use client';
+import { FC } from 'react';
 
-import { useIconContext } from './IconProvider';
-import { IconConfig } from './IconConfig';
-import IIconProps from './index.type';
+import { IIconProps } from './index.type';
 
-const Icon: React.FC<IIconProps> = ({ type, width, height, ...props }) => {
-  const { width: globalWidth, height: globalHeight } = useIconContext();
+const Icon: FC<IIconProps> = ({ type: IconComponenet, ...props }) => {
+  if (!IconComponenet) return null;
 
-  const Component = IconConfig[type] || IconConfig.logo;
-
-  return (
-    <Component
-      width={width || globalWidth}
-      height={height || globalWidth}
-      {...props}
-    />
-  );
+  return <IconComponenet {...props} />;
 };
 
 export default Icon;

@@ -1,14 +1,16 @@
+import Global from '@/container/global';
+
 import style from './index.module.scss';
-import SectionPersona from './srctions/persona';
+import { FC } from 'react';
 
 interface props extends React.PropsWithChildren {}
 
-const Main: React.FC<props> = ({ children }) => {
+const Main: FC<props> = ({ children }) => {
   return (
     <main className={style.wrap}>
       {children}
 
-      <SectionPersona />
+      <Global />
     </main>
   );
 };

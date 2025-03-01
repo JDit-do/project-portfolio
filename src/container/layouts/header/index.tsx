@@ -1,24 +1,18 @@
 import Icon from '@/components/icon';
-import Locale from '@/components/locale';
+import { ICON_TYPE } from '@/components/icon/index.type';
 
 import Gnb from './navigation/gnb';
 
 import style from './index.module.scss';
-import Theme from '@/container/layouts/header/thema';
 
 const Header = () => {
   return (
     <header className={style.wrap}>
       <h1>
-        <Icon type="logo" height={22} />
+        <Icon type={ICON_TYPE.ICON_TYPE_LOGO.fill} height={20} />
       </h1>
 
       <Gnb />
-
-      <div className={style.right}>
-        <Theme />
-        <Locale />
-      </div>
     </header>
   );
 };

@@ -3,11 +3,11 @@
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 
-import { LOCALE, THEME } from '@/constants/common';
-
-import Dropdown from '../../../../components/dropdown';
+import { THEME } from '@/constants/common';
+import Dropdown from '@/components/dropdown';
 
 import style from './index.module.scss';
+import { DROPDOWN_DIRECTION } from '@/components/dropdown/index.type';
 
 const Theme = () => {
   const t = useTranslations('theme');
@@ -17,6 +17,7 @@ const Theme = () => {
     <div className={style.wrap}>
       <Dropdown
         label={t(theme) || THEME.SYSTEM}
+        direction={DROPDOWN_DIRECTION.UP}
         options={[
           { value: THEME.SYSTEM, label: t(THEME.SYSTEM) },
           { value: THEME.DARK, label: t(THEME.DARK) },

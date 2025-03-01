@@ -1,0 +1,40 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  bottom: var(--spacing-5);
+
+  > ul {
+    display: flex;
+    align-items: center;
+    gap: 0 var(--spacing-5);
+    height: 60px;
+    padding: 0 var(--spacing-5);
+    box-shadow: 0 0 4px rgba(var(--theme-background-primary-inverse-rgb), 0.4);
+
+    > li {
+      position: relative;
+      width: 100px;
+
+      &:not(:last-child):after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 100%;
+        background: rgba(var(--theme-background-primary-inverse-rgb), 0.2);
+        position: absolute;
+        top: 0;
+        right: -10px;
+        transform: translateX(-50%);
+      }
+
+      &:has(> button) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
