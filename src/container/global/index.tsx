@@ -11,6 +11,7 @@ const Global = () => {
           <Theme />
         </li>
         <li>
+          <Persona />
           <button>Who is JD?</button>
         </li>
         <li>

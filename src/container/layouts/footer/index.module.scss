@@ -14,11 +14,11 @@
   }
 
   p {
-    @include m.font(var(--theme-text-secondary), 0.75rem);
+    @include m.font(var(--theme-text-default), 0.75rem);
   }
   small {
     height: fit-content;
     align-self: flex-end;
-    @include m.font(var(--theme-text-secondary), 0.75rem);
+    @include m.font(var(--theme-text-default), 0.75rem);
   }
 }

@@ -13,7 +13,10 @@
   --theme-background-primary: var(--background-primary);
   --theme-background-secondary: var(--background-secondary);
   --theme-foreground: var(--accents-9);
-  --theme-background-primary-inverse-rgb: var(--background-primary-inverse-rgb);
+
+  // color - RGB
+  --theme-color-primary-inverse-rgb: var(--color-primary-inverse-rgb);
+  --theme-color-secondary-inverse-rgb: var(--background-secondary-inverse-rgb);
 
   // border
   --theme-border-default: var(--accents-3);
@@ -41,4 +44,6 @@
   --spacing-3: #{fn.spacing(3)};
   --spacing-4: #{fn.spacing(4)};
   --spacing-5: #{fn.spacing(5)};
+  --spacing-6: #{fn.spacing(6)};
+  --spacing-10: #{fn.spacing(10)};
 }

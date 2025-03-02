@@ -9,12 +9,16 @@
   --accents-3: #444;
   --accents-2: #333;
   --accents-1: #111;
+  --accents-0: #000;
 
   // background
   --background-default: #121212;
   --background-primary: #2f2f2f;
   --background-secondary: #1e3a8a;
-  --background-primary-inverse-rgb: 245, 245, 245;
+
+  // color - RGB
+  --color-primary-inverse-rgb: 245, 245, 245;
+  --color-point-orange-rgb: 255, 184, 77;
 
   // point
   --point-orange: #ffb84d;
