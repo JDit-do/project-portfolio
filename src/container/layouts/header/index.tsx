@@ -12,7 +12,9 @@ const Header = () => {
         <Icon type={ICON_TYPE.ICON_TYPE_LOGO.fill} height={20} />
       </h1>
 
-      <Gnb />
+      <nav>
+        <Gnb />
+      </nav>
     </header>
   );
 };

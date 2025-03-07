@@ -35,13 +35,11 @@
 
   ul {
     width: 100%;
-    background: var(--theme-background-primary-inverse-rgb);
-    backdrop-filter: saturate(180%) blur(5px);
-    border: 1px solid var(--theme-border-default);
+    position: absolute;
+    background: var(--theme-background-default);
+    border: 2px solid var(--theme-border-default);
     border-radius: 4px;
     font-size: 12px;
-    z-index: 10;
-    position: absolute;
 
     li {
       display: flex;

@@ -4,11 +4,7 @@ const Footer = () => {
   return (
     <footer className={style.wrap}>
       <div>
-        <p>
-          현재 이 사이트는 PC와 Chrome에서 최적의 사용성을 제공합니다.
-          <br />
-          향후 더 많은 기기와 브라우저 지원이 추가될 예정입니다.
-        </p>
+        <p>현재 이 사이트는 PC와 Chrome에서 최적의 사용성을 제공합니다.</p>
         <small>&copy; 2025 JD(Mihyeon Ju). All rights reserved.</small>
       </div>
     </footer>

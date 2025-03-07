@@ -1,7 +1,8 @@
+import { FC } from 'react';
+
 import Global from '@/container/global';
 
 import style from './index.module.scss';
-import { FC } from 'react';
 
 interface props extends React.PropsWithChildren {}
 

@@ -1,0 +1,20 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .canvas {
+    height: 100%;
+  }
+
+  .heroSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - var(--height-global));
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
