@@ -3,8 +3,12 @@
 import { IButton } from './index.type';
 import style from './index.module.scss';
 
-const Button = ({ children }: IButton) => {
-  return <button className={style.wrap}>{children}</button>;
+const Button = ({ onClick, children }: IButton) => {
+  return (
+    <button className={style.wrap} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

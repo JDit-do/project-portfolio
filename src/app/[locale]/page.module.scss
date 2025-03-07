@@ -8,9 +8,13 @@
   }
 
   .heroSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - var(--height-global));
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
   }
 }

@@ -8,7 +8,7 @@ const HomeHero = () => {
     <div className={style.wrap}>
       <svg
         width="100%"
-        height="auto"
+        height="100%"
         viewBox="0 0 1000 250"
         preserveAspectRatio="xMidYMid meet"
         className={style.subTitle}
@@ -17,7 +17,7 @@ const HomeHero = () => {
           <path id="text-path" d="M 0,250 Q 500,100 1000,250" fill="none" />
         </defs>
 
-        <text font-size="40" fill="white">
+        <text fontSize="40" fill="white">
           <textPath href="#text-path" startOffset="50%" textAnchor="middle">
             Rethink the Obvious. Improve the Experience.
           </textPath>

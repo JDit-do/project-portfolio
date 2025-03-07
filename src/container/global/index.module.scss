@@ -1,11 +1,10 @@
 @use '@/styles/_mixins.scss' as m;
 
 .wrap {
-  display: flex;
-  width: 100%;
-  justify-content: center;
   position: absolute;
+  left: 50%;
   bottom: var(--spacing-5);
+  transform: translateX(-50%);
 
   > ul {
     display: flex;
@@ -18,7 +17,7 @@
 
     > li {
       position: relative;
-      width: 100px;
+      min-width: 100px;
 
       &:not(:last-child):after {
         content: '';

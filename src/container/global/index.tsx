@@ -1,26 +1,35 @@
+'use client';
+
+import useToggle from '@/hooks/useToggle';
+
 import Theme from './theme';
 import Language from './language';
-import SectionPersona from './persona';
+import Persona from './persona';
+import PersonaContents from './persona/contents';
+
 import style from './index.module.scss';
 
 const Global = () => {
-  return (
-    <div className={style.wrap}>
-      <ul>
-        <li>
-          <Theme />
-        </li>
-        <li>
-          <Persona />
-          <button>Who is JD?</button>
-        </li>
-        <li>
-          <Language />
-        </li>
-      </ul>
+  const { isOpen, handleToggle } = useToggle();
 
-      <SectionPersona />
-    </div>
+  return (
+    <>
+      <div className={style.wrap}>
+        <ul>
+          <li>
+            <Theme />
+          </li>
+          <li>
+            <Persona onToggle={handleToggle} />
+          </li>
+          <li>
+            <Language />
+          </li>
+        </ul>
+      </div>
+
+      <PersonaContents isOpen={isOpen} onToggle={handleToggle} />
+    </>
   );
 };
 
