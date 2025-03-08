@@ -2,21 +2,21 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import { TLocales } from '@/types/common';
+import { TLOCALE } from '@/types/common';
 import { LOCALE } from '@/constants/common';
 
 export const useLanhuage = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const onChangeLanguage = (locale: TLocales): void => {
+  const onChangeLanguage = (locale: TLOCALE): void => {
     document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
 
     const newPath = pathname.replace(/^\/[a-z]{2}/, `/${locale}`);
     router.push(newPath);
   };
 
-  const getLocale = (): TLocales => {
+  const getLocale = (): TLOCALE => {
     let cookie = document.cookie
       .split('; ')
       .find((row) => row.startsWith('NEXT_LOCALE='));
@@ -24,7 +24,7 @@ export const useLanhuage = () => {
 
     const locale = cookie && cookie in LOCALE ? cookie : LOCALE.KO;
 
-    return locale as TLocales;
+    return locale as TLOCALE;
   };
 
   return { onChangeLanguage, getLocale };

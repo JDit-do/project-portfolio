@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 import { LOCALE } from '@/constants/common';
-import { TLocales } from '@/types/common';
+import { TLOCALE } from '@/types/common';
 
 import { useLanhuage } from '@/hooks/useLanuage';
 
@@ -17,10 +17,10 @@ const Language = () => {
   const t = useTranslations('locale');
   const { onChangeLanguage, getLocale } = useLanhuage();
 
-  const [locale, setLocale] = useState<TLocales>(getLocale());
+  const [locale, setLocale] = useState<TLOCALE>(getLocale());
 
   const handleChangeLanguage = (_locale: string) => {
-    const locale = _locale as TLocales;
+    const locale = _locale as TLOCALE;
 
     onChangeLanguage(locale);
     setLocale(locale);
