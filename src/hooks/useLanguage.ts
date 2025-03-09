@@ -16,10 +16,7 @@ export const useLanguage = () => {
     router.push(newPath);
   };
 
-  const getLocale = (): TLOCALE | null => {
-    const isClient = typeof document !== 'undefined';
-
-    if (!isClient) return null;
+  const getLocale = (): TLOCALE => {
     let cookie = document.cookie
       .split('; ')
       .find((row) => row.startsWith('NEXT_LOCALE='));

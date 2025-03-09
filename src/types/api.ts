@@ -8,14 +8,19 @@ export interface APIResponse<T> {
 }
 
 /**
- * @property id(string): UUID
- * @property langKey(string): 다국어 Key
- * @property url(string): G.N.B URL
- * @property order(string): 순서
+ * @property id: UUID
+ * @property order: 순서
+ * @property isActive: 표시 여부
+ * @property url: G.N.B URL
+ * @property menu: (object) G.N.B name(Language)
  */
 export interface GnbItem {
   id: string;
-  langKey: string;
-  url: string;
   order: number;
+  isActive: boolean;
+  url: string;
+  menu: {
+    ko: string;
+    en: string;
+  };
 }

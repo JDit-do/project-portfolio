@@ -17,7 +17,7 @@ const Language = () => {
   const t = useTranslations('locale');
   const { onChangeLanguage, getLocale } = useLanguage();
 
-  const [locale, setLocale] = useState<TLOCALE | null>(getLocale());
+  const [locale, setLocale] = useState<TLOCALE>(getLocale());
 
   const handleChangeLanguage = (_locale: string) => {
     const locale = _locale as TLOCALE;

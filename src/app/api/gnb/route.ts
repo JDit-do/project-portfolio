@@ -12,10 +12,15 @@ export async function GET() {
     const data: GnbItem[] = response
       .map((item) => ({
         id: item.id,
-        langKey: NotionUtils.getString(item.properties.key),
+        order: NotionUtils.getNumber(item.properties.order),
+        isActive: NotionUtils.getBoolean(item.properties.is_active),
         url: NotionUtils.getString(item.properties.url),
-        order: NotionUtils.getNumber(item.properties.order)
+        menu: {
+          ko: NotionUtils.getString(item.properties.menu_ko),
+          en: NotionUtils.getString(item.properties.menu_en)
+        }
       }))
+      .filter(({ isActive }) => isActive)
       .sort(
         ({ order: order1 }, { order: order2 }) =>
           +(order1 > order2) || +(order1 === order2) - 1
