@@ -46,6 +46,7 @@
         font-weight: bold;
         backface-visibility: hidden;
         animation: rotateWords 6s infinite;
+        animation-fill-mode: both;
       }
 
       .word:nth-child(1) {

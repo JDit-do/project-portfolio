@@ -5,6 +5,9 @@
   align-items: center;
   padding: var(--container-padding);
   border-top: 1px solid var(--theme-border-default);
+  position: relative;
+  z-index: 100;
+  background: inherit;
 
   > div {
     display: flex;
