@@ -106,13 +106,11 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
                       <h3>{title}</h3>
                       <span>{subTitle}</span>
                     </div>
-
                     <ul>
-                      {description.map((desc) => (
-                        <li>{desc}</li>
+                      {description.map((desc, index) => (
+                        <li key={`${id}-desc-${index}`}>{desc}</li>
                       ))}
                     </ul>
-
                     <div className={style.image}>
                       <div>
                         <img src={img.url} alt={img.alt} />

@@ -1,13 +1,19 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import useToggle from '@/hooks/useToggle';
 
-import Theme from './theme';
-import Language from './language';
 import Persona from './persona';
 import PersonaContents from './persona/contents';
-
 import style from './index.module.scss';
+
+const LazyTheme = dynamic(() => import('./theme'), {
+  ssr: false
+});
+const LazyLanguage = dynamic(() => import('./language'), {
+  ssr: false
+});
 
 const Global = () => {
   const { isOpen, handleToggle } = useToggle();
@@ -17,13 +23,13 @@ const Global = () => {
       <div className={style.wrap}>
         <ul>
           <li>
-            <Theme />
+            <LazyTheme />
           </li>
           <li>
             <Persona onToggle={handleToggle} />
           </li>
           <li>
-            <Language />
+            <LazyLanguage />
           </li>
         </ul>
       </div>

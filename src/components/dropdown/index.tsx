@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import useToggle from '@/hooks/useToggle';
 
 import Icon from '../icon';

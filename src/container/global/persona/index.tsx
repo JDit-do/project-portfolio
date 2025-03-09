@@ -1,5 +1,3 @@
-'use client';
-
 import { IPersonaProps } from './index.type';
 import style from './index.module.scss';
 

@@ -16,7 +16,7 @@ const Theme = () => {
   return (
     <div className={style.wrap}>
       <Dropdown
-        label={t(theme) || THEME.SYSTEM}
+        label={t(theme)}
         direction={DROPDOWN_DIRECTION.UP}
         options={[
           { value: THEME.SYSTEM, label: t(THEME.SYSTEM) },
