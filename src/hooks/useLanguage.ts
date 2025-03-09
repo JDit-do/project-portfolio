@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { TLOCALE } from '@/types/common';
 import { LOCALE } from '@/constants/common';
 
-export const useLanhuage = () => {
+export const useLanguage = () => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -16,7 +16,10 @@ export const useLanhuage = () => {
     router.push(newPath);
   };
 
-  const getLocale = (): TLOCALE => {
+  const getLocale = (): TLOCALE | null => {
+    const isClient = typeof document !== 'undefined';
+
+    if (!isClient) return null;
     let cookie = document.cookie
       .split('; ')
       .find((row) => row.startsWith('NEXT_LOCALE='));
