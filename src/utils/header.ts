@@ -1,8 +1,5 @@
 import { headers } from 'next/headers';
 
-import { TLocales } from '@/types/common';
-import { LOCALE } from '@/constants/common';
-
 /**
  * 지정된 헤더 키의 값을 비동기로 가져옵니다.
  * @param key - 가져올 헤더 키

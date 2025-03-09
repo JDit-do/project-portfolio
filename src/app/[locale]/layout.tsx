@@ -6,7 +6,7 @@ import { getMessages } from 'next-intl/server';
 
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
 import { routing } from '@/i18n/routing';
-import { TLocales } from '@/types/common';
+import { TLOCALE } from '@/types/common';
 import { ThemeProvider } from '@/components/provider/theme-provider';
 
 import Main from '@/container/layouts/main';
@@ -26,7 +26,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!routing.locales.includes(locale as TLocales)) {
+  if (!routing.locales.includes(locale as TLOCALE)) {
     notFound();
   }
 
