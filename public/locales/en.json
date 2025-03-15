@@ -24,54 +24,49 @@
     "title": "JD's Persona",
     "subTitle": "Who I Am",
     "button": {
-      "data1": "Who is JD?",
-      "data2": "Click to find out!",
       "close": "Close"
     },
-    "jd": {
-      "name": {
-        "title": "Name",
-        "data": "Mihyun Ju"
-      },
-      "role": {
-        "title": "Role",
-        "data": "Frontend Developer"
-      },
-      "location": {
-        "title": "Location",
-        "data": "South korea"
-      }
-    },
-    "info": {
-      "resource": {
-        "title": "Resources",
-        "subTitle": "You can view it via the link or download it.",
-        "resume": "이력서",
-        "professionalProfile": "Professional Profile",
-        "portfolio": "Portfolio"
-      }
-    },
-    "aboutMe": {
-      "data1": "A frontend developer dedicated to creating better experiences",
-      "data2": "through user-centered development and collaboration."
-    },
     "character": {
-      "title": "Character",
       "userExperience": "User Experience",
       "problemSolving": "Problem Solving",
       "collaboration": "Collaboration",
       "documentation": "Documentation",
       "scalability": "Scalability"
     },
-    "beliefsPhilosophy": {
-      "title": "Beliefs & Philosophy",
-      "data1": "Revisiting the obvious reveals better solutions.",
-      "data2": "Noticing even small inconveniences, I strive to create better experiences."
+    "intro": {
+      "data1": "Creating better experiences",
+      "data2": "through user-centered development and collaboration."
     },
-    "goal": {
-      "title": "Goals",
-      "data1": "Enhance user experiences through data visualization and performance optimization.",
-      "data2": "Contribute to sustainable technology development and foster a better development culture."
+    "skill": {
+      "frontend": "I design and optimize UI/UX with a focus on user experience.",
+      "backend": "I understand backend architecture and have experience with API integration and server setup.",
+      "tool": "I set up development environments and make good use of collaboration tools."
+    },
+    "principle": {
+      "experience": {
+        "title": "Creating the Best User Experience",
+        "description": {
+          "data1": "Beyond simply implementing features, I strive to make services more intuitive and user-friendly.",
+          "data2": "Thoughtful UI/UX design—considering responsive web design, accessibility, and performance—determines the overall service quality.",
+          "data3": "I focus on reducing unnecessary loading times and crafting smooth animations and interactions for an improved user experience."
+        }
+      },
+      "solve": {
+        "title": "Solving Problems with Optimized Solutions",
+        "description": {
+          "data1": "Problems may seem simple at first, but re-evaluating them can lead to better solutions.",
+          "data2": "I don’t just build UI/UX—I apply an optimized, maintainable approach that ensures long-term efficiency.",
+          "data3": "By using a structured and data-driven approach, I improve both usability and performance."
+        }
+      },
+      "collaborate": {
+        "title": "Collaborating for Better Results",
+        "description": {
+          "data1": "It is important to collaborate with designers, backend developers, and QA engineers to achieve better results.",
+          "data2": "I value a culture of growth through code reviews and knowledge sharing with my team.",
+          "data3": "To ensure smooth collaboration, I apply Git Flow for version control, develop based on API documentation, and maintain consistent coding conventions."
+        }
+      }
     },
     "whatTheySay": {
       "title": "What They day about Me",

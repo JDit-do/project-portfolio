@@ -23,3 +23,21 @@
   font-weight: $font-weight;
   text-align: $text-align;
 }
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}

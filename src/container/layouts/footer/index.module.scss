@@ -2,6 +2,7 @@
 
 .wrap {
   display: flex;
+  justify-content: end;
   align-items: center;
   padding: var(--container-padding);
   border-top: 1px solid var(--theme-border-default);
@@ -10,18 +11,18 @@
   background: inherit;
 
   > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
   }
 
-  p {
-    @include m.font(var(--theme-text-default), 0.75rem);
-  }
   small {
-    height: fit-content;
-    align-self: flex-end;
-    @include m.font(var(--theme-text-default), 0.75rem);
+    @include m.font(var(--theme-text-default), 0.6rem);
+
+    @include m.breakpoint(tablet) {
+      font-size: 0.75rem;
+    }
+
+    @include m.breakpoint(mobile) {
+      font-size: 0.84rem;
+    }
   }
 }

@@ -8,13 +8,14 @@
   --theme-text-default: var(--accents-5);
   --theme-text-secondary: var(--accents-8);
 
-  // background & foreground
-  --theme-background-default: var(--background-default);
+  // background
   --theme-background-primary: var(--background-primary);
   --theme-background-secondary: var(--background-secondary);
-  --theme-foreground: var(--accents-9);
+  --theme-background-tertiary: var(--background-tertiary);
+  --theme-background-quaternary: var(--background-quaternary);
 
-  // color - RGB
+  // color
+  --theme-color-point: var(--color-point);
   --theme-color-primary-inverse-rgb: var(--color-primary-inverse-rgb);
   --theme-color-secondary-inverse-rgb: var(--background-secondary-inverse-rgb);
 
@@ -23,7 +24,7 @@
 
   // hover & active
   --theme-hover-text: var(--accents-7);
-  --theme-active-text: var(--accents-7);
+  --theme-active-text: var(--point-orange);
 
   // point
   --theme-point-orange: var(--point-orange);
@@ -36,7 +37,7 @@
   --height-global: 84px;
   --container-padding: 0 24px;
 
-  // Structure Color
+  // structure Color
   --theme-header-background: var(--header-background);
 
   // spacing
@@ -47,4 +48,10 @@
   --spacing-5: #{fn.spacing(5)};
   --spacing-6: #{fn.spacing(6)};
   --spacing-10: #{fn.spacing(10)};
+
+  // font
+  --font-weight-base: 300; // 기본 텍스트
+  --font-weight-title: 700; // 타이틀
+  --font-weight-subtitle: 600; // 서브타이틀
+  --font-weight-detail: 500; // 추가 서브타이틀
 }

@@ -12,7 +12,6 @@
     height: 100%;
     padding: 0 4px;
     border-bottom: 1px solid var(--theme-border-default);
-    font-size: 12px;
 
     .active {
       color: var(--theme-hover-text);
@@ -36,10 +35,9 @@
   ul {
     width: 100%;
     position: absolute;
-    background: var(--theme-background-default);
+    background: var(--theme-background-primary);
     border: 2px solid var(--theme-border-default);
     border-radius: 4px;
-    font-size: 12px;
 
     li {
       display: flex;
@@ -47,7 +45,6 @@
       height: 30px;
       padding: 0 4px;
       position: relative;
-
       &:not(:last-child)::after {
         content: '';
         width: 100%;
@@ -61,6 +58,10 @@
       &:hover {
         color: var(--theme-hover-text);
         cursor: pointer;
+      }
+
+      &.active {
+        color: var(--theme-active-text);
       }
     }
   }

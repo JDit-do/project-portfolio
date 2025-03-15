@@ -27,13 +27,12 @@ const HomeHero = () => {
       <h2 className={style.mainText}>
         <span>Why Just Build?</span>
         <span className={style.secondLine}>
-          It's
+          It's Better
           <span className={style.rotateText}>
-            <span className={style.word}>Solve</span>
-            <span className={style.word}>Enhance</span>
-            <span className={style.word}>Think</span>
+            <span className={style.word}>Experience.</span>
+            <span className={style.word}>Solution.</span>
+            <span className={style.word}>Collaboration.</span>
           </span>
-          Better
         </span>
       </h2>
       <p className={style.tagline}>Just Do. Make an Impact.</p>
