@@ -14,6 +14,7 @@ export const useLanguage = () => {
   const onChangeLanguage = (locale: TLOCALE): void => {
     const newPath = pathname.replace(/^\/[a-z]{2}/, `/${locale}`);
     router.push(newPath);
+    router.refresh();
   };
 
   return { onChangeLanguage, locale };

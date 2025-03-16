@@ -8,7 +8,7 @@
   border-top: 1px solid var(--theme-border-default);
   position: relative;
   z-index: 100;
-  background: inherit;
+  background: var(--theme-background-primary);
 
   > div {
     width: 100%;

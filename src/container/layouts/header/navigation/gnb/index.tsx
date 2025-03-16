@@ -14,7 +14,9 @@ export default async function GNB() {
   const path = await getPath();
   const locale = await getLocale();
 
-  const response = await fetch(APIEndpoints.navigation.gnb.url);
+  const response = await fetch(APIEndpoints.navigation.gnb.url, {
+    next: { revalidate: 1800 }
+  });
   const { data = [] }: APIResponse<GnbItem[]> = await response.json();
 
   if (!(data.length > 1)) return <></>;

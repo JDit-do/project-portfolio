@@ -3,12 +3,12 @@
 import { FC, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import Button from '@/components/button';
+import Icon from '@/components/icon';
+
+import { DATA_PRINCIPLES } from './data';
 import { IPersonaContentProps } from './index.type';
 import style from './index.module.scss';
-import Button from '@/components/button';
-import Image from 'next/image';
-import Icon from '@/components/icon';
-import { DATA_PRINCIPLES } from './data';
 
 const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
   const t = useTranslations('persona');

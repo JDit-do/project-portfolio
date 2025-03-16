@@ -20,6 +20,13 @@
     "dark": "다크",
     "light": "라이트"
   },
+  "error": {
+    "404": {
+      "data1": "여긴 텅 비어 있지만, 괜찮아요.",
+      "data2": "홈에서 다시 시작할 수 있어요.",
+      "label": "홈으로 돌아가기"
+    }
+  },
   "persona": {
     "title": "JD's Persona",
     "subTitle": "Who I Am",
