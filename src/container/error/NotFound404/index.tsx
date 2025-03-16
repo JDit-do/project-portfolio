@@ -1,6 +1,5 @@
 import Link from 'next/link';
-
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 import Icon from '@/components/icon';
 import { ICON_TYPE } from '@/components/icon/index.type';
@@ -8,7 +7,7 @@ import { ICON_TYPE } from '@/components/icon/index.type';
 import style from './index.module.scss';
 
 const NotFound404 = () => {
-  const t = getTranslations('error');
+  const t = useTranslations('error');
 
   return (
     <div className={style.wrap}>

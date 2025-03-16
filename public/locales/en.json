@@ -23,7 +23,8 @@
   "error": {
     "404": {
       "data1": "This page is empty, but here’s something you might like!",
-      "data2": "Check out some interesting content below."
+      "data2": "Check out some interesting content below.",
+      "label": "Go to Home"
     }
   },
   "persona": {
@@ -41,8 +42,7 @@
     },
     "intro": {
       "data1": "This page is empty, but that’s okay.",
-      "data2": "You can start fresh from the home page.",
-      "label": "Go to Home"
+      "data2": "You can start fresh from the home page."
     },
     "skill": {
       "frontend": "I design and optimize UI/UX with a focus on user experience.",
