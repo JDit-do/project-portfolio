@@ -20,9 +20,13 @@ body {
 }
 
 body {
-  display: grid;
-  grid-template-rows: var(--height-header) 1fr var(--height-footer);
   font-family: 'Pretendard';
+
+  > .wrap {
+    display: grid;
+    grid-template-rows: var(--height-header) 1fr var(--height-footer);
+    height: 100vh;
+  }
 }
 
 button,

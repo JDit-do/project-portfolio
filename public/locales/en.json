@@ -20,6 +20,13 @@
     "dark": "Dark",
     "light": "Light"
   },
+  "error": {
+    "404": {
+      "data1": "This page is empty, but here’s something you might like!",
+      "data2": "Check out some interesting content below.",
+      "label": "Go to Home"
+    }
+  },
   "persona": {
     "title": "JD's Persona",
     "subTitle": "Who I Am",
@@ -34,8 +41,8 @@
       "scalability": "Scalability"
     },
     "intro": {
-      "data1": "Creating better experiences",
-      "data2": "through user-centered development and collaboration."
+      "data1": "This page is empty, but that’s okay.",
+      "data2": "You can start fresh from the home page."
     },
     "skill": {
       "frontend": "I design and optimize UI/UX with a focus on user experience.",

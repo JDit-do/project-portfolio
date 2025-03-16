@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useState } from 'react';
-
 import { LOCALE } from '@/constants/common';
 import { TLOCALE } from '@/types/common';
 
