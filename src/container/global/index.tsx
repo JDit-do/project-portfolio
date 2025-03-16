@@ -7,12 +7,15 @@ import useToggle from '@/hooks/useToggle';
 import Persona from './persona';
 import PersonaContents from './persona/contents';
 import style from './index.module.scss';
+import LoadingUi from '../load/loadingUi';
 
 const LazyTheme = dynamic(() => import('./theme'), {
-  ssr: false
+  ssr: false,
+  loading: () => <LoadingUi />
 });
 const LazyLanguage = dynamic(() => import('./language'), {
-  ssr: false
+  ssr: false,
+  loading: () => <LoadingUi />
 });
 
 const Global = () => {

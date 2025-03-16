@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FC, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
@@ -107,7 +108,7 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
                     </ul>
                     <div className={style.image}>
                       <div>
-                        <img src={img.url} alt={img.alt} />
+                        <Image src={img.url} alt={img.alt} />
                       </div>
                     </div>
                   </li>

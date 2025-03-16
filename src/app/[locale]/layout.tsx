@@ -7,7 +7,7 @@ import Main from '@/container/layouts/main';
 import Header from '@/container/layouts/header';
 import Footer from '@/container/layouts/footer';
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
