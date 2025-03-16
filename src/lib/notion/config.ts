@@ -1,4 +1,5 @@
 // Common
+export const LOCALE_ID = process.env.LOCALE || '';
 export const API_URL = process.env.API_URL || '';
 // Notion
 export const NOTION_API_KEY = process.env.NOTION_API_KEY || '';

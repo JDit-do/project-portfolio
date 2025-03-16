@@ -2,14 +2,15 @@
 
 import { useTranslations } from 'next-intl';
 
-import { LOCALE } from '@/constants/common';
 import { TLOCALE } from '@/types/common';
 
 import { useLanguage } from '@/hooks/useLanguage';
 
-import style from './index.module.scss';
 import Dropdown from '@/components/dropdown';
 import { DROPDOWN_DIRECTION } from '@/components/dropdown/index.type';
+import { LOCALE } from '@/constants/common';
+
+import style from './index.module.scss';
 
 const Language = () => {
   const t = useTranslations('locale');

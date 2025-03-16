@@ -1,8 +1,11 @@
 import { Metadata, Viewport } from 'next';
+import { cookies } from 'next/headers';
 
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
+import { routing } from '@/i18n/routing';
+import { LOCALE_ID } from '@/lib/notion/config';
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
 import { ThemeProvider } from '@/components/provider/theme-provider';
 
@@ -11,14 +14,12 @@ import '@/styles/globals.scss';
 export const metadata: Metadata = METADATA;
 export const viewport: Viewport = VIEWPORT;
 export default async function RootLayout({
-  children,
-  params
+  children
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-
+  const cookieStore = await cookies();
+  const locale = cookieStore.get(LOCALE_ID)?.value || routing.defaultLocale;
   const messages = await getMessages({ locale });
 
   return (

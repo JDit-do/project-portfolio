@@ -6,12 +6,24 @@ export const METADATA: Metadata = {
 
   applicationName: 'Mihyeon',
   keywords: ['Frontend Developer', 'JD', 'Web Portfolio'],
-  robots: 'index, follow'
+  robots: 'index, follow',
+
+  openGraph: {
+    title: '[JD] Portfolio',
+    description:
+      'Frontend Developer | Crafting intuitive and high-performance web experiences.',
+    images: [
+      {
+        url: '/images/open-graph.png',
+        width: 800,
+        height: 600,
+        alt: 'JD 이미지'
+      }
+    ]
+  }
 };
 
 export const VIEWPORT: Viewport = {
   width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false
+  initialScale: 1
 };

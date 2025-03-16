@@ -1,6 +1,5 @@
-import Link from 'next/link';
-
 import { getLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 
 import { TLOCALE } from '@/types/common';
 import { getPath } from '@/utils/header';

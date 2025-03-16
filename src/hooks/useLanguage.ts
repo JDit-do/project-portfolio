@@ -1,9 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-
-import { usePathname, useRouter } from 'next/navigation';
-
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { TLOCALE } from '@/types/common';
 
 export const useLanguage = () => {
@@ -12,8 +10,7 @@ export const useLanguage = () => {
   const pathname = usePathname();
 
   const onChangeLanguage = (locale: TLOCALE): void => {
-    const newPath = pathname.replace(/^\/[a-z]{2}/, `/${locale}`);
-    router.push(newPath);
+    router.replace(pathname, { locale });
     router.refresh();
   };
 
