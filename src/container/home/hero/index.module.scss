@@ -1,3 +1,5 @@
+@use '@/styles/_mixins.scss' as m;
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
 
   .subTitle {
     textPath {
-      fill: rgba(var(--color-primary-inverse-rgb), 0.6);
+      fill: var(--theme-background-quaternary);
     }
   }
 
@@ -20,6 +22,10 @@
     line-height: 1.4;
     text-shadow: 1.5px 1.5px 0 rgba(var(--color-primary-inverse-rgb), 0.9);
 
+    span {
+      font-weight: var(--font-weight-title);
+    }
+
     .secondLine {
       display: flex;
       align-items: center;
@@ -27,11 +33,13 @@
     }
 
     .rotateText {
-      width: 212px;
-      height: 56px;
+      width: 280px;
+      height: 62px;
       position: relative;
-      background: var(--accents-0);
-      color: var(--theme-background-default);
+      background: var(--theme-background-tertiary);
+      color: var(--theme-background-primary);
+      font-size: 2rem;
+      border-radius: var(--spacing-2);
       text-shadow: none;
       perspective: 600px;
 
@@ -42,8 +50,8 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        background: var(--accents-5);
-        font-weight: bold;
+        background: var(--theme-background-quaternary);
+        border-radius: var(--spacing-2);
         backface-visibility: hidden;
         animation: rotateWords 6s infinite;
         animation-fill-mode: both;
@@ -64,10 +72,11 @@
   .tagline {
     padding: 0 var(--spacing-10);
     position: relative;
-    color: rgba(var(--color-point-orange-rgb), 0.9);
-    background: rgba(var(--color-primary-inverse-rgb), 0.2);
+    color: var(--theme-background-primary);
+    background: var(--theme-background-tertiary);
     border-radius: var(--spacing-1);
     font-size: 1.2rem;
+    font-weight: var(--font-weight-subtitle);
 
     &:before,
     &:after {
@@ -77,16 +86,70 @@
       height: 0;
       position: absolute;
       top: 0;
-      border: 14px solid transparent;
+      border: 18px solid transparent;
     }
 
     &:before {
       left: -1px;
-      border-left: 14px solid var(--theme-background-default);
+      border-left: 18px solid var(--theme-background-primary);
     }
     &:after {
       right: -1px;
-      border-right: 14px solid var(--theme-background-default);
+      border-right: 18px solid var(--theme-background-primary);
+    }
+
+    @include m.breakpoint(tablet) {
+      &:before,
+      &:after {
+        border: 14px solid transparent;
+      }
+      &:before {
+        border-left: 14px solid var(--theme-background-primary);
+      }
+      &:after {
+        border-right: 14px solid var(--theme-background-primary);
+      }
+    }
+
+    @include m.breakpoint(mobile) {
+      &:before,
+      &:after {
+        border: 10px solid transparent;
+      }
+      &:before {
+        border-left: 10px solid var(--theme-background-primary);
+      }
+      &:after {
+        border-right: 10px solid var(--theme-background-primary);
+      }
+    }
+  }
+}
+
+@include m.breakpoint(tablet) {
+  .wrap {
+    .mainText {
+      font-size: 2.5rem;
+
+      .rotateText {
+        width: 224px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+@include m.breakpoint(mobile) {
+  .wrap {
+    .mainText {
+      .rotateText {
+        width: 174px;
+        height: 32px;
+      }
+    }
+
+    .tagline {
+      height: 22px;
     }
   }
 }

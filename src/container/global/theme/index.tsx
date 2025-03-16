@@ -19,10 +19,10 @@ const Theme = () => {
         label={t(theme)}
         direction={DROPDOWN_DIRECTION.UP}
         options={[
-          { value: THEME.SYSTEM, label: t(THEME.SYSTEM) },
           { value: THEME.DARK, label: t(THEME.DARK) },
           { value: THEME.LIGHT, label: t(THEME.LIGHT) }
         ]}
+        value={theme}
         onSelect={setTheme}
       />
     </div>

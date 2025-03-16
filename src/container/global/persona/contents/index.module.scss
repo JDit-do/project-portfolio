@@ -2,14 +2,10 @@
 
 .wrap {
   width: 100%;
-  max-height: calc(100vh - (var(--height-header) * 2));
-  padding: var(--container-padding);
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: var(--height-footer);
   z-index: 99;
-  background: var(--theme-background-default);
-  backdrop-filter: saturate(180%) blur(5px);
   transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
 
@@ -20,26 +16,30 @@
     height: 1px;
     position: absolute;
     left: 0;
-    top: 43px;
+    top: 41px;
     background: var(--theme-border-default);
   }
 
   &.active {
-    transform: translateY(-63px);
+    transform: translateY(0);
   }
 
   .close {
     display: flex;
     justify-content: end;
+    height: 42px;
+    padding: var(--container-padding);
 
     button {
       display: flex;
+      align-items: center;
+      font-size: 0.8rem;
 
       @include m.box(
-        $padding: var(--spacing-3) var(--spacing-6),
+        $padding: 0 var(--spacing-6),
         $border-color: var(--theme-border-default),
         $border-radius: 4px 4px 0 0,
-        $background: var(--theme-background-default)
+        $background: var(--theme-background-primary)
       );
     }
   }
@@ -47,8 +47,12 @@
   .contents {
     display: flex;
     flex-direction: column;
-    padding: var(--spacing-2) 0;
+    max-height: calc(100vh - (var(--height-header) * 3));
+    padding: var(--container-padding);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
     gap: var(--spacing-5);
+    backdrop-filter: blur(200px);
 
     header,
     .content {
@@ -68,14 +72,17 @@
         h2 {
           @include m.font(
             $color: inherit,
-            $font-size: 2.5rem,
-            $font-weight: bold
+            $font-size: 1.4rem,
+            $font-weight: var(--font-weight-title)
           );
         }
 
         p {
           padding-top: var(--spacing-2);
-          @include m.font($color: inherit, $font-size: 1.25rem);
+          @include m.font(
+            $color: inherit,
+            $font-weight: var(--font-weight-subtitle)
+          );
         }
 
         .keywords {
@@ -86,14 +93,14 @@
           li {
             display: flex;
             align-items: center;
-            height: 32px;
-            padding: 0 var(--spacing-3);
-            background: var(--accents-4);
+            height: 24px;
+            padding: 0 var(--spacing-2);
+            background: var(--theme-background-tertiary);
             border-radius: 8px;
             @include m.font(
               $color: var(--accents-0),
-              $font-weight: bold,
-              $font-size: 0.75rem
+              $font-size: 0.6rem,
+              $font-weight: var(--font-weight-detail)
             );
           }
         }
@@ -106,11 +113,7 @@
 
         .intro {
           position: relative;
-          @include m.font(
-            $color: inherit,
-            $font-size: 1.25rem,
-            $text-align: center
-          );
+          @include m.font($color: inherit, $text-align: center);
 
           &:before,
           &:after {
@@ -142,13 +145,15 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-2);
-        @include m.font($color: var(--theme-text-default), $font-size: 0.75rem);
+        @include m.font($color: var(--theme-color-point), $font-size: 0.7rem);
 
         > li {
           display: flex;
 
           h3 {
             flex: 0 0 72px;
+            font-size: 0.6rem;
+            font-weight: var(--font-weight-detail);
           }
 
           ul {
@@ -165,7 +170,11 @@
 
         h2 {
           margin-bottom: var(--spacing-2);
-          @include m.font($color: inherit, $font-weight: bold);
+          @include m.font(
+            $color: inherit,
+            $font-size: 0.8rem,
+            $font-weight: var(--font-weight-subtitle)
+          );
         }
 
         > ul {
@@ -177,7 +186,6 @@
             grid-template-rows: 66px 1fr;
             height: 100%;
             position: relative;
-            overflow: hidden;
 
             &.active {
               display: grid;
@@ -195,8 +203,8 @@
             h3 {
               @include m.font(
                 $color: inherit,
-                $font-size: 1.25rem,
-                $font-weight: bold
+                $font-size: 0.8rem,
+                $font-weight: var(--font-weight-base)
               );
             }
 
@@ -205,12 +213,13 @@
               padding-top: var(--spacing-1);
               position: relative;
               color: var(--theme-text-default);
+              font-size: 0.7rem;
 
               &:before {
                 content: '';
                 display: inline-block;
                 width: 140px;
-                height: 4px;
+                height: 2px;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -226,8 +235,8 @@
             z-index: 2;
             list-style: decimal;
             @include m.font(
-              $color: var(--theme-text-default),
-              $font-size: 0.75rem,
+              $color: var(--theme-color-point),
+              $font-size: 0.7rem,
               $font-weight: bold
             );
           }
@@ -255,7 +264,7 @@
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
-                opacity: 0.4;
+                opacity: 0.3;
               }
             }
           }
@@ -272,7 +281,6 @@
           position: absolute;
           bottom: 0;
           z-index: 2;
-          background: var(--theme-background-default);
           border-radius: 0 10px 0 0;
 
           button {
@@ -294,6 +302,155 @@
             }
             &:last-child {
               grid-area: c;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include m.breakpoint(tablet) {
+    .contents {
+      header,
+      .content {
+        flex-direction: column;
+
+        .layoutLeft,
+        .layoutRight {
+          flex: 1;
+        }
+      }
+
+      header {
+        .layoutLeft {
+          display: grid;
+          grid-template-areas:
+            'title keyword'
+            'sub-title keyword';
+          gap: 0 20px;
+
+          h2 {
+            grid-area: title;
+          }
+          p {
+            grid-area: sub-title;
+          }
+          .keywords {
+            grid-area: keyword;
+            justify-self: end;
+            flex-wrap: wrap-reverse;
+            justify-content: end;
+          }
+        }
+      }
+
+      .content {
+        overflow-y: auto;
+
+        .skills {
+          > li {
+            h3 {
+              flex: 0 0 100px;
+            }
+
+            h3,
+            ul,
+            p {
+              font-size: 0.75rem;
+            }
+          }
+        }
+
+        .principles {
+          h2 {
+            font-size: 0.875rem;
+          }
+
+          > ul {
+            overflow: hidden;
+
+            .title {
+              h3 {
+                font-size: 0.75rem;
+              }
+
+              span {
+                font-size: 0.75rem;
+              }
+            }
+
+            ul {
+              font-size: 0.75rem;
+            }
+
+            .image {
+              top: 0;
+              right: 0;
+              height: 400%;
+            }
+          }
+
+          .principleKeywords {
+            width: 88px;
+          }
+        }
+      }
+    }
+  }
+
+  @include m.breakpoint(mobile) {
+    .contents {
+      header {
+        .layoutLeft {
+          h2 {
+            font-size: 2rem;
+          }
+          .keywords li {
+            flex: 0 0 1;
+            font-size: 0.75rem;
+          }
+        }
+
+        .layoutRight {
+          .intro {
+            font-size: 1.1667rem;
+          }
+        }
+      }
+
+      .content {
+        .skills {
+          > li {
+            h3,
+            ul,
+            p {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .principles {
+          h2 {
+            font-size: 1.175rem;
+          }
+
+          > ul {
+            .title {
+              h3,
+              span {
+                font-size: 1rem;
+              }
+            }
+
+            ul {
+              min-height: 100px;
+              font-size: 1rem;
+            }
+
+            .image {
+              top: 0;
+              right: 0;
+              height: 400%;
             }
           }
         }

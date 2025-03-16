@@ -12,6 +12,7 @@ import useClickOutSide from '@/hooks/useClickOutSide';
 const Dropdown = ({
   label,
   options,
+  value,
   onSelect,
   direction = DROPDOWN_DIRECTION.DOWN
 }: DropdownProps) => {
@@ -37,6 +38,7 @@ const Dropdown = ({
           {options.map((option) => (
             <li
               key={String(option.value)}
+              className={value === option.value ? style.active : undefined}
               onClick={() => {
                 onSelect(option.value);
                 handleClose();

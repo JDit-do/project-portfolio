@@ -15,15 +15,12 @@ import { DROPDOWN_DIRECTION } from '@/components/dropdown/index.type';
 
 const Language = () => {
   const t = useTranslations('locale');
-  const { onChangeLanguage, getLocale } = useLanguage();
-
-  const [locale, setLocale] = useState<TLOCALE>(getLocale());
+  const { locale, onChangeLanguage } = useLanguage();
 
   const handleChangeLanguage = (_locale: string) => {
     const locale = _locale as TLOCALE;
 
     onChangeLanguage(locale);
-    setLocale(locale);
   };
 
   return (
@@ -35,6 +32,7 @@ const Language = () => {
           { value: LOCALE.KO, label: t(LOCALE.KO) },
           { value: LOCALE.EN, label: t(LOCALE.EN) }
         ]}
+        value={locale}
         onSelect={handleChangeLanguage}
       />
     </div>

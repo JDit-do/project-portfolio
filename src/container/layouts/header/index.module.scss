@@ -6,9 +6,12 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  background: var(--theme-header-background);
-  backdrop-filter: saturate(180%) blur(5px);
-  box-shadow: inset 0 -1px 0 0 var(--accents-2);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid var(--theme-border-default);
+
+  h1 {
+    display: flex;
+  }
 
   .right {
     display: flex;

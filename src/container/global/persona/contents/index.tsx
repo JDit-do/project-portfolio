@@ -8,7 +8,6 @@ import style from './index.module.scss';
 import Button from '@/components/button';
 import Image from 'next/image';
 import Icon from '@/components/icon';
-import { ICON_TYPE } from '@/components/icon/index.type';
 import { DATA_PRINCIPLES } from './data';
 
 const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
@@ -31,17 +30,18 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
             <h2 className={style.title}>{t('title')}</h2>
             <p className={style.role}>Frontend Developer</p>
             <ul className={style.keywords}>
-              <li># 사용자 경험</li>
-              <li># 문제 해결</li>
-              <li># 협업</li>
-              <li># 문서화</li>
-              <li># 확장성</li>
+              <li>#{t('character.userExperience')}</li>
+              <li>#{t('character.problemSolving')}</li>
+              <li>#{t('character.collaboration')}</li>
+              <li>#{t('character.documentation')}</li>
+              <li>#{t('character.scalability')}</li>
             </ul>
           </div>
           <div className={style.layoutRight}>
             <p className={style.intro}>
-              사용자 중심의 개발과 협업을 통해
-              <br />더 나은 경험을 만들어가는 프론트엔드 개발자입니다.
+              {t('intro.data1')}
+              <br />
+              {t('intro.data2')}
             </p>
           </div>
         </header>
@@ -51,10 +51,7 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
               <li>
                 <h3>Frontend</h3>
                 <div>
-                  <p>
-                    사용자 경험을 중심으로 한 UI/UX 개발과 최적화된 컴포넌트
-                    설계를 수행합니다.
-                  </p>
+                  <p>{t('skill.frontend')}</p>
                   <ul>
                     <li>React.js, Next.js, TypeScript</li>
                     <li>
@@ -68,10 +65,7 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
               <li>
                 <h3>Backend</h3>
                 <div>
-                  <p>
-                    주요 BE 아키텍처를 이해하고, API 연동 및 서버 구축 경험이
-                    있습니다.
-                  </p>
+                  <p>{t('skill.backend')}</p>
                   <ul>
                     <li>
                       Java (Spring Boot), Python (Django, FastAPI), RESTful API
@@ -82,7 +76,7 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
               <li>
                 <h3>Tools & Workflow</h3>
                 <div>
-                  <p>개발 환경 설정, 협업 툴을 적극적으로 활용합니다.</p>
+                  <p>{t('skill.tool')}</p>
                   <ul>
                     <li>Git, GitHub Actions, Git Flow</li>
                     <li>AWS (EC2, CloudFront), Docker, Vercel</li>
@@ -103,12 +97,12 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
                     className={currentId === id ? style.active : undefined}
                   >
                     <div className={style.title}>
-                      <h3>{title}</h3>
+                      <h3>{t(title)}</h3>
                       <span>{subTitle}</span>
                     </div>
                     <ul>
                       {description.map((desc, index) => (
-                        <li key={`${id}-desc-${index}`}>{desc}</li>
+                        <li key={`${id}-desc-${index}`}>{t(desc)}</li>
                       ))}
                     </ul>
                     <div className={style.image}>
