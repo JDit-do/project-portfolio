@@ -108,7 +108,12 @@ const PersonaContents: FC<IPersonaContentProps> = ({ isOpen, onToggle }) => {
                     </ul>
                     <div className={style.image}>
                       <div>
-                        <Image src={img.url} alt={img.alt} />
+                        <Image
+                          src={img.url}
+                          alt={img.alt}
+                          width={100}
+                          height={100}
+                        />
                       </div>
                     </div>
                   </li>
