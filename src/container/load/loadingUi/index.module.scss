@@ -1,0 +1,8 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  color: var(--theme-background-secondary);
+  background: var(--theme-background-secondary);
+}

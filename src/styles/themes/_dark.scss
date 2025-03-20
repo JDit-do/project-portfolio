@@ -1,0 +1,32 @@
+[data-theme='dark'] {
+  // 변수 정의
+  --accents-9: #fff;
+  --accents-8: #fafafa;
+  --accents-7: #eaeaea;
+  --accents-6: #999;
+  --accents-5: #888;
+  --accents-4: #666;
+  --accents-3: #444;
+  --accents-2: #333;
+  --accents-1: #111;
+  --accents-0: #000;
+
+  // background
+  --background-primary: #1e201e;
+  --background-secondary: #3c3d37;
+  --background-tertiary: #697565;
+  --background-quaternary: #ecdfcc;
+
+  // color - RGB
+  --color-point: #eaeaea;
+  --color-primary-inverse-rgb: 245, 245, 245;
+  --color-point-orange-rgb: 255, 184, 77;
+
+  // point
+  --point-orange: #ffb84d;
+  --point-amber: #ff5722;
+  --point-mint: #00b0b9;
+
+  // Structure
+  --header-background: #121212cc;
+}

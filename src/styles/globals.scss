@@ -1,0 +1,56 @@
+@use '_reset';
+@use '_variables';
+@use '_mixins' as m;
+
+html,
+body {
+  height: 100vh;
+  background: var(--theme-background-primary);
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  font-size: 20px;
+
+  @include m.breakpoint(tablet) {
+    font-size: 16px;
+  }
+
+  @include m.breakpoint(mobile) {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-family: 'Pretendard';
+
+  > .wrap {
+    display: grid;
+    grid-template-rows: var(--height-header) 1fr var(--height-footer);
+    height: 100vh;
+  }
+}
+
+button,
+a,
+select {
+  color: var(--theme-text-default);
+
+  &:hover {
+    color: var(--theme-active-text);
+  }
+}
+
+* {
+  font-weight: var(--font-weight-base);
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 50%;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: var(--theme-background-secondary);
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--theme-background-tertiary);
+}

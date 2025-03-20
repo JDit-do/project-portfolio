@@ -1,0 +1,28 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: var(--container-padding);
+  border-top: 1px solid var(--theme-border-default);
+  position: relative;
+  z-index: 100;
+  background: var(--theme-background-primary);
+
+  > div {
+    width: 100%;
+  }
+
+  small {
+    @include m.font(var(--theme-text-default), 0.6rem);
+
+    @include m.breakpoint(tablet) {
+      font-size: 0.75rem;
+    }
+
+    @include m.breakpoint(mobile) {
+      font-size: 0.84rem;
+    }
+  }
+}

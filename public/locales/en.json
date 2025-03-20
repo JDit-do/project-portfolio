@@ -1,0 +1,98 @@
+{
+  "common": {
+    "button": "버튼",
+    "link": "link",
+    "download": "download"
+  },
+  "event": { "click": "Click Me" },
+  "navigation": {
+    "home": "Home",
+    "profile": "Profile",
+    "portfolio": "Portfolio",
+    "labs": "Labs"
+  },
+  "locale": {
+    "ko": "Korean",
+    "en": "English"
+  },
+  "theme": {
+    "system": "System",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "error": {
+    "404": {
+      "data1": "This page is empty, but here’s something you might like!",
+      "data2": "Check out some interesting content below.",
+      "label": "Go to Home"
+    }
+  },
+  "persona": {
+    "title": "JD's Persona",
+    "subTitle": "Who I Am",
+    "button": {
+      "close": "Close"
+    },
+    "character": {
+      "userExperience": "User Experience",
+      "problemSolving": "Problem Solving",
+      "collaboration": "Collaboration",
+      "documentation": "Documentation",
+      "scalability": "Scalability"
+    },
+    "intro": {
+      "data1": "This page is empty, but that’s okay.",
+      "data2": "You can start fresh from the home page."
+    },
+    "skill": {
+      "frontend": "I design and optimize UI/UX with a focus on user experience.",
+      "backend": "I understand backend architecture and have experience with API integration and server setup.",
+      "tool": "I set up development environments and make good use of collaboration tools."
+    },
+    "principle": {
+      "experience": {
+        "title": "Creating the Best User Experience",
+        "description": {
+          "data1": "Beyond simply implementing features, I strive to make services more intuitive and user-friendly.",
+          "data2": "Thoughtful UI/UX design—considering responsive web design, accessibility, and performance—determines the overall service quality.",
+          "data3": "I focus on reducing unnecessary loading times and crafting smooth animations and interactions for an improved user experience."
+        }
+      },
+      "solve": {
+        "title": "Solving Problems with Optimized Solutions",
+        "description": {
+          "data1": "Problems may seem simple at first, but re-evaluating them can lead to better solutions.",
+          "data2": "I don’t just build UI/UX—I apply an optimized, maintainable approach that ensures long-term efficiency.",
+          "data3": "By using a structured and data-driven approach, I improve both usability and performance."
+        }
+      },
+      "collaborate": {
+        "title": "Collaborating for Better Results",
+        "description": {
+          "data1": "It is important to collaborate with designers, backend developers, and QA engineers to achieve better results.",
+          "data2": "I value a culture of growth through code reviews and knowledge sharing with my team.",
+          "data3": "To ensure smooth collaboration, I apply Git Flow for version control, develop based on API documentation, and maintain consistent coding conventions."
+        }
+      }
+    },
+    "whatTheySay": {
+      "title": "What They day about Me",
+      "subTitle": "Who I Am",
+      "intro": "JD's Persona is a space where I showcase who I am...",
+      "feedbacks": {
+        "qa": {
+          "content": "A colleague with logical and analytical skills.",
+          "author": "P from QA Team"
+        },
+        "fe": {
+          "content": "A responsible individual who completes projects thoroughly and excels at systematic organization.",
+          "author": "R from FE Team"
+        },
+        "be": {
+          "content": "A reliable developer who collaborates effectively and works with passion.",
+          "author": "J from BE Team"
+        }
+      }
+    }
+  }
+}

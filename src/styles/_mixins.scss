@@ -1,0 +1,43 @@
+@mixin box(
+  $padding: 0,
+  $border-width: 1px,
+  $border-style: solid,
+  $border-color: none,
+  $border-radius: 0,
+  $background: none
+) {
+  padding: $padding;
+  border: $border-width $border-style $border-color;
+  border-radius: $border-radius;
+  background: $background;
+}
+
+@mixin font(
+  $color: #000,
+  $font-size: 1rem,
+  $font-weight: normal,
+  $text-align: left
+) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: $text-align;
+}
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}
