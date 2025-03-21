@@ -1,4 +1,6 @@
-export const baseUrl = `${process.env.API_URL}/api`;
+import { API_URL } from '@/lib/notion/config';
+
+export const baseUrl = `${API_URL}/api`;
 
 export const METHOD = {
   GET: 'get',
