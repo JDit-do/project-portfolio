@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import style from './index.module.scss';
 
 const HomeHero = () => {
@@ -27,7 +26,7 @@ const HomeHero = () => {
       <h2 className={style.mainText}>
         <span>Why Just Build?</span>
         <span className={style.secondLine}>
-          It's Better
+          It&#39;s Better
           <span className={style.rotateText}>
             <span className={style.word}>Experience.</span>
             <span className={style.word}>Solution.</span>

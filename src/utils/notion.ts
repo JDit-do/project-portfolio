@@ -1,43 +1,54 @@
-import { NotionTypes } from '@/types/notion';
+import { NOTION_TYPE, NOTION_PROPERTY_TYPE } from '@/constants/notion';
+import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
-import { NotionPropertyType, NotionType } from '@/constants/notion';
+type TC_NOTION_PROPERTY = PageObjectResponse['properties'][string];
 
 export const NotionUtils = {
   /**
-   * Notion Property에서 데이터 추출, 타입 any
-   * @param property - 노션 속성
-   * @param type - 타입 ('string', 'number', 'boolean', 'date', 'url')
+   * Notion property에서 값 추출
    */
-  getValue(property: any, type: NotionTypes): any {
+  getValue(
+    property: TC_NOTION_PROPERTY,
+    type: NOTION_TYPE
+  ): string | number | boolean | null {
     if (!property) return null;
 
     switch (type) {
-      case NotionType.STRING:
-        if (NotionPropertyType.TITLE in property)
-          return property.title?.[0]?.plain_text || '';
-        if (NotionPropertyType.RICH_TEXT in property)
-          return property.rich_text?.[0]?.plain_text || '';
-        if (NotionPropertyType.SELECT in property)
-          return property.select?.name || '';
-        if (NotionPropertyType.DATE in property)
-          return property?.date?.start || '';
-        if (NotionPropertyType.URL in property) return property?.url || '';
-        return '';
-      case NotionType.NUMBER:
-        return property?.number ?? null;
-      case NotionType.BOOLEAN:
-        return property?.checkbox ?? false;
+      case NOTION_TYPE.STRING:
+        if (property.type === NOTION_PROPERTY_TYPE.TITLE)
+          return property.title?.[0].plain_text;
+        if (property.type === NOTION_PROPERTY_TYPE.RICH_TEXT)
+          return property.rich_text?.[0].plain_text;
+        if (property.type === NOTION_PROPERTY_TYPE.SELECT)
+          return property.select?.name ?? null;
+        if (property.type === NOTION_PROPERTY_TYPE.DATE)
+          return property.date?.start ?? null;
+        if (property.type === NOTION_PROPERTY_TYPE.URL) return property.url;
+        return null;
+      case NOTION_TYPE.NUMBER:
+        return property.type === NOTION_TYPE.NUMBER
+          ? (property.number ?? null)
+          : null;
+      case NOTION_TYPE.BOOLEAN:
+        return property.type === NOTION_TYPE.CHECKBOX
+          ? (property.checkbox ?? false)
+          : false;
+      default:
+        return null;
     }
   },
 
-  /** 특정 필드에서 추출 및 타입 정의 */
-  getString(property: any): string {
-    return this.getValue(property, NotionType.STRING);
+  getString(property: TC_NOTION_PROPERTY): string {
+    return String(this.getValue(property, NOTION_TYPE.STRING) ?? '');
   },
-  getNumber(property: any): number {
-    return this.getValue(property, NotionType.NUMBER);
+
+  getNumber(property: TC_NOTION_PROPERTY): number {
+    const value = this.getValue(property, NOTION_TYPE.NUMBER);
+    return typeof value === 'number' ? value : 0;
   },
-  getBoolean(property: any): boolean {
-    return this.getValue(property, NotionType.BOOLEAN);
+
+  getBoolean(property: TC_NOTION_PROPERTY): boolean {
+    const value = this.getValue(property, NOTION_TYPE.BOOLEAN);
+    return typeof value === 'boolean' ? value : false;
   }
 };
