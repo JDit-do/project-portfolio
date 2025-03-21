@@ -1,4 +1,4 @@
-export const NotionPropertyType = {
+export const NOTION_PROPERTY_TYPE = {
   TITLE: 'title',
   RICH_TEXT: 'rich_text',
   SELECT: 'select',
@@ -10,9 +10,13 @@ export const NotionPropertyType = {
   STATUS: 'status',
   EMAIL: 'email'
 } as const;
+export type NOTION_PROPERTY_TYPE =
+  (typeof NOTION_PROPERTY_TYPE)[keyof typeof NOTION_PROPERTY_TYPE];
 
-export const NotionType = {
+export const NOTION_TYPE = {
   STRING: 'string',
   NUMBER: 'number',
-  BOOLEAN: 'boolean'
+  BOOLEAN: 'boolean',
+  CHECKBOX: 'checkbox'
 } as const;
+export type NOTION_TYPE = (typeof NOTION_TYPE)[keyof typeof NOTION_TYPE];

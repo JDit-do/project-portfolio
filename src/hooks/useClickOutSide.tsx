@@ -13,7 +13,7 @@ const useClickOutSide = <T extends HTMLElement>(callback: () => void) => {
     return () => {
       document.addEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [callback]);
 
   return ref;
 };
