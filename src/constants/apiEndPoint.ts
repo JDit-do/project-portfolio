@@ -1,4 +1,4 @@
-export const baseUrl = `${process.env.API_URL}/api`;
+export const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api`;
 
 export const METHOD = {
   GET: 'get',
