@@ -2,6 +2,10 @@
 @use '_variables';
 @use '_mixins' as m;
 
+* {
+  cursor: none !important;
+}
+
 html,
 body {
   height: 100vh;
