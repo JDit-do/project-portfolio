@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { TLOCALE } from '@/types/common';
 
+import Cursor from '@/components/cursor';
+
 import Main from '@/container/layouts/main';
 import Header from '@/container/layouts/header';
 import Footer from '@/container/layouts/footer';
@@ -20,10 +22,13 @@ export default async function LocaleLayout({
   }
 
   return (
-    <div className="wrap">
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
-    </div>
+    <>
+      <div className="wrap">
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </div>
+      <Cursor />
+    </>
   );
 }
