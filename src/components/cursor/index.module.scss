@@ -1,0 +1,36 @@
+.cursorDot {
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: var(--theme-point-amber);
+  z-index: 9999;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.cursorRing {
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 2px solid var(--accents-3);
+  border-radius: 50%;
+  z-index: 9998;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.hover {
+  border-color: var(--theme-point-amber);
+}
