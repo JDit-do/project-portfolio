@@ -1,6 +1,9 @@
 import { Metadata, Viewport } from 'next';
 
+const url = process.env.METADATA_BASE || 'http://localhost:3000';
+
 export const METADATA: Metadata = {
+  metadataBase: new URL(url),
   title: 'JD',
   description: 'Just do it!',
 
@@ -9,15 +12,18 @@ export const METADATA: Metadata = {
   robots: 'index, follow',
 
   openGraph: {
-    title: '[JD] Portfolio',
+    type: 'website',
+    title: 'JD Portfolio',
+    siteName: 'JD Portfolio',
     description:
       'Frontend Developer | Crafting intuitive and high-performance web experiences.',
+    url: new URL(url),
     images: [
       {
-        url: '/images/open-graph.png',
+        url: '/opengraph/open-graph.jpg',
         width: 800,
         height: 600,
-        alt: 'JD 이미지'
+        alt: 'JD Logo'
       }
     ]
   }
