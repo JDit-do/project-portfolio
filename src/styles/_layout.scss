@@ -1,0 +1,60 @@
+@use '_mixins' as m;
+
+/* ============================================
+   레이아웃 스타일
+   - 전역 레이아웃 구조 (html, body, .wrap 등)
+   ============================================ */
+
+html,
+body {
+  height: 100vh;
+  background: var(--theme-background-primary);
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  font-size: 16px;
+
+  @include m.breakpoint(tablet) {
+    font-size: 14px;
+  }
+
+  @include m.breakpoint(mobile) {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--theme-background-primary);
+  font-weight: var(--font-weight-base);
+
+  > .wrap {
+    display: grid;
+    grid-template-rows: var(--height-header) 1fr var(--height-footer);
+    height: 100vh;
+  }
+}
+
+[data-theme='dark'] {
+  html {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: hsl(210 11.1% 3.53%);
+  }
+
+  body {
+    background: radial-gradient(
+      ellipse at top,
+      hsl(0deg 0% 13.49%),
+      hsl(210 11.1% 3.53%)
+    );
+    background-attachment: fixed;
+  }
+}
+

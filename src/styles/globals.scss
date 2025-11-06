@@ -1,59 +1,54 @@
 @use '_reset';
 @use '_variables';
 @use '_mixins' as m;
+@use '_layout';
+
+/* ============================================
+   전역 스타일
+   - 컴포넌트 기본 스타일
+   - 스크롤바 커스터마이징
+   ============================================ */
 
 * {
   cursor: none !important;
+  font-weight: var(--font-weight-base);
 }
 
-html,
-body {
-  height: 100vh;
-  background: var(--theme-background-primary);
-  scroll-behavior: smooth;
-  text-size-adjust: 100%;
-  font-size: 20px;
-
-  @include m.breakpoint(tablet) {
-    font-size: 16px;
-  }
-
-  @include m.breakpoint(mobile) {
-    font-size: 12px;
-  }
-}
-
-body {
-  font-family: 'Pretendard';
-
-  > .wrap {
-    display: grid;
-    grid-template-rows: var(--height-header) 1fr var(--height-footer);
-    height: 100vh;
-  }
-}
-
-button,
-a,
-select {
-  color: var(--theme-text-default);
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
 
   &:hover {
     color: var(--theme-active-text);
   }
 }
 
-* {
-  font-weight: var(--font-weight-base);
+a,
+select {
+  color: var(--theme-text-default);
+
+  // &:hover {
+  //   color: var(--theme-active-text);
+  // }
 }
+
+/* 스크롤바 스타일 */
 *::-webkit-scrollbar {
   width: 8px;
   border-radius: 50%;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 5px;
   background-color: var(--theme-background-secondary);
 }
+
 *::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background-color: var(--theme-background-tertiary);

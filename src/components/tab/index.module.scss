@@ -1,0 +1,59 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  display: flex;
+  gap: var(--spacing-2);
+  border-bottom: 2px solid var(--theme-border-default);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    @include m.font(
+      $font-size: 1rem,
+      $font-weight: var(--font-weight-subtitle),
+      $color: var(--theme-text-secondary)
+    );
+    padding: var(--spacing-3) var(--spacing-4);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+    bottom: -2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:hover {
+      color: var(--theme-text-primary);
+    }
+
+    &.active {
+      color: var(--theme-active-text);
+    }
+  }
+
+  @include m.breakpoint(tablet) {
+    .tab {
+      padding: var(--spacing-2) var(--spacing-3);
+      font-size: 0.95rem;
+    }
+  }
+
+  @include m.breakpoint(mobile) {
+    gap: var(--spacing-1);
+
+    .tab {
+      padding: var(--spacing-2) var(--spacing-3);
+      font-size: 0.9rem;
+    }
+  }
+}
+

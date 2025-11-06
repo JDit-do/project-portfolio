@@ -6,6 +6,7 @@
 :root {
   // text
   --theme-text-default: var(--accents-5);
+  --theme-text-primary: var(--accents-9);
   --theme-text-secondary: var(--accents-8);
 
   // background
@@ -32,9 +33,7 @@
   --theme-point-mint: var(--point-mint);
 
   /************ Structure ************/
-  --height-header: 64px;
-  --height-footer: 64px;
-  --height-global: 84px;
+  --sidebar-width: 120px;
   --container-padding: 0 24px;
 
   // structure Color
@@ -48,6 +47,7 @@
   --spacing-5: #{fn.spacing(5)};
   --spacing-6: #{fn.spacing(6)};
   --spacing-10: #{fn.spacing(10)};
+  --spacing-20: #{fn.spacing(20)};
 
   // font
   --font-weight-base: 300; // 기본 텍스트

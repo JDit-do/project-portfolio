@@ -6,8 +6,10 @@ import { TLOCALE } from '@/types/common';
 import Cursor from '@/components/cursor';
 
 import Main from '@/container/layouts/main';
-import Header from '@/container/layouts/header';
-import Footer from '@/container/layouts/footer';
+import Sidebar from '@/container/layouts/sidebar';
+
+import style from './layout.module.scss';
+import GNB from '@/container/layouts/sidebar/gnb';
 
 export default async function LocaleLayout({
   children,
@@ -23,10 +25,10 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <div className="wrap">
-        <Header />
+      <div className={style.wrap}>
+        <Sidebar />
         <Main>{children}</Main>
-        <Footer />
+        <GNB />
       </div>
       <Cursor />
     </>

@@ -15,5 +15,11 @@ export const APIEndpoints = {
       method: METHOD.GET,
       url: `${baseUrl}/gnb`
     }
+  },
+  projects: {
+    list: {
+      method: METHOD.GET,
+      url: `${baseUrl}/projects`
+    }
   }
 } as const;

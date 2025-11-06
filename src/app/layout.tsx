@@ -11,7 +11,8 @@ import { LOCALE_ID } from '@/lib/notion/config';
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
 import { ThemeProvider } from '@/components/provider/theme-provider';
 
-import '@/styles/globals.scss';
+import '@/styles/globals.css'; // Tailwind 변수 및 유틸리티
+import '@/styles/globals.scss'; // 레이아웃 및 전역 스타일
 
 export const metadata: Metadata = METADATA;
 export const viewport: Viewport = VIEWPORT;
@@ -28,16 +29,11 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <link
-          rel="stylesheet"
-          as="style"
+          rel="preconnect"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
         />
       </head>
       <body>
-        <Script
-          src="/scripts/error-filter.js"
-          strategy="afterInteractive"
-        />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             {children}

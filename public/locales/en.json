@@ -8,12 +8,34 @@
   "navigation": {
     "home": "Home",
     "profile": "Profile",
-    "portfolio": "Portfolio",
+    "projects": "Projects",
     "labs": "Labs"
   },
+  "projects": {
+    "title": "Projects",
+    "description": "Projects are being prepared.",
+    "tabs": {
+      "career": "Career Projects",
+      "side": "Side Projects"
+    },
+    "favorites": {
+      "title": "Favorite Projects"
+    },
+    "empty": "No projects found.",
+    "card": {
+      "viewDetail": "View Detail"
+    },
+    "detail": {
+      "close": "Close",
+      "period": "Period",
+      "viewSite": "View Site"
+    }
+  },
   "locale": {
-    "ko": "Korean",
-    "en": "English"
+    "ko": "KO",
+    "en": "EN",
+    "koMessage": "한국어",
+    "enMessage": "Englishh"
   },
   "theme": {
     "system": "System",

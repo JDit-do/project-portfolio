@@ -1,0 +1,17 @@
+@use '@/styles/_mixins.scss' as m;
+
+.empty {
+  @include m.font(
+    $font-size: 1rem,
+    $font-weight: var(--font-weight-subtitle),
+    $text-align: center,
+    $color: var(--theme-text-secondary)
+  );
+  padding: var(--spacing-8);
+
+  @include m.breakpoint(mobile) {
+    padding: var(--spacing-6);
+    font-size: 0.9rem;
+  }
+}
+

@@ -5,7 +5,11 @@ import {
   CaretUpFilled,
   ToolFilled,
   BulbFilled,
-  LikeFilled
+  LikeFilled,
+  PushpinFilled,
+  CloseOutlined,
+  GithubOutlined,
+  LinkOutlined
 } from '@ant-design/icons';
 
 import fill from './svg/logo';
@@ -41,6 +45,20 @@ const ICON_TYPE_PRINCIPLE = {
   bulb: BulbFilled,
   like: LikeFilled
 } as const;
+// [아이콘] 프로젝트
+const ICON_TYPE_PROJECT = {
+  pin: PushpinFilled
+} as const;
+type ICON_TYPE_PROJECT =
+  (typeof ICON_TYPE_PROJECT)[keyof typeof ICON_TYPE_PROJECT];
+// [아이콘] 공통
+const ICON_TYPE_COMMON = {
+  close: CloseOutlined,
+  github: GithubOutlined,
+  external: LinkOutlined
+} as const;
+type ICON_TYPE_COMMON =
+  (typeof ICON_TYPE_COMMON)[keyof typeof ICON_TYPE_COMMON];
 type ICON_TYPE_PRINCIPLE =
   (typeof ICON_TYPE_PRINCIPLE)[keyof typeof ICON_TYPE_PRINCIPLE];
 
@@ -48,13 +66,17 @@ export const ICON_TYPE = {
   ICON_TYPE_LOGO,
   ICON_TYPE_THEME,
   ICON_TYPE_DROPDOWN,
-  ICON_TYPE_PRINCIPLE
+  ICON_TYPE_PRINCIPLE,
+  ICON_TYPE_PROJECT,
+  ICON_TYPE_COMMON
 } as const;
 export type TICON_TYPE =
   | ICON_TYPE_LOGO
   | ICON_TYPE_THEME
   | ICON_TYPE_DROPDOWN
-  | ICON_TYPE_PRINCIPLE;
+  | ICON_TYPE_PRINCIPLE
+  | ICON_TYPE_PROJECT
+  | ICON_TYPE_COMMON;
 
 /**
  * 아이콘 Props 정의
