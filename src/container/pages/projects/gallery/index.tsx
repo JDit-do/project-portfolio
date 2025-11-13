@@ -18,7 +18,6 @@ interface ProjectsGalleryProps {
 
 /**
  * 프로젝트 갤러리 컴포넌트
- * 단일 책임: 프로젝트 갤러리 표시 (로딩/데이터/빈 상태 모두 처리)
  */
 const ProjectsGallery = ({
   projects,
@@ -61,4 +60,3 @@ const ProjectsGallery = ({
 };
 
 export default ProjectsGallery;
-

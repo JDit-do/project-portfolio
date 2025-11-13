@@ -1,8 +1,7 @@
 import style from './index.module.scss';
 
 /**
- * 프로젝트 카드 스켈레톤 컴포넌트
- * 단일 책임: 로딩 상태 UI 표시만 담당
+ * 프로젝트 카드 스켈레톤
  */
 const ProjectCardSkeleton = () => {
   return (
@@ -30,4 +29,3 @@ const ProjectCardSkeleton = () => {
 };
 
 export default ProjectCardSkeleton;
-

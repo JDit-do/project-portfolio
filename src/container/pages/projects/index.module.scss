@@ -4,14 +4,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
-  padding: var(--spacing-6);
+  flex: 1;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   color: var(--theme-text-primary);
-  min-height: calc(100vh - var(--height-global) - var(--spacing-8));
 
-  // 중간 크기 화면
   @media (max-width: 1200px) and (min-width: 769px) {
     padding: var(--spacing-4);
     gap: var(--spacing-3);
@@ -27,4 +23,3 @@
     gap: var(--spacing-2);
   }
 }
-

@@ -4,12 +4,12 @@ import { routing } from '@/i18n/routing';
 import { TLOCALE } from '@/types/common';
 
 import Cursor from '@/components/cursor';
+import ScrollRestore from '@/components/scrollRestore';
 
 import Main from '@/container/layouts/main';
 import Sidebar from '@/container/layouts/sidebar';
 
 import style from './layout.module.scss';
-import GNB from '@/container/layouts/sidebar/gnb';
 
 export default async function LocaleLayout({
   children,
@@ -25,10 +25,10 @@ export default async function LocaleLayout({
 
   return (
     <>
+      <ScrollRestore />
       <div className={style.wrap}>
-        <Sidebar />
         <Main>{children}</Main>
-        <GNB />
+        <Sidebar />
       </div>
       <Cursor />
     </>

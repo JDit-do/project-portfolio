@@ -20,6 +20,10 @@ export const APIEndpoints = {
     list: {
       method: METHOD.GET,
       url: `${baseUrl}/projects`
+    },
+    category: {
+      method: METHOD.GET,
+      url: `${baseUrl}/projects/category`
     }
   }
 } as const;

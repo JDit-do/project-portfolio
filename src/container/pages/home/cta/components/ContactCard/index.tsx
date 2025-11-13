@@ -1,0 +1,49 @@
+import { useRipple } from '@/hooks/useRipple';
+import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
+import type { Contact } from '../../../types';
+import Ripples from '../Ripples';
+
+import style from './index.module.scss';
+
+interface ContactCardProps {
+  contact: Contact;
+}
+
+/**
+ * Contact Card 컴포넌트
+ */
+const ContactCard = ({ contact }: ContactCardProps) => {
+  const { ripples, addRipple, elementRef } = useRipple();
+  const { isCopied, copy } = useCopyToClipboard();
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (contact.label === 'Blog' || contact.label === 'GitHub') {
+      e.preventDefault();
+      addRipple(e);
+      copy(contact.value);
+    }
+  };
+
+  return (
+    <div
+      ref={elementRef}
+      className={style.contactItem}
+      onClick={handleClick}
+      role="button"
+    >
+      <Ripples ripples={ripples} />
+      <span className={style.contactIcon}>{contact.icon}</span>
+      <div className={style.contactInfo}>
+        <div className={style.contactLabel}>{contact.label}</div>
+        <div className={style.contactValue}>{contact.value}</div>
+      </div>
+      {(contact.label === 'Blog' || contact.label === 'GitHub') && (
+        <span className={style.copyButton}>
+          {isCopied ? 'Copied!' : 'Copy'}
+        </span>
+      )}
+    </div>
+  );
+};
+
+export default ContactCard;

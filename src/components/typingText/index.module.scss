@@ -1,0 +1,29 @@
+.typingText {
+  position: relative;
+
+  &.showCursor {
+    letter-spacing: normal;
+
+    &::after {
+        content: '|';
+        width: 1px;
+        height: 100%;
+        color: #2962ff;
+        display: inline-block;
+        margin-left: 0;
+        vertical-align: baseline;
+        animation: blink 0.9s ease-in-out infinite;
+      }
+  }
+  
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+

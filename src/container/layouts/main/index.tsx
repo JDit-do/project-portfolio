@@ -1,7 +1,18 @@
+'use client';
+
+import { usePathname } from '@/i18n/navigation';
 import style from './index.module.scss';
 
 const Main = ({ children }: React.PropsWithChildren) => {
-  return <main className={style.wrap}>{children}</main>;
+  const pathname = usePathname();
+  const isHomePage =
+    pathname === '/' || pathname === '/ko' || pathname === '/en';
+
+  return (
+    <main className={`${style.wrap} ${isHomePage ? style.homePage : ''}`}>
+      {children}
+    </main>
+  );
 };
 
 export default Main;

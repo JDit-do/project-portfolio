@@ -5,9 +5,10 @@ import useToggle from '@/hooks/useToggle';
 import Icon from '../icon';
 import { ICON_TYPE } from '../icon/index.type';
 
+import useClickOutSide from '@/hooks/useClickOutSide';
+
 import { DROPDOWN_DIRECTION, DropdownProps } from './index.type';
 import style from './index.module.scss';
-import useClickOutSide from '@/hooks/useClickOutSide';
 
 const Dropdown = ({
   label,
@@ -40,6 +41,10 @@ const Dropdown = ({
               key={String(option.value)}
               className={value === option.value ? style.active : undefined}
               onClick={() => {
+                if (value === option.value) {
+                  handleClose();
+                  return;
+                }
                 onSelect(option.value);
                 handleClose();
               }}

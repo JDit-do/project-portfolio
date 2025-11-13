@@ -7,9 +7,10 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="data-theme"
-      defaultTheme="system"
-      enableSystem
-      themes={['light', 'dark']}
+      defaultTheme="light"
+      enableSystem={false}
+      themes={['light']}
+      forcedTheme="light"
     >
       {children}
     </NextThemesProvider>

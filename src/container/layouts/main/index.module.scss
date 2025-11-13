@@ -1,7 +1,23 @@
+@use '@/styles/_mixins.scss' as m;
+
 .wrap {
+  height: 100%;
   padding: var(--container-padding);
-  padding-top: var(--spacing-4);
-  padding-bottom: var(--spacing-20);
+  padding-top: var(--spacing-20);
+  padding-bottom: var(--spacing-30);
   overflow: auto;
   position: relative;
+
+  &.homePage {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+
+    @include m.breakpoint(mobile) {
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+    }
+  }
 }

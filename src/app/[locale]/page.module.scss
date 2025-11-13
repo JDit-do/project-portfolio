@@ -1,8 +1,24 @@
+@use '@/styles/_mixins.scss' as m;
+
 .wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 680px;
-  height: 100%;
-  background: #0000001e;
+  min-width: 900px;
+  width: 800px;
+  max-width: 60%;
+  margin: auto;
+
+  @include m.breakpoint(tablet) {
+    min-width: 600px;
+    width: 500px;
+    max-width: 80%;
+  }
+
+  > section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    @include m.breakpoint(mobile) {
+      scroll-snap-align: none;
+      scroll-snap-stop: normal;
+    }
+  }
 }

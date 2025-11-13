@@ -50,5 +50,12 @@ export const NotionUtils = {
   getBoolean(property: TC_NOTION_PROPERTY): boolean {
     const value = this.getValue(property, NOTION_TYPE.BOOLEAN);
     return typeof value === 'boolean' ? value : false;
+  },
+
+  getMultiSelect(property: TC_NOTION_PROPERTY): string[] {
+    if (!property || property.type !== NOTION_PROPERTY_TYPE.MULTI_SELECT) {
+      return [];
+    }
+    return property.multi_select?.map((item) => item.name) || [];
   }
 };

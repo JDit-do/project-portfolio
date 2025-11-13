@@ -1,17 +1,22 @@
 @use '@/styles/_mixins.scss' as m;
 
 .empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: var(--spacing-10);
+  color: var(--theme-text-secondary);
+
   @include m.font(
-    $font-size: 1rem,
+    $font-size: 1.5rem,
     $font-weight: var(--font-weight-subtitle),
     $text-align: center,
     $color: var(--theme-text-secondary)
   );
-  padding: var(--spacing-8);
 
   @include m.breakpoint(mobile) {
     padding: var(--spacing-6);
     font-size: 0.9rem;
   }
 }
-

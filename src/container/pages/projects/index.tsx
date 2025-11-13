@@ -11,13 +11,18 @@ import ProjectDetail from './detail';
 
 import style from './index.module.scss';
 
+interface ProjectsContainerProps {
+  initialProjects?: Project[];
+}
+
 /**
  * 프로젝트 컨테이너 컴포넌트
- * 단일 책임: 컴포넌트 조합 및 렌더링만 담당
  */
-const ProjectsContainer = () => {
-  const { activeTab, setActiveTab, allProjects, isLoading } =
-    useProjectsPage();
+const ProjectsContainer = ({
+  initialProjects = []
+}: ProjectsContainerProps) => {
+  const { activeTab, setActiveTab, allProjects, availableTabs, isLoading } =
+    useProjectsPage(initialProjects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
 
@@ -28,7 +33,6 @@ const ProjectsContainer = () => {
 
   const handleCloseDetail = () => {
     setIsDetailOpen(false);
-    // 애니메이션 완료 후 프로젝트 데이터 초기화
     setTimeout(() => {
       setSelectedProject(null);
     }, 300);
@@ -36,7 +40,13 @@ const ProjectsContainer = () => {
 
   return (
     <div className={style.wrap}>
-      <ProjectsTabs activeTab={activeTab} onChange={setActiveTab} />
+      {availableTabs.length > 0 && (
+        <ProjectsTabs
+          activeTab={activeTab}
+          availableTabs={availableTabs}
+          onChange={setActiveTab}
+        />
+      )}
       <ProjectsGallery
         projects={allProjects}
         isLoading={isLoading}
@@ -52,4 +62,3 @@ const ProjectsContainer = () => {
 };
 
 export default ProjectsContainer;
-

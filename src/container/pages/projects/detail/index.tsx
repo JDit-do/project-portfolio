@@ -19,7 +19,6 @@ interface ProjectDetailProps {
 
 /**
  * 프로젝트 상세 팝업 컴포넌트
- * 단일 책임: 프로젝트 상세 정보 표시
  */
 const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
   const t = useTranslations('projects.detail');
@@ -29,9 +28,7 @@ const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
   return (
     <>
       {/* 오버레이 */}
-      {isOpen && (
-        <div className={style.overlay} onClick={onClose} />
-      )}
+      {isOpen && <div className={style.overlay} onClick={onClose} />}
 
       {/* 팝업 */}
       <div className={`${style.wrap} ${isOpen ? style.active : ''}`}>
@@ -61,7 +58,11 @@ const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
               <h2 className={style.title}>{project.title}</h2>
               {project.isFavorite && (
                 <div className={style.pin}>
-                  <Icon type={ICON_TYPE.ICON_TYPE_PROJECT.pin} width={20} height={20} />
+                  <Icon
+                    type={ICON_TYPE.ICON_TYPE_PROJECT.pin}
+                    width={20}
+                    height={20}
+                  />
                 </div>
               )}
             </div>
@@ -122,4 +123,3 @@ const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
 };
 
 export default ProjectDetail;
-

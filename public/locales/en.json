@@ -11,6 +11,10 @@
     "projects": "Projects",
     "labs": "Labs"
   },
+  "portfolio": {
+    "title": "Projects",
+    "subtitle": "Please note that content is provided only for projects that can be shared."
+  },
   "projects": {
     "title": "Projects",
     "description": "Projects are being prepared.",
@@ -21,7 +25,7 @@
     "favorites": {
       "title": "Favorite Projects"
     },
-    "empty": "No projects found.",
+    "empty": "Content is being prepared. Please wait a moment, thank you :D",
     "card": {
       "viewDetail": "View Detail"
     },
@@ -35,7 +39,7 @@
     "ko": "KO",
     "en": "EN",
     "koMessage": "한국어",
-    "enMessage": "Englishh"
+    "enMessage": "English"
   },
   "theme": {
     "system": "System",
@@ -49,71 +53,152 @@
       "label": "Go to Home"
     }
   },
-  "persona": {
-    "title": "JD's Persona",
-    "subTitle": "Who I Am",
-    "button": {
-      "close": "Close"
-    },
-    "character": {
-      "userExperience": "User Experience",
-      "problemSolving": "Problem Solving",
-      "collaboration": "Collaboration",
-      "documentation": "Documentation",
-      "scalability": "Scalability"
-    },
-    "intro": {
-      "data1": "This page is empty, but that’s okay.",
-      "data2": "You can start fresh from the home page."
-    },
-    "skill": {
-      "frontend": "I design and optimize UI/UX with a focus on user experience.",
-      "backend": "I understand backend architecture and have experience with API integration and server setup.",
-      "tool": "I set up development environments and make good use of collaboration tools."
-    },
-    "principle": {
-      "experience": {
-        "title": "Creating the Best User Experience",
-        "description": {
-          "data1": "Beyond simply implementing features, I strive to make services more intuitive and user-friendly.",
-          "data2": "Thoughtful UI/UX design—considering responsive web design, accessibility, and performance—determines the overall service quality.",
-          "data3": "I focus on reducing unnecessary loading times and crafting smooth animations and interactions for an improved user experience."
-        }
-      },
-      "solve": {
-        "title": "Solving Problems with Optimized Solutions",
-        "description": {
-          "data1": "Problems may seem simple at first, but re-evaluating them can lead to better solutions.",
-          "data2": "I don’t just build UI/UX—I apply an optimized, maintainable approach that ensures long-term efficiency.",
-          "data3": "By using a structured and data-driven approach, I improve both usability and performance."
-        }
-      },
-      "collaborate": {
-        "title": "Collaborating for Better Results",
-        "description": {
-          "data1": "It is important to collaborate with designers, backend developers, and QA engineers to achieve better results.",
-          "data2": "I value a culture of growth through code reviews and knowledge sharing with my team.",
-          "data3": "To ensure smooth collaboration, I apply Git Flow for version control, develop based on API documentation, and maintain consistent coding conventions."
-        }
-      }
-    },
-    "whatTheySay": {
-      "title": "What They day about Me",
-      "subTitle": "Who I Am",
-      "intro": "JD's Persona is a space where I showcase who I am...",
-      "feedbacks": {
-        "qa": {
-          "content": "A colleague with logical and analytical skills.",
-          "author": "P from QA Team"
+  "story": {
+    "hero": {
+      "title": "System to Emotion.",
+      "subtitle": "Designing emotion through logic",
+      "description": "Completing user experiences through invisible structure.",
+      "stats": [
+        {
+          "value": "6 years",
+          "label": "Frontend Engineer"
         },
-        "fe": {
-          "content": "A responsible individual who completes projects thoroughly and excels at systematic organization.",
-          "author": "R from FE Team"
+        {
+          "value": "97%",
+          "label": "UI Performance Improvement",
+          "description": "3s → 0.1s",
+          "progress": 97
         },
-        "be": {
-          "content": "A reliable developer who collaborates effectively and works with passion.",
-          "author": "J from BE Team"
+        {
+          "value": "5 members",
+          "label": "Team Leadership",
+          "progress": 100
+        },
+        {
+          "value": "600+",
+          "label": "Features Implemented",
+          "progress": 100
+        },
+        {
+          "value": "500+",
+          "label": "Cloud Resources Managed",
+          "progress": 100
         }
+      ]
+    },
+    "achievements": {
+      "title": "Key Achievements",
+      "subtitle": "Experiences contributing to team and business through problem-solving, collaboration, and growth",
+      "items": [
+        {
+          "id": "01",
+          "icon": "🔍",
+          "title": "Discovered and resolved technical debt the team missed",
+          "content": [
+            "Diagnosed that the Django+AngularJS hybrid structure was the root problem",
+            "Proposed and led React/TypeScript transition",
+            "Reduced UI loading by 97% (3s → 0.1s)"
+          ],
+          "point": "Solved the root cause of 'hybrid architecture' rather than the surface symptom of 'slow speed'"
+        },
+        {
+          "id": "02",
+          "icon": "💼",
+          "title": "Reflected business value in technical decisions",
+          "content": [
+            "Introduced Server-driven UI pattern",
+            "No FE modification needed when adding new resource types",
+            "Reduced customization time by 25% (1 week → 4 days)"
+          ],
+          "point": "Architecture design considering scalability and business efficiency, not just feature implementation"
+        },
+        {
+          "id": "03",
+          "icon": "🤝",
+          "title": "Led collaboration across diverse roles",
+          "content": [
+            "Participated from Backend API design stage",
+            "Reflected FE requirements in DB schema",
+            "Created Web FE characteristics manual for planners/designers",
+            "Reduced API integration errors, minimized rework"
+          ],
+          "point": "Led project success through smooth communication with all roles: design, planning, backend, QA"
+        },
+        {
+          "id": "04",
+          "icon": "📈",
+          "title": "Team member growth and productivity improvement",
+          "content": [
+            "Reduced onboarding time by 70% (2 weeks → 3 days)",
+            "Documented AngularJS guide",
+            "Conducted technical seminars (OAuth, HTTP2, etc.)",
+            "Established code review culture"
+          ],
+          "point": "Built systematic knowledge sharing culture for team-wide growth, not just individual capability"
+        },
+        {
+          "id": "05",
+          "icon": "🎯",
+          "title": "Prioritized team success over personal success",
+          "content": [
+            "Completed project closure responsibility even after PL departure",
+            "Completed 400 features within 4 months",
+            "Improved team productivity with 100+ reusable components",
+            "Secured customer satisfaction with 1 year maintenance support"
+          ],
+          "point": "Ownership to take responsibility to the end for project success even in crisis situations"
+        }
+      ]
+    },
+    "teamSays": {
+      "title": "What My Team Says",
+      "subtitle": "From the people who built with me.",
+      "quotes": [
+        {
+          "text": "Mi-hyeon demonstrates capabilities close to full-stack, understanding not only frontend but also backend and infrastructure. She quickly learns and applies new technologies, contributing to service quality improvement.",
+          "author": "Dev Team Jang XX (Colleague for about 3 years)"
+        },
+        {
+          "text": "She always has a sincere and considerate attitude that positively influences those around her. Her responsible and trustworthy personality is a great strength.",
+          "author": "QA Team Park XX (Colleague for about 3 years)"
+        },
+        {
+          "text": "She is a responsible developer who calmly identifies causes and finds solutions to the end even in unexpected problem situations.",
+          "author": "Dev Team Jang XX (Colleague for about 3 years)"
+        },
+        {
+          "text": "Even in difficult situations during projects, the way she completes things to the end with meticulousness and calmness was impressive.",
+          "author": "Project Team Colleagues"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let's Build Something Great.",
+      "mainMessage": [
+        "I want to think together about how technology reaches people,",
+        "and build systems that are invisible but trustworthy."
+      ],
+      "subMessage": [
+        "A developer who collaborates through structure and respects through speed.",
+        "I want to add that learning to your project now."
+      ],
+      "contacts": [
+        {
+          "icon": "🔗",
+          "label": "GitHub",
+          "value": "github.com/JDit-do",
+          "url": "https://github.com/JDit-do"
+        },
+        {
+          "icon": "✍️",
+          "label": "Blog",
+          "value": "blog.justdo.world",
+          "url": "https://blog.justdo.world/"
+        }
+      ],
+      "footer": {
+        "copyright": "© 2025 JD",
+        "tagline": "System to Emotion."
       }
     }
   }

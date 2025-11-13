@@ -10,7 +10,6 @@
    ============================================ */
 
 * {
-  cursor: none !important;
   font-weight: var(--font-weight-base);
 }
 
@@ -30,12 +29,13 @@ button {
 }
 
 a,
-select {
+select,
+button {
   color: var(--theme-text-default);
 
-  // &:hover {
-  //   color: var(--theme-active-text);
-  // }
+  &:hover {
+    color: var(--theme-active-text);
+  }
 }
 
 /* 스크롤바 스타일 */

@@ -24,10 +24,6 @@
   text-align: $text-align;
 }
 
-// 사용 방법(예시)
-// @include m.breakpoint(mobile) {
-//   grid-template-rows: auto 1fr auto;
-// }
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == mobile {
     @media (max-width: 768px) {

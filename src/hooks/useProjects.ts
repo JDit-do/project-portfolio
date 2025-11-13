@@ -15,7 +15,6 @@ interface UseProjectsReturn {
 
 /**
  * 프로젝트 데이터 필터링 및 조합 로직
- * 단일 책임: 프로젝트 데이터 처리만 담당
  */
 export const useProjects = ({
   projects,
@@ -49,4 +48,3 @@ export const useProjects = ({
     allProjects
   };
 };
-

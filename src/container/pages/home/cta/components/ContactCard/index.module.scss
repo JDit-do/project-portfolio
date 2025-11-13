@@ -1,0 +1,72 @@
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #2962ff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+
+    .contactIcon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .copyButton {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.contactIcon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-out;
+}
+
+.copyButton {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2962ff;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease-out;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.contactInfo {
+  flex: 1;
+  text-align: left;
+}
+
+.contactLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #616161;
+  margin-bottom: 4px;
+}
+
+.contactValue {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1a1a1a;
+}

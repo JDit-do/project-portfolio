@@ -1,0 +1,115 @@
+@use '@/styles/_mixins.scss' as m;
+
+.wrap {
+  .snapPoint {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    width: 100%;
+    height: 100vh;
+
+    @include m.breakpoint(mobile) {
+      scroll-snap-align: none;
+      scroll-snap-stop: normal;
+    }
+  }
+
+  .container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 900px;
+    width: 800px;
+    max-width: 60%;
+    margin: auto;
+
+    @include m.breakpoint(tablet) {
+      min-width: 600px;
+      width: 500px;
+      max-width: 80%;
+    }
+
+    &.isFixed {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      left: calc((var(--sidebar-width) / 2) + 50%);
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+
+      > * {
+        pointer-events: none;
+      }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: var(--spacing-10);
+
+      @media (max-width: 768px) {
+        margin-bottom: 48px;
+      }
+
+      .title {
+        font-size: 3rem;
+        font-weight: 600;
+      }
+    }
+
+    main.achievements {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: var(--spacing-10);
+
+      .backgroundText {
+        align-self: flex-end;
+        color: rgba($color: #000000, $alpha: 0.1);
+        font-size: 5rem;
+        font-weight: 900;
+        text-align: right;
+      }
+
+      .cardsWrap {
+        overflow: hidden;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          width: var(--spacing-10);
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+          pointer-events: none;
+          background: linear-gradient(
+            to right,
+            transparent,
+            var(--theme-background-primary)
+          );
+        }
+
+        > ul {
+          display: flex;
+          gap: var(--spacing-5);
+          position: relative;
+
+          > li {
+            flex: 400px 0 0;
+            background: #f6f5ef;
+            border-radius: var(--spacing-3);
+            border: 1px solid var(--theme-background-tertiary);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+          }
+        }
+      }
+    }
+  }
+}

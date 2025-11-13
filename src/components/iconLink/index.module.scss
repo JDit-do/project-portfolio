@@ -3,19 +3,17 @@
   display: flex;
   align-items: center;
   width: 100%;
-  
-  // 아이콘을 부모 너비에 맞춤 (높이는 비율 유지)
+
   > *:first-child {
     width: 100%;
     height: auto;
-    
-    // SVG 요소의 1em 크기를 오버라이드
+
     svg {
       width: 100% !important;
       height: auto !important;
     }
   }
-  
+
   .label {
     position: absolute;
     left: 100%;
@@ -29,12 +27,14 @@
     pointer-events: none;
     opacity: 0;
     transform: translateX(-4px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
     z-index: 1000;
     visibility: hidden;
     border: 1px solid var(--theme-border-default);
   }
-  
+
   &.hovered .label,
   &:hover .label {
     opacity: 1;
@@ -42,4 +42,3 @@
     visibility: visible;
   }
 }
-

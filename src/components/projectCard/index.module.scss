@@ -7,7 +7,9 @@
   background: var(--theme-background-secondary);
   border-radius: var(--spacing-2);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   height: 100%;
   width: 100%;
 
@@ -127,7 +129,6 @@
         text-align: center;
         border: none;
         cursor: pointer;
-        font-family: inherit;
 
         &:hover {
           background: var(--theme-background-tertiary);
@@ -173,4 +174,3 @@
     }
   }
 }
-

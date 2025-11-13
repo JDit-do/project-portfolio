@@ -12,9 +12,10 @@
     height: 100%;
     padding: 0 var(--spacing-2);
     border-bottom: 1px solid var(--theme-border-default);
+    transition: color 0.2s ease;
 
     .active {
-      color: var(--theme-hover-text);
+      color: var(--theme-active-text);
     }
 
     .evnet {
@@ -26,6 +27,7 @@
       transform: rotate(15deg);
     }
     &:hover {
+      color: var(--theme-active-text);
       .evnet {
         animation: clickBounce 0.8s infinite;
       }
@@ -33,6 +35,7 @@
   }
 
   ul {
+    min-width: min-content;
     width: 100%;
     position: absolute;
     background: var(--theme-background-primary);
@@ -56,7 +59,7 @@
       }
 
       &:hover {
-        color: var(--theme-hover-text);
+        color: var(--theme-active-text);
         cursor: pointer;
       }
 

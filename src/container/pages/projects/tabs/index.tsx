@@ -8,28 +8,35 @@ import { ProjectType } from '@/types/project';
 import style from './index.module.scss';
 
 interface ProjectsTabsProps {
-  activeTab: ProjectType;
-  onChange: (tab: ProjectType) => void;
+  activeTab: ProjectType | null;
+  availableTabs: ProjectType[];
+  onChange: (tab: ProjectType | null) => void;
 }
 
 /**
  * 프로젝트 탭 컴포넌트
- * 단일 책임: 탭 표시 및 선택만 담당
  */
-const ProjectsTabs = ({ activeTab, onChange }: ProjectsTabsProps) => {
+const ProjectsTabs = ({ activeTab, availableTabs, onChange }: ProjectsTabsProps) => {
   const t = useTranslations('projects');
 
-  const tabOptions = [
-    { value: 'career' as ProjectType, label: t('tabs.career') },
-    { value: 'side' as ProjectType, label: t('tabs.side') }
-  ];
+  const tabOptions = availableTabs.map((tab) => ({
+    value: tab,
+    label: t(`tabs.${tab}`)
+  }));
+
+  if (tabOptions.length === 0) {
+    return null;
+  }
 
   return (
     <section className={style.wrap}>
-      <Tab options={tabOptions} value={activeTab} onChange={onChange} />
+      <Tab
+        options={tabOptions}
+        value={activeTab || tabOptions[0].value}
+        onChange={(value) => onChange(value as ProjectType)}
+      />
     </section>
   );
 };
 
 export default ProjectsTabs;
-

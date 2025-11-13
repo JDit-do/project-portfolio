@@ -4,8 +4,6 @@ import { cookies } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import Script from 'next/script';
-
 import { routing } from '@/i18n/routing';
 import { LOCALE_ID } from '@/lib/notion/config';
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';

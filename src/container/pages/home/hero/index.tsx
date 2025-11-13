@@ -1,41 +1,64 @@
 'use client';
 
+import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
+
+import { useCountUp } from '@/hooks/useCountUp';
+
+import Animation from '@/components/animation';
+import TitleWithCursor from './components/TitleWithCursor';
+import Stats from './components/Stats';
+
+import { SECTION_DELAY, ITEM_DELAY_INTERVAL } from '../constants';
+import type { HeroStat } from '../types';
+
 import style from './index.module.scss';
 
+const { Blur } = Animation;
+
+/**
+ * Hero Section 컴포넌트
+ */
 const HomeHero = () => {
+  const t = useTranslations('story');
+  const hero = t.raw('hero');
+
+  // 숫자 카운트업
+  const stats = useMemo(() => (hero.stats || []) as HeroStat[], [hero.stats]);
+  const statValues = useMemo(() => stats.map((stat) => stat.value), [stats]);
+  const countedValues = useCountUp(statValues);
+
   return (
-    <div className={style.wrap}>
-      <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 1000 250"
-        preserveAspectRatio="xMidYMid meet"
-        className={style.subTitle}
-      >
-        <defs>
-          <path id="text-path" d="M 0,250 Q 500,100 1000,250" fill="none" />
-        </defs>
+    <section className={style.wrap}>
+      <div className={style.content}>
+        <div className={style.titleWrap}>
+          {/* 메인 타이틀 */}
+          <TitleWithCursor
+            text={hero.title || ''}
+            typingSpeed={100}
+            startDelay={SECTION_DELAY.HERO * 1000}
+          />
 
-        <text fontSize="40" fill="white">
-          <textPath href="#text-path" startOffset="50%" textAnchor="middle">
-            Rethink the Obvious. Improve the Experience.
-          </textPath>
-        </text>
-      </svg>
+          {/* 서브 타이틀 */}
+          <div>
+            <Blur.Fade delay={SECTION_DELAY.HERO + ITEM_DELAY_INTERVAL}>
+              <p className={style.subtitle}>{hero.subtitle}</p>
+            </Blur.Fade>
+            <Blur.Fade delay={SECTION_DELAY.HERO + ITEM_DELAY_INTERVAL * 2}>
+              <p className={style.description}>{hero.description}</p>
+            </Blur.Fade>
+          </div>
+        </div>
 
-      <h2 className={style.mainText}>
-        <span>Why Just Build?</span>
-        <span className={style.secondLine}>
-          It&#39;s Better
-          <span className={style.rotateText}>
-            <span className={style.word}>Experience.</span>
-            <span className={style.word}>Solution.</span>
-            <span className={style.word}>Collaboration.</span>
-          </span>
-        </span>
-      </h2>
-      <p className={style.tagline}>Just Do. Make an Impact.</p>
-    </div>
+        {/* 통계 */}
+        <Stats stats={stats} countedValues={countedValues} />
+      </div>
+
+      {/* 스크롤 */}
+      <div className={style.scrollIndicator}>
+        <div className={style.scrollLine} />
+      </div>
+    </section>
   );
 };
 

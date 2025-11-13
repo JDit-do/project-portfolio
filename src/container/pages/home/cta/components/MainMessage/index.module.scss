@@ -1,0 +1,18 @@
+.mainMessage {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 32px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  .mainMessageLine {
+    margin: 0;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

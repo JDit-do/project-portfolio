@@ -1,8 +1,4 @@
-@use '@/styles/_mixins.scss' as m;
-
 .wrap {
-  display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
   height: 100vh;
   position: relative;
 }

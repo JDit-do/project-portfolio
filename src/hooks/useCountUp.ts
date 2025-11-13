@@ -1,0 +1,71 @@
+import { useEffect, useState, useRef, useMemo } from 'react';
+
+/**
+ * 숫자 카운트업 훅(애니메이션)
+ */
+export const useCountUp = (values: string[], duration: number = 2000) => {
+  const [countedValues, setCountedValues] = useState<Record<number, number>>(
+    {}
+  );
+  const timersRef = useRef<Array<NodeJS.Timeout>>([]);
+
+  // values를 문자열로 변환하여 dependency로 사용 (배열 참조 변경 방지)
+  const valuesKey = useMemo(() => values.join(','), [values]);
+
+  useEffect(() => {
+    // 기존 타이머 정리
+    timersRef.current.forEach((timer) => {
+      clearInterval(timer);
+    });
+    timersRef.current = [];
+
+    // 초기값을 0으로 설정
+    const initialValues: Record<number, number> = {};
+    values.forEach((_, index) => {
+      initialValues[index] = 0;
+    });
+    setCountedValues(initialValues);
+
+    // 각 값에 대해 카운트업 시작
+    values.forEach((value, index) => {
+      const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+      if (!isNaN(numericValue)) {
+        const steps = 60;
+        const increment = numericValue / steps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= numericValue) {
+            current = numericValue;
+            clearInterval(timer);
+          }
+          setCountedValues((prev) => ({
+            ...prev,
+            [index]: Math.floor(current)
+          }));
+        }, duration / steps);
+
+        timersRef.current.push(timer);
+      } else {
+        // 숫자가 아닌 경우 원본 값의 숫자 부분을 추출하여 초기값으로 설정
+        const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+        if (!isNaN(numericValue)) {
+          setCountedValues((prev) => ({
+            ...prev,
+            [index]: numericValue
+          }));
+        }
+      }
+    });
+
+    return () => {
+      timersRef.current.forEach((timer) => {
+        clearInterval(timer);
+      });
+      timersRef.current = [];
+    };
+  }, [valuesKey, duration]);
+
+  return countedValues;
+};

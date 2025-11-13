@@ -31,7 +31,12 @@ export async function GET() {
       status: API_STATUS.SUCCESS
     };
 
-    return NextResponse.json(responseData, { status: responseData.code });
+    return NextResponse.json(responseData, {
+      status: responseData.code,
+      headers: {
+        'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=3600'
+      }
+    });
   } catch (error) {
     console.error('Error fetching GNB data:', error);
 

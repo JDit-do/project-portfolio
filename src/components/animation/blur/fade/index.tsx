@@ -17,7 +17,7 @@ const BlurFade = ({
   blur = '6px',
   as = 'div'
 }: IBlurFadeProps) => {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isPrintMode, setIsPrintMode] = useState(false);
 
   useEffect(() => {
@@ -48,7 +48,10 @@ const BlurFade = ({
     };
   }, []);
 
-  const inViewResult = useInView(ref, { once: true });
+  const inViewResult = useInView(ref, { 
+    once: true,
+    ...(inViewMargin && { margin: inViewMargin })
+  } as Parameters<typeof useInView>[1]);
   const isInView = !inView || inViewResult || isPrintMode;
 
   const defaultVariants = {
@@ -66,8 +69,9 @@ const BlurFade = ({
     ) as React.ReactElement;
   }
 
-  const MotionComponent = motion[as] as React.ComponentType<
-    HTMLMotionProps<typeof as>
+  // framer-motion의 motion 컴포넌트를 안전하게 가져오기
+  const MotionComponent = motion[as as keyof typeof motion] as React.ComponentType<
+    HTMLMotionProps<'div'>
   >;
 
   return (
