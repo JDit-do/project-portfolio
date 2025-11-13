@@ -8,7 +8,7 @@ import { NOTION_DB_PROJECT_CATEGORY_ID } from '@/lib/notion/config';
 
 export async function GET() {
   try {
-    let filterOptions: Record<string, string[]> = {};
+    const filterOptions: Record<string, string[]> = {};
 
     if (NOTION_DB_PROJECT_CATEGORY_ID) {
       const categoryResponse = await getNotionQuery(

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 /**
  * 숫자 카운트업 훅(애니메이션)
@@ -8,9 +8,6 @@ export const useCountUp = (values: string[], duration: number = 2000) => {
     {}
   );
   const timersRef = useRef<Array<NodeJS.Timeout>>([]);
-
-  // values를 문자열로 변환하여 dependency로 사용 (배열 참조 변경 방지)
-  const valuesKey = useMemo(() => values.join(','), [values]);
 
   useEffect(() => {
     // 기존 타이머 정리
@@ -65,7 +62,7 @@ export const useCountUp = (values: string[], duration: number = 2000) => {
       });
       timersRef.current = [];
     };
-  }, [valuesKey, duration]);
+  }, [values, duration]);
 
   return countedValues;
 };

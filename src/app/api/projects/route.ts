@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints';
 
 import { NotionUtils } from '@/utils/notion';
 import { APIResponse } from '@/types/api';
@@ -66,7 +67,7 @@ export async function GET(request: NextRequest) {
           filterType = 'select';
         }
 
-        const filter: any = {
+        const filter: QueryDatabaseParameters['filter'] = {
           and: [
             {
               property: 'is_shareable',
@@ -81,7 +82,7 @@ export async function GET(request: NextRequest) {
               }
             }
           ]
-        };
+        } as QueryDatabaseParameters['filter'];
 
         const filteredResponse = await getNotionQuery(
           NOTION_DB_PROJECTS_ID,

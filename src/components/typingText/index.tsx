@@ -22,7 +22,7 @@ const TypingText = ({
   tag = 'div',
   showCursor = true 
 }: TypingTextProps) => {
-  const { displayedText, isTyping } = useTypingEffect(
+  const { displayedText } = useTypingEffect(
     text,
     typingSpeed,
     startDelay

@@ -107,7 +107,7 @@ export const getSkillIconUrl = (skillName: string): string | null => {
   const normalizedName = skillName.trim();
   
   // 1. Skill Icons 우선 확인 (색상 포함)
-  let skillIconId = skillIconsMap[normalizedName] || skillIconsMap[normalizedName.toLowerCase()];
+  const skillIconId = skillIconsMap[normalizedName] || skillIconsMap[normalizedName.toLowerCase()];
   if (skillIconId) {
     return `https://skillicons.dev/icons?i=${skillIconId}`;
   }
