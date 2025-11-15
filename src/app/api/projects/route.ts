@@ -8,6 +8,47 @@ import { API_STATUS } from '@/constants/status';
 import { getNotionQuery } from '@/lib/notion/client';
 import { NOTION_DB_PROJECTS_ID } from '@/lib/notion/config';
 
+/**
+ * Notion 응답을 Project 배열로 변환하는 공통 함수
+ */
+const mapNotionResponseToProjects = (
+  response: Awaited<ReturnType<typeof getNotionQuery>>
+): Project[] => {
+  return response
+    .map((item) => {
+      const isShareable = NotionUtils.getBoolean(
+        item.properties.is_shareable
+      );
+      // 공유 가능한 프로젝트만 필터링
+      if (!isShareable) {
+        return null;
+      }
+
+      const type = NotionUtils.getString(
+        item.properties.type
+      ) as ProjectType;
+
+      const project = {
+        id: item.id,
+        title: NotionUtils.getString(item.properties.title),
+        description: NotionUtils.getString(item.properties.description),
+        thumbnail:
+          NotionUtils.getString(item.properties.thumbnail) || undefined,
+        type: type || ('career' as ProjectType), // 기본값 설정
+        isFavorite: NotionUtils.getBoolean(item.properties.is_favorite),
+        tags: NotionUtils.getMultiSelect(item.properties.tags),
+        link: NotionUtils.getString(item.properties.link) || undefined,
+        github: NotionUtils.getString(item.properties.github) || undefined,
+        startDate:
+          NotionUtils.getString(item.properties.start_date) || undefined,
+        endDate: NotionUtils.getString(item.properties.end_date) || undefined
+      } as Project;
+
+      return project;
+    })
+    .filter((project): project is Project => project !== null);
+};
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -20,42 +61,7 @@ export async function GET(request: NextRequest) {
     if (NOTION_DB_PROJECTS_ID) {
       // 전체 데이터 가져오기
       const allResponse = await getNotionQuery(NOTION_DB_PROJECTS_ID);
-      
-      allData = allResponse
-        .map((item) => {
-          const isShareable = NotionUtils.getBoolean(
-            item.properties.is_shareable
-          );
-          // 공유 가능한 프로젝트만 필터링
-          if (!isShareable) {
-            return null;
-          }
-
-          const type = NotionUtils.getString(
-            item.properties.type
-          ) as ProjectType;
-          
-          // 카테고리 DB에서 관리하므로 모든 type 허용
-          const project = {
-            id: item.id,
-            title: NotionUtils.getString(item.properties.title),
-            description: NotionUtils.getString(item.properties.description),
-            thumbnail:
-              NotionUtils.getString(item.properties.thumbnail) || undefined,
-            type: type || ('career' as ProjectType), // 기본값 설정
-            isFavorite: NotionUtils.getBoolean(item.properties.is_favorite),
-            tags: NotionUtils.getMultiSelect(item.properties.tags),
-            link: NotionUtils.getString(item.properties.link) || undefined,
-            github: NotionUtils.getString(item.properties.github) || undefined,
-            startDate:
-              NotionUtils.getString(item.properties.start_date) || undefined,
-            endDate:
-              NotionUtils.getString(item.properties.end_date) || undefined
-          } as Project;
-          
-          return project;
-        })
-        .filter((project): project is Project => project !== null);
+      allData = mapNotionResponseToProjects(allResponse);
 
       // 필터가 있으면 필터링된 데이터도 가져오기
       if (filterKey && filterValue) {
@@ -88,38 +94,7 @@ export async function GET(request: NextRequest) {
           NOTION_DB_PROJECTS_ID,
           filter
         );
-        filteredData = filteredResponse
-          .map((item) => {
-            const isShareable = NotionUtils.getBoolean(
-              item.properties.is_shareable
-            );
-            if (!isShareable) return null;
-
-            const type = NotionUtils.getString(
-              item.properties.type
-            ) as ProjectType;
-            // 카테고리 DB에서 관리하므로 모든 type 허용
-            // if (type !== 'career' && type !== 'side') return null;
-
-            return {
-              id: item.id,
-              title: NotionUtils.getString(item.properties.title),
-              description: NotionUtils.getString(item.properties.description),
-              thumbnail:
-                NotionUtils.getString(item.properties.thumbnail) || undefined,
-              type: type || ('career' as ProjectType), // 기본값 설정
-              isFavorite: NotionUtils.getBoolean(item.properties.is_favorite),
-              tags: NotionUtils.getMultiSelect(item.properties.tags),
-              link: NotionUtils.getString(item.properties.link) || undefined,
-              github:
-                NotionUtils.getString(item.properties.github) || undefined,
-              startDate:
-                NotionUtils.getString(item.properties.start_date) || undefined,
-              endDate:
-                NotionUtils.getString(item.properties.end_date) || undefined
-            } as Project;
-          })
-          .filter((project): project is Project => project !== null);
+        filteredData = mapNotionResponseToProjects(filteredResponse);
       }
     }
 

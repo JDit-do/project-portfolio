@@ -36,6 +36,7 @@ export const useCountUp = (values: string[], duration: number = 2000) => {
           if (current >= numericValue) {
             current = numericValue;
             clearInterval(timer);
+            timersRef.current = timersRef.current.filter((t) => t !== timer);
           }
           setCountedValues((prev) => ({
             ...prev,

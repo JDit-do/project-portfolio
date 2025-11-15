@@ -36,7 +36,7 @@ const Achievements = () => {
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
-  // 섹션 높이 설정 (모바일에서는 비활성화)
+  // 섹션 높이 설정 (모바일 비활성화)
   const setSectionHeight = useCallback(() => {
     if (!sectionRef.current) return;
 
@@ -88,10 +88,14 @@ const Achievements = () => {
   useLayoutEffect(() => {
     setSectionHeight();
 
-    window.addEventListener('resize', setSectionHeight);
+    const handleResize = () => {
+      setSectionHeight();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', setSectionHeight);
+      window.removeEventListener('resize', handleResize);
     };
   }, [setSectionHeight]);
 
@@ -128,51 +132,50 @@ const Achievements = () => {
     }
   }, [isMobileDevice]);
 
-  // 스크롤 이벤트 리스너 추가
+  // 스크롤 이벤트 추가
   useEffect(() => {
+    // 모바일: 스크롤 이벤트 처리 X, 데스크톱: isFixed 아니면
+    if (isMobileDevice || !isFixed) return;
+
     const mainElement = document.querySelector('main') as HTMLElement;
     if (!mainElement) return;
 
-    // 모바일에서는 isFixed 체크 없이 스크롤만 처리
-    if (isMobileDevice) {
-      const handleScroll = () => {
-        // 모바일에서는 스크롤 이벤트만 처리 (필요시 추가 로직 구현)
-      };
-
-      mainElement.addEventListener('scroll', handleScroll, { passive: true });
-
-      return () => {
-        mainElement.removeEventListener('scroll', handleScroll);
-      };
-    }
-
-    // 데스크톱에서는 기존 로직 유지
-    if (!isFixed) return;
+    let rafId: number | null = null;
 
     const handleScroll = () => {
       if (!sectionRef.current || !horizontalContainerRef.current) return;
 
-      const scrollTop = mainElement.scrollTop;
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const mainRect = mainElement.getBoundingClientRect();
+      // requestAnimationFrame을 사용하여 스크롤 애니메이션과 동기화
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
 
-      const sectionStart = scrollTop + (sectionRect.top - mainRect.top);
-      const scrollOffset = scrollTop - sectionStart;
-      const viewportHeight = window.innerHeight;
+      rafId = requestAnimationFrame(() => {
+        const scrollTop = mainElement.scrollTop;
+        const viewportHeight = window.innerHeight;
 
-      // 100vh 단위로 몇 번째 snapPoint인지 계산 (0부터 시작)
-      const snapIndex = Math.max(0, Math.floor(scrollOffset / viewportHeight));
+        const sectionRect = sectionRef.current!.getBoundingClientRect();
+        const mainRect = mainElement.getBoundingClientRect();
+        const sectionStart = sectionRect.top - mainRect.top + scrollTop;
+        const scrollOffset = scrollTop - sectionStart;
 
-      // 카드 너비 (400px) + gap (20px = spacing-5)
-      const cardWidth = 400;
-      const cardGap = 20;
-      const cardTotalWidth = cardWidth + cardGap;
+        // 100vh 단위로 몇 번째 snapPoint인지 계산 (0부터 시작)
+        const snapIndex = Math.max(
+          0,
+          Math.min(items.length - 1, Math.round(scrollOffset / viewportHeight))
+        );
 
-      // 좌우 이동
-      const translateX = -snapIndex * cardTotalWidth;
-      horizontalContainerRef.current.style.transform = `translateX(${translateX}px)`;
-      horizontalContainerRef.current.style.transition =
-        'transform 0.1s ease-out';
+        // 카드 너비 (400px) + gap (20px = spacing-5)
+        const cardWidth = 400;
+        const cardGap = 20;
+        const cardTotalWidth = cardWidth + cardGap;
+
+        // 좌우 이동
+        const translateX = -snapIndex * cardTotalWidth;
+        horizontalContainerRef.current!.style.transform = `translateX(${translateX}px)`;
+        horizontalContainerRef.current!.style.transition =
+          'transform 0.1s ease-out';
+      });
     };
 
     mainElement.addEventListener('scroll', handleScroll, { passive: true });
@@ -182,8 +185,11 @@ const Achievements = () => {
 
     return () => {
       mainElement.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
-  }, [isFixed, isMobileDevice]);
+  }, [isFixed, isMobileDevice, items.length]);
 
   return (
     <section ref={sectionRef} className={style.wrap}>

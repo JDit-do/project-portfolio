@@ -16,7 +16,6 @@ export const useTypingEffect = (
     // 기존 타이머 정리
     timersRef.current.forEach((timer) => {
       clearTimeout(timer);
-      clearInterval(timer);
     });
     timersRef.current = [];
 
@@ -55,7 +54,6 @@ export const useTypingEffect = (
     return () => {
       timersRef.current.forEach((timer) => {
         clearTimeout(timer);
-        clearInterval(timer);
       });
       timersRef.current = [];
     };
