@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { useRipple } from '@/hooks/useRipple';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import type { Contact } from '../../../types';
@@ -13,6 +15,8 @@ interface ContactCardProps {
  * Contact Card 컴포넌트
  */
 const ContactCard = ({ contact }: ContactCardProps) => {
+  const t = useTranslations('accessibility');
+
   const { ripples, addRipple, elementRef } = useRipple();
   const { isCopied, copy } = useCopyToClipboard();
 
@@ -29,7 +33,11 @@ const ContactCard = ({ contact }: ContactCardProps) => {
       ref={elementRef}
       className={style.contactItem}
       onClick={handleClick}
-      role="button"
+      aria-label={
+        contact.label === 'Blog' || contact.label === 'GitHub'
+          ? `${contact.label} ${t('copyAddress')}: ${contact.value}`
+          : `${contact.label}: ${contact.value}`
+      }
     >
       <Ripples ripples={ripples} />
       <span className={style.contactIcon}>{contact.icon}</span>

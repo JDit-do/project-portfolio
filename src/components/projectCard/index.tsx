@@ -12,9 +12,13 @@ import style from './index.module.scss';
 
 const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
   const t = useTranslations('projects.card');
+  const tA11y = useTranslations('accessibility');
 
   return (
-    <div className={style.wrap}>
+    <article
+      className={style.wrap}
+      aria-label={`${tA11y('project')}: ${project.title}`}
+    >
       {/* 썸네일 */}
       {project.thumbnail ? (
         <div className={style.thumbnail}>
@@ -26,13 +30,21 @@ const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
           />
         </div>
       ) : (
-        <div className={style.thumbnailPlaceholder} />
+        <div
+          className={style.thumbnailPlaceholder}
+          aria-label={`${project.title} ${tA11y('projectThumbnail')}`}
+        />
       )}
 
       {/* Pin 아이콘 */}
       {project.isFavorite && (
-        <div className={style.pin}>
-          <Icon type={ICON_TYPE.ICON_TYPE_PROJECT.pin} width={16} height={16} />
+        <div className={style.pin} aria-label={tA11y('favoriteProject')}>
+          <Icon
+            type={ICON_TYPE.ICON_TYPE_PROJECT.pin}
+            width={16}
+            height={16}
+            aria-hidden="true"
+          />
         </div>
       )}
 
@@ -40,15 +52,15 @@ const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
       <div className={style.content}>
         <h3 className={style.title}>{project.title}</h3>
         <p className={style.description}>{project.description}</p>
-        
+
         {project.tags && project.tags.length > 0 && (
-          <div className={style.tags}>
+          <ul className={style.tags} aria-label={tA11y('techStack')}>
             {project.tags.map((tag, index) => (
-              <span key={index} className={style.tag}>
+              <li key={index} className={style.tag}>
                 {tag}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
         <div className={style.links}>
@@ -58,6 +70,7 @@ const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className={style.link}
+              aria-label={`${project.title} ${tA11y('githubRepository')}`}
             >
               GitHub
             </a>
@@ -66,6 +79,7 @@ const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
             <button
               onClick={() => onViewDetail(project)}
               className={style.link}
+              aria-label={`${project.title} ${tA11y('viewDetail')}`}
             >
               {t('viewDetail')}
             </button>
@@ -76,17 +90,17 @@ const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className={style.link}
+              aria-label={`${project.title} ${tA11y('viewSite')}`}
             >
               {t('viewDetail')}
             </a>
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 });
 
 ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;
-

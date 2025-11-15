@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import { APIResponse, GnbItem } from '@/types/api';
 
 import { APIEndpoints } from '@/constants/apiEndPoint';
@@ -10,6 +12,8 @@ import GNBClient from './gnb/client';
 import style from './index.module.scss';
 
 export default async function Sidebar() {
+  const t = await getTranslations('accessibility');
+  
   const response = await fetch(APIEndpoints.navigation.gnb.url, {
     next: { revalidate: 1800 }
   });
@@ -17,7 +21,7 @@ export default async function Sidebar() {
 
   if (!(data.length > 0)) return <></>;
   return (
-    <nav className={style.wrap} role="Sidebar" aria-label="사이드바">
+    <nav className={style.wrap} role="Sidebar" aria-label={t('sidebar')}>
       {/* 링크 */}
       <ul className={style.links}>
         <li>
@@ -26,7 +30,7 @@ export default async function Sidebar() {
             iconCategory="ICON_TYPE_COMMON"
             iconKey="external"
             label="블로그"
-            ariaLabel="블로그 새 창에서 열기"
+            ariaLabel={t('blogOpen')}
           />
         </li>
         <li>
@@ -35,7 +39,7 @@ export default async function Sidebar() {
             iconCategory="ICON_TYPE_COMMON"
             iconKey="github"
             label="GitHub"
-            ariaLabel="GitHub 새 창에서 열기"
+            ariaLabel={t('githubOpen')}
           />
         </li>
       </ul>

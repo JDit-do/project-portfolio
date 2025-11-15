@@ -53,6 +53,24 @@
       "label": "홈으로 돌아가기"
     }
   },
+  "accessibility": {
+    "sidebar": "사이드바",
+    "projectCategory": "프로젝트 카테고리 선택",
+    "project": "프로젝트",
+    "projectThumbnail": "썸네일 없음",
+    "favoriteProject": "즐겨찾기 프로젝트",
+    "techStack": "기술 스택",
+    "githubRepository": "GitHub 저장소 열기 (새 창)",
+    "viewDetail": "상세 정보 보기",
+    "viewSite": "사이트 보기 (새 창)",
+    "achievements": "주요 성과",
+    "tabView": "프로젝트 보기",
+    "openInNewWindow": "새 창에서 열기",
+    "blogOpen": "블로그 새 창에서 열기",
+    "githubOpen": "GitHub 새 창에서 열기",
+    "copyAddress": "주소 복사",
+    "contact": "연락처"
+  },
   "story": {
     "hero": {
       "title": "System to Emotion.",

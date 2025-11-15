@@ -3,9 +3,24 @@
 import { IButton } from './index.type';
 import style from './index.module.scss';
 
-const Button = ({ onClick, children, className }: IButton) => {
+const Button = ({
+  onClick,
+  children,
+  className,
+  ariaLabel,
+  type = 'button',
+  role,
+  'aria-selected': ariaSelected
+}: IButton) => {
   return (
-    <button className={`${style.wrap} ${className || ''}`} onClick={onClick}>
+    <button
+      type={type}
+      className={`${style.wrap} ${className || ''}`}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      role={role}
+      aria-selected={ariaSelected}
+    >
       {children}
     </button>
   );

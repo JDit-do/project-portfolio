@@ -48,10 +48,28 @@
   },
   "error": {
     "404": {
-      "data1": "This page is empty, but here’s something you might like!",
+      "data1": "This page is empty, but here's something you might like!",
       "data2": "Check out some interesting content below.",
       "label": "Go to Home"
     }
+  },
+  "accessibility": {
+    "sidebar": "Sidebar",
+    "projectCategory": "Select project category",
+    "project": "Project",
+    "projectThumbnail": "No thumbnail",
+    "favoriteProject": "Favorite project",
+    "techStack": "Tech stack",
+    "githubRepository": "Open GitHub repository (new window)",
+    "viewDetail": "View details",
+    "viewSite": "View site (new window)",
+    "achievements": "Key achievements",
+    "tabView": "View projects",
+    "openInNewWindow": "Open in new window",
+    "blogOpen": "Open blog in new window",
+    "githubOpen": "Open GitHub in new window",
+    "copyAddress": "Copy address",
+    "contact": "Contact"
   },
   "story": {
     "hero": {

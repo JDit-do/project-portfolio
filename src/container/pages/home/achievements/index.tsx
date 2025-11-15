@@ -30,6 +30,8 @@ const isMobile = () => {
  */
 const Achievements = () => {
   const t = useTranslations('story');
+  const tA11y = useTranslations('accessibility');
+
   const achievements = t.raw('achievements');
   const items = (achievements.items || []) as AchievementItem[];
   const sectionRef = useRef<HTMLElement>(null);
@@ -192,11 +194,19 @@ const Achievements = () => {
   }, [isFixed, isMobileDevice, items.length]);
 
   return (
-    <section ref={sectionRef} className={style.wrap}>
+    <section
+      ref={sectionRef}
+      className={style.wrap}
+      aria-label={tA11y('achievements')}
+    >
       {/* 각 카드마다 스크롤 스냅 포인트 (모바일에서 제외) */}
       {!isMobileDevice &&
         items.map((_, itemIndex) => (
-          <div key={`snap-${itemIndex}`} className={style.snapPoint} />
+          <div
+            key={`snap-${itemIndex}`}
+            className={style.snapPoint}
+            aria-hidden="true"
+          />
         ))}
 
       <div
