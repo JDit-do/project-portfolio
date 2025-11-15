@@ -63,9 +63,6 @@ const Achievements = () => {
       if (isMobileDevice) return;
 
       entries.forEach((entry) => {
-        const container = horizontalContainerRef.current;
-        if (!container) return;
-
         if (entry.isIntersecting) {
           setIsFixed(true);
         } else {
@@ -90,6 +87,17 @@ const Achievements = () => {
   }, []);
 
   useLayoutEffect(() => {
+    // 초기 높이를 즉시 설정
+    if (!isMobileDevice && items.length > 0 && sectionRef.current) {
+      const viewportHeight = window.innerHeight;
+      const calculatedHeight = viewportHeight * items.length;
+      sectionRef.current.style.setProperty(
+        'height',
+        `${calculatedHeight}px`,
+        'important'
+      );
+    }
+
     setSectionHeight();
 
     const handleResize = () => {
@@ -101,7 +109,7 @@ const Achievements = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [setSectionHeight]);
+  }, [setSectionHeight, isMobileDevice, items.length]);
 
   useEffect(() => {
     if (isMobileDevice) return;
@@ -131,8 +139,7 @@ const Achievements = () => {
     if (isMobileDevice) {
       // 모바일로 전환될 때 translateX 초기화
       horizontalContainerRef.current.style.transform = 'translateX(0)';
-      horizontalContainerRef.current.style.transition =
-        `transform ${ACHIEVEMENTS.MOBILE_TRANSITION}s ease-out`;
+      horizontalContainerRef.current.style.transition = `transform ${ACHIEVEMENTS.MOBILE_TRANSITION}s ease-out`;
     }
   }, [isMobileDevice]);
 
@@ -175,8 +182,7 @@ const Achievements = () => {
         // 좌우 이동
         const translateX = -snapIndex * cardTotalWidth;
         horizontalContainerRef.current!.style.transform = `translateX(${translateX}px)`;
-        horizontalContainerRef.current!.style.transition =
-          `transform ${ACHIEVEMENTS.SCROLL_TRANSITION}s ease-out`;
+        horizontalContainerRef.current!.style.transition = `transform ${ACHIEVEMENTS.SCROLL_TRANSITION}s ease-out`;
       });
     };
 
@@ -208,6 +214,14 @@ const Achievements = () => {
             aria-hidden="true"
           />
         ))}
+
+      {/* position: fixed 전환 시 공간 유지를 위한 placeholder */}
+      {/* {isFixed && !isMobileDevice && (
+        <div
+          className={style.containerPlaceholder}
+          aria-hidden="true"
+        />
+      )} */}
 
       <div
         className={`${style.container} ${

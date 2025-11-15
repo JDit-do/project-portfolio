@@ -1,13 +1,8 @@
 @use '@/styles/_mixins.scss' as m;
 
 .wrap {
-  padding-right: 120px;
   margin: 0;
   height: 172px;
-
-  @include m.breakpoint(mobile) {
-    padding-right: 0;
-  }
 
   .title {
     font-size: 4.5rem;
