@@ -16,6 +16,14 @@ import AchievementCard from './components/AchievementCard';
 import style from './index.module.scss';
 
 /**
+ * 모바일 여부 확인 (768px 이하)
+ */
+const isMobile = () => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth <= 768;
+};
+
+/**
  * Key Achievements Section
  */
 const Achievements = () => {
@@ -26,27 +34,55 @@ const Achievements = () => {
   const horizontalContainerRef = useRef<HTMLUListElement>(null);
 
   const [isFixed, setIsFixed] = useState<boolean>(false);
+  const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
-  // 섹션 높이 설정
+  // 섹션 높이 설정 (모바일에서는 비활성화)
   const setSectionHeight = useCallback(() => {
-    if (sectionRef.current && items.length > 0) {
-      const viewportHeight = window.innerHeight;
-      const calculatedHeight = viewportHeight * items.length;
-      sectionRef.current.style.height = `${calculatedHeight}px`;
+    if (!sectionRef.current) return;
+
+    // 모바일에서는 높이 설정 안 함 (자동 높이 사용)
+    if (isMobileDevice) {
+      sectionRef.current.style.height = '';
+      return;
     }
-  }, [items.length]);
 
-  const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      const container = horizontalContainerRef.current;
-      if (!container) return;
+    // 데스크톱에서만 높이 * 항목 개수로 계산
+    if (items.length === 0) return;
 
-      if (entry.isIntersecting) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    });
+    const viewportHeight = window.innerHeight;
+    const calculatedHeight = viewportHeight * items.length;
+    sectionRef.current.style.height = `${calculatedHeight}px`;
+  }, [items.length, isMobileDevice]);
+
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      if (isMobileDevice) return;
+
+      entries.forEach((entry) => {
+        const container = horizontalContainerRef.current;
+        if (!container) return;
+
+        if (entry.isIntersecting) {
+          setIsFixed(true);
+        } else {
+          setIsFixed(false);
+        }
+      });
+    },
+    [isMobileDevice]
+  );
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileDevice(isMobile());
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   useLayoutEffect(() => {
@@ -60,6 +96,8 @@ const Achievements = () => {
   }, [setSectionHeight]);
 
   useEffect(() => {
+    if (isMobileDevice) return;
+
     const observer = new IntersectionObserver(handleObserver, {
       rootMargin: '0px',
       threshold: 0.1
@@ -76,12 +114,40 @@ const Achievements = () => {
         observer.unobserve(currentElement);
       }
     };
-  }, [handleObserver]);
+  }, [handleObserver, isMobileDevice]);
 
-  // 스크롤 이벤트 리스너 추가 - main 요소에만 등록
+  // 모바일로 전환될 때 translateX 초기화
+  useEffect(() => {
+    if (!horizontalContainerRef.current) return;
+
+    if (isMobileDevice) {
+      // 모바일로 전환될 때 translateX 초기화
+      horizontalContainerRef.current.style.transform = 'translateX(0)';
+      horizontalContainerRef.current.style.transition =
+        'transform 0.3s ease-out';
+    }
+  }, [isMobileDevice]);
+
+  // 스크롤 이벤트 리스너 추가
   useEffect(() => {
     const mainElement = document.querySelector('main') as HTMLElement;
-    if (!mainElement || !isFixed) return;
+    if (!mainElement) return;
+
+    // 모바일에서는 isFixed 체크 없이 스크롤만 처리
+    if (isMobileDevice) {
+      const handleScroll = () => {
+        // 모바일에서는 스크롤 이벤트만 처리 (필요시 추가 로직 구현)
+      };
+
+      mainElement.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+        mainElement.removeEventListener('scroll', handleScroll);
+      };
+    }
+
+    // 데스크톱에서는 기존 로직 유지
+    if (!isFixed) return;
 
     const handleScroll = () => {
       if (!sectionRef.current || !horizontalContainerRef.current) return;
@@ -117,16 +183,21 @@ const Achievements = () => {
     return () => {
       mainElement.removeEventListener('scroll', handleScroll);
     };
-  }, [isFixed]);
+  }, [isFixed, isMobileDevice]);
 
   return (
     <section ref={sectionRef} className={style.wrap}>
-      {/* 각 카드마다 스크롤 스냅 포인트 */}
-      {items.map((_, itemIndex) => (
-        <div key={`snap-${itemIndex}`} className={style.snapPoint} />
-      ))}
+      {/* 각 카드마다 스크롤 스냅 포인트 (모바일에서 제외) */}
+      {!isMobileDevice &&
+        items.map((_, itemIndex) => (
+          <div key={`snap-${itemIndex}`} className={style.snapPoint} />
+        ))}
 
-      <div className={`${style.container} ${isFixed ? style.isFixed : ''}`}>
+      <div
+        className={`${style.container} ${
+          isFixed && !isMobileDevice ? style.isFixed : ''
+        }`}
+      >
         {/* 헤더 */}
         <header>
           <h2 className={style.title}>{achievements.title}</h2>

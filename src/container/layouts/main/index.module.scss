@@ -16,6 +16,9 @@
     scroll-behavior: smooth;
 
     @include m.breakpoint(mobile) {
+      overflow-y: auto;
+      overflow-x: auto;
+      height: auto;
       scroll-snap-type: none;
       scroll-behavior: auto;
     }

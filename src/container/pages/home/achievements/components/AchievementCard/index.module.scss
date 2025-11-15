@@ -1,3 +1,5 @@
+@use '@/styles/_mixins.scss' as m;
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -35,6 +37,10 @@
     padding: var(--spacing-3);
     border-radius: var(--spacing-2);
     border: 1px solid #e0e0e0;
+
+    @include m.breakpoint(mobile) {
+      margin-top: var(--spacing-3);
+    }
 
     .pointLabel {
       font-size: 14px;

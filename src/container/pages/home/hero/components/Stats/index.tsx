@@ -34,4 +34,3 @@ const Stats = ({ stats, countedValues }: StatsProps) => {
 };
 
 export default Stats;
-

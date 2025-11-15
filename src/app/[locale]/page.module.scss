@@ -5,16 +5,31 @@
   width: 800px;
   max-width: 60%;
   margin: auto;
+  min-height: 100vh;
+
+  // @include m.breakpoint(mobile) {
+  //   height: unset;
+  //
+  // }
 
   @include m.breakpoint(tablet) {
     min-width: 600px;
     width: 500px;
     max-width: 80%;
+    min-height: unset;
+  }
+
+  @include m.breakpoint(mobile) {
+    min-width: unset;
+    width: 90%;
+    max-width: unset;
   }
 
   > section {
+    padding: var(--spacing-10) 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    overflow: hidden;
 
     @include m.breakpoint(mobile) {
       scroll-snap-align: none;

@@ -23,9 +23,7 @@ const Quotes = ({ quotes }: QuotesProps) => {
             key={index}
             quote={quote}
             index={index}
-            delay={
-              SECTION_DELAY.TEAMSAYS + ITEM_DELAY_INTERVAL * index
-            }
+            delay={SECTION_DELAY.TEAMSAYS + ITEM_DELAY_INTERVAL * index}
           />
         ))}
       </div>
@@ -44,4 +42,3 @@ const Quotes = ({ quotes }: QuotesProps) => {
 };
 
 export default Quotes;
-
