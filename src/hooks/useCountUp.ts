@@ -1,9 +1,14 @@
 import { useEffect, useState, useRef } from 'react';
 
+import { COUNT_UP } from '@/constants/common';
+
 /**
  * 숫자 카운트업 훅(애니메이션)
  */
-export const useCountUp = (values: string[], duration: number = 2000) => {
+export const useCountUp = (
+  values: string[],
+  duration: number = COUNT_UP.DEFAULT_DURATION
+) => {
   const [countedValues, setCountedValues] = useState<Record<number, number>>(
     {}
   );
@@ -27,7 +32,7 @@ export const useCountUp = (values: string[], duration: number = 2000) => {
     values.forEach((value, index) => {
       const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
       if (!isNaN(numericValue)) {
-        const steps = 60;
+        const steps = COUNT_UP.STEPS;
         const increment = numericValue / steps;
         let current = 0;
 

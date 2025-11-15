@@ -108,11 +108,11 @@
 
         > ul {
           display: flex;
-          gap: var(--spacing-5);
+          gap: var(--achievement-card-gap);
           position: relative;
 
           > li {
-            flex: 400px 0 0;
+            flex: var(--achievement-card-width) 0 0;
             background: #f6f5ef;
             border-radius: var(--spacing-3);
             border: 1px solid var(--theme-background-tertiary);

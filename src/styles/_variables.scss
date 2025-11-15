@@ -51,6 +51,10 @@
   --spacing-20: #{fn.spacing(20)};
   --spacing-30: #{fn.spacing(30)};
 
+  /* Achievements 섹션 상수 */
+  --achievement-card-width: 400px;
+  --achievement-card-gap: 20px;
+
   // font
   --font-weight-base: 300; // 기본 텍스트
   --font-weight-title: 700; // 타이틀

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import type { AchievementItem } from '../../../types';
 
@@ -15,7 +15,8 @@ interface AchievementCardProps {
 /**
  * Achievement Card Component
  */
-const AchievementCard = ({ item, stepNumber, delay }: AchievementCardProps) => {
+const AchievementCard = memo(
+  ({ item, stepNumber, delay }: AchievementCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
     once: true,
@@ -54,6 +55,8 @@ const AchievementCard = ({ item, stepNumber, delay }: AchievementCardProps) => {
       </div>
     </motion.div>
   );
-};
+});
+
+AchievementCard.displayName = 'AchievementCard';
 
 export default AchievementCard;

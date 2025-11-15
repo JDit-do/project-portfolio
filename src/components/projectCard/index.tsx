@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
@@ -9,7 +10,7 @@ import { ICON_TYPE } from '@/components/icon/index.type';
 import { IProjectCardProps } from './index.type';
 import style from './index.module.scss';
 
-const ProjectCard = ({ project, onViewDetail }: IProjectCardProps) => {
+const ProjectCard = memo(({ project, onViewDetail }: IProjectCardProps) => {
   const t = useTranslations('projects.card');
 
   return (
@@ -83,7 +84,9 @@ const ProjectCard = ({ project, onViewDetail }: IProjectCardProps) => {
       </div>
     </div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;
 

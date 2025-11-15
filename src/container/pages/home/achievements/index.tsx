@@ -9,6 +9,8 @@ import {
 } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { ACHIEVEMENTS } from '@/constants/common';
+
 import { SECTION_DELAY, ITEM_DELAY_INTERVAL } from '../constants';
 import type { AchievementItem } from '../types';
 import AchievementCard from './components/AchievementCard';
@@ -16,11 +18,11 @@ import AchievementCard from './components/AchievementCard';
 import style from './index.module.scss';
 
 /**
- * 모바일 여부 확인 (768px 이하)
+ * 모바일 여부 확인
  */
 const isMobile = () => {
   if (typeof window === 'undefined') return false;
-  return window.innerWidth <= 768;
+  return window.innerWidth <= ACHIEVEMENTS.MOBILE_BREAKPOINT;
 };
 
 /**
@@ -128,7 +130,7 @@ const Achievements = () => {
       // 모바일로 전환될 때 translateX 초기화
       horizontalContainerRef.current.style.transform = 'translateX(0)';
       horizontalContainerRef.current.style.transition =
-        'transform 0.3s ease-out';
+        `transform ${ACHIEVEMENTS.MOBILE_TRANSITION}s ease-out`;
     }
   }, [isMobileDevice]);
 
@@ -165,16 +167,14 @@ const Achievements = () => {
           Math.min(items.length - 1, Math.round(scrollOffset / viewportHeight))
         );
 
-        // 카드 너비 (400px) + gap (20px = spacing-5)
-        const cardWidth = 400;
-        const cardGap = 20;
-        const cardTotalWidth = cardWidth + cardGap;
+        // 카드 너비 + gap 계산
+        const cardTotalWidth = ACHIEVEMENTS.CARD_WIDTH + ACHIEVEMENTS.CARD_GAP;
 
         // 좌우 이동
         const translateX = -snapIndex * cardTotalWidth;
         horizontalContainerRef.current!.style.transform = `translateX(${translateX}px)`;
         horizontalContainerRef.current!.style.transition =
-          'transform 0.1s ease-out';
+          `transform ${ACHIEVEMENTS.SCROLL_TRANSITION}s ease-out`;
       });
     };
 

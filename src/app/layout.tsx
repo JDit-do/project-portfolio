@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import { LOCALE_ID } from '@/lib/notion/config';
 import { METADATA, VIEWPORT } from '@/config/seo/defaultSeoConfig';
 import { ThemeProvider } from '@/components/provider/theme-provider';
+import ErrorBoundary from '@/components/errorBoundary';
 
 import '@/styles/globals.css'; // Tailwind 변수 및 유틸리티
 import '@/styles/globals.scss'; // 레이아웃 및 전역 스타일
@@ -32,11 +33,13 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
