@@ -31,6 +31,7 @@ export const useCountUp = (
     // 각 값에 대해 카운트업 시작
     values.forEach((value, index) => {
       const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+      
       if (!isNaN(numericValue)) {
         const steps = COUNT_UP.STEPS;
         const increment = numericValue / steps;
@@ -52,7 +53,6 @@ export const useCountUp = (
         timersRef.current.push(timer);
       } else {
         // 숫자가 아닌 경우 원본 값의 숫자 부분을 추출하여 초기값으로 설정
-        const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
         if (!isNaN(numericValue)) {
           setCountedValues((prev) => ({
             ...prev,

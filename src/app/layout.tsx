@@ -29,7 +29,12 @@ export default async function RootLayout({
       <head>
         <link
           rel="preconnect"
+          href="https://cdn.jsdelivr.net"
+        />
+        <link
+          rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
+          crossOrigin="anonymous"
         />
       </head>
       <body>

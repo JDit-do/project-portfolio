@@ -28,15 +28,14 @@ const TypingText = ({
     startDelay
   );
 
-  const displayText = displayedText || '';
   const Tag = tag;
-  const shouldShowCursor = showCursor && displayText.length > 0;
+  const shouldShowCursor = showCursor && (displayedText?.length ?? 0) > 0;
 
   return (
     <Tag
       className={`${style.typingText} ${className} ${shouldShowCursor ? style.showCursor : ''}`}
     >
-      {displayText}
+      {displayedText || ''}
     </Tag>
   );
 };

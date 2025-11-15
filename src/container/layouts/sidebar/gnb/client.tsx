@@ -19,8 +19,6 @@ interface GNBClientProps {
 export default function GNBClient({ items }: GNBClientProps) {
   const locale = useLocale() as TLOCALE;
   const pathname = usePathname();
-
-  // usePathname은 locale을 제외한 경로를 반환 (예: '/projects', '/')
   const currentPath = pathname || '/';
 
   return (
