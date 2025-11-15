@@ -1,24 +1,27 @@
+import { unstable_cache } from 'next/cache';
 import { getTranslations } from 'next-intl/server';
 
 import ProjectsContainer from '@/container/pages/projects';
-import { APIResponse } from '@/types/api';
 import { Project } from '@/types/project';
-import { APIEndpoints } from '@/constants/apiEndPoint';
+import { getProjects } from '@/lib/projects/getProjects';
 
 import style from './page.module.scss';
 
-async function getProjects(): Promise<Project[]> {
+async function getProjectsData(): Promise<Project[]> {
   try {
-    const response = await fetch(APIEndpoints.projects.list.url, {
-      next: { revalidate: 1800 } // 30분 캐싱
-    });
+    // 캐싱 적용 (30분)
+    const cachedGetProjects = unstable_cache(
+      async () => {
+        const { all } = await getProjects();
+        return all;
+      },
+      ['projects-list'],
+      {
+        revalidate: 1800 // 30분
+      }
+    );
 
-    if (!response.ok) {
-      return [];
-    }
-
-    const { data }: APIResponse<{ all: Project[] }> = await response.json();
-    return data?.all || [];
+    return await cachedGetProjects();
   } catch (error) {
     console.error('Error fetching projects:', error);
     return [];
@@ -27,7 +30,7 @@ async function getProjects(): Promise<Project[]> {
 
 export default async function ProjectsPage() {
   const t = await getTranslations('portfolio');
-  const initialProjects = await getProjects();
+  const initialProjects = await getProjectsData();
 
   return (
     <section className={style.wrap}>

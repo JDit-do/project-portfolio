@@ -1,8 +1,8 @@
+import { unstable_cache } from 'next/cache';
 import { getTranslations } from 'next-intl/server';
 
-import { APIResponse, GnbItem } from '@/types/api';
-
-import { APIEndpoints } from '@/constants/apiEndPoint';
+import { GnbItem } from '@/types/api';
+import { getGnb } from '@/lib/navigation/getGnb';
 
 import IconLink from '@/components/iconLink';
 
@@ -11,13 +11,33 @@ import GNBClient from './gnb/client';
 
 import style from './index.module.scss';
 
+/**
+ * 서버 컴포넌트에서 직접 GNB 데이터 가져오기
+ * API Route를 거치지 않고 공통 함수를 직접 호출하여 효율적
+ */
+async function getGnbData(): Promise<GnbItem[]> {
+  try {
+    // 캐싱 적용 (30분)
+    const cachedGetGnb = unstable_cache(
+      async () => {
+        return await getGnb();
+      },
+      ['gnb-list'],
+      {
+        revalidate: 1800 // 30분
+      }
+    );
+
+    return await cachedGetGnb();
+  } catch (error) {
+    console.error('Error fetching GNB data:', error);
+    return [];
+  }
+}
+
 export default async function Sidebar() {
   const t = await getTranslations('accessibility');
-  
-  const response = await fetch(APIEndpoints.navigation.gnb.url, {
-    next: { revalidate: 1800 }
-  });
-  const { data = [] }: APIResponse<GnbItem[]> = await response.json();
+  const data = await getGnbData();
 
   if (!(data.length > 0)) return <></>;
   return (
