@@ -16,7 +16,6 @@ import style from './page.module.scss';
 
 // 상수
 const ANIMATION_DURATION_MS = 300;
-const SKELETON_TAB_COUNT = 5;
 
 interface ProjectsPageClientProps {
   initialProjects: Project[];
