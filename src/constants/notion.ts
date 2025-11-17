@@ -8,7 +8,9 @@ export const NOTION_PROPERTY_TYPE = {
   CHECKBOX: 'checkbox',
   DATE: 'date',
   STATUS: 'status',
-  EMAIL: 'email'
+  EMAIL: 'email',
+  ROLLUP: 'rollup',
+  RELATION: 'relation'
 } as const;
 export type NOTION_PROPERTY_TYPE =
   (typeof NOTION_PROPERTY_TYPE)[keyof typeof NOTION_PROPERTY_TYPE];

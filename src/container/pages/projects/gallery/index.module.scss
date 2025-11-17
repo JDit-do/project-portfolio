@@ -1,22 +1,46 @@
 @use '@/styles/_mixins.scss' as m;
 
+.wrap {
+  display: flex;
+  flex: 1;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6) 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex-shrink: 0;
+    pointer-events: auto; // 카드 내부 클릭은 정상 동작
+  }
+
+  .card {
+    flex-shrink: 0;
+  }
+
+  @include m.breakpoint(mobile) {
+    gap: var(--spacing-5);
+    cursor: default; // 모바일에서는 기본 커서
+  }
+}
+
 .empty {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
-  border-radius: var(--spacing-10);
-  color: var(--theme-text-secondary);
-
-  @include m.font(
-    $font-size: 1.5rem,
-    $font-weight: var(--font-weight-subtitle),
-    $text-align: center,
-    $color: var(--theme-text-secondary)
-  );
-
-  @include m.breakpoint(mobile) {
-    padding: var(--spacing-6);
-    font-size: 0.9rem;
-  }
+  min-height: 400px;
+  color: #999;
+  font-size: 16px;
 }

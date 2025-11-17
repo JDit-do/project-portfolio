@@ -48,7 +48,7 @@ const BlurFade = ({
     };
   }, []);
 
-  const inViewResult = useInView(ref, { 
+  const inViewResult = useInView(ref, {
     once: true,
     ...(inViewMargin && { margin: inViewMargin })
   } as Parameters<typeof useInView>[1]);
@@ -69,10 +69,10 @@ const BlurFade = ({
     ) as React.ReactElement;
   }
 
-  // framer-motion의 motion 컴포넌트를 안전하게 가져오기
-  const MotionComponent = motion[as as keyof typeof motion] as React.ComponentType<
-    HTMLMotionProps<'div'>
-  >;
+  // framer-motion의 motion 컴포넌트
+  const MotionComponent = motion[
+    as as keyof typeof motion
+  ] as React.ComponentType<HTMLMotionProps<'div'>>;
 
   return (
     <MotionComponent
@@ -94,4 +94,3 @@ const BlurFade = ({
 };
 
 export default BlurFade;
-

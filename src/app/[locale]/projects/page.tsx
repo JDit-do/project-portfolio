@@ -1,45 +1,20 @@
-import { unstable_cache } from 'next/cache';
-import { getTranslations } from 'next-intl/server';
-
-import ProjectsContainer from '@/container/pages/projects';
-import { Project } from '@/types/project';
 import { getProjects } from '@/lib/projects/getProjects';
+import { getProjectCategories } from '@/lib/projects/getProjectCategories';
+import ProjectsPageClient from './ProjectsPageClient';
 
-import style from './page.module.scss';
-
-async function getProjectsData(): Promise<Project[]> {
-  try {
-    // 캐싱 적용 (30분)
-    const cachedGetProjects = unstable_cache(
-      async () => {
-        const { all } = await getProjects();
-        return all;
-      },
-      ['projects-list'],
-      {
-        revalidate: 1800 // 30분
-      }
-    );
-
-    return await cachedGetProjects();
-  } catch (error) {
-    console.error('Error fetching projects:', error);
-    return [];
-  }
-}
-
+/**
+ * 프로젝트 페이지 컴포넌트
+ */
 export default async function ProjectsPage() {
-  const t = await getTranslations('portfolio');
-  const initialProjects = await getProjectsData();
+  const [projects, categories] = await Promise.all([
+    getProjects(),
+    getProjectCategories()
+  ]);
 
   return (
-    <section className={style.wrap}>
-      <header className={style.header}>
-        <h1 className={style.title}>{t('title')}</h1>
-        <p className={style.subtitle}>{t('subtitle')}</p>
-      </header>
-
-      <ProjectsContainer initialProjects={initialProjects} />
-    </section>
+    <ProjectsPageClient
+      initialProjects={projects}
+      initialCategories={categories}
+    />
   );
 }

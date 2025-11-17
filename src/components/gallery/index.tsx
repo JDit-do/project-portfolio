@@ -20,4 +20,3 @@ const Gallery = <T,>({ items, renderItem, columns = 3 }: IGalleryProps<T>) => {
 };
 
 export default Gallery;
-

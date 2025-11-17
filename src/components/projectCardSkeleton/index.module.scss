@@ -1,113 +1,50 @@
 @use '@/styles/_mixins.scss' as m;
+@use '@/styles/_skeleton.scss' as skeleton;
 
 .wrap {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--theme-background-secondary);
-  border-radius: var(--spacing-2);
+  flex: 320px 0 0;
+  border-radius: var(--spacing-3);
+  background: #ffffff;
+  border: 1px solid var(--background-tertiary);
   overflow: hidden;
   height: 100%;
-  width: 100%;
-
-  .thumbnail {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    background: var(--theme-background-tertiary);
-    animation: pulse 1.5s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2);
-    padding: var(--spacing-4);
-    flex: 1;
-
-    .title {
-      width: 70%;
-      height: 24px;
-      background: var(--theme-background-tertiary);
-      border-radius: var(--spacing-1);
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    .description {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-1);
-      margin: var(--spacing-1) 0;
-
-      .line {
-        width: 100%;
-        height: 12px;
-        background: var(--theme-background-tertiary);
-        border-radius: var(--spacing-1);
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-
-      .lineShort {
-        width: 60%;
-        height: 12px;
-        background: var(--theme-background-tertiary);
-        border-radius: var(--spacing-1);
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-1);
-      margin: var(--spacing-2) 0;
-
-      .tag {
-        width: 60px;
-        height: 20px;
-        background: var(--theme-background-tertiary);
-        border-radius: var(--spacing-1);
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-    }
-
-    .links {
-      display: flex;
-      gap: var(--spacing-2);
-      margin-top: auto;
-
-      .link {
-        flex: 1;
-        height: 36px;
-        background: var(--theme-background-tertiary);
-        border-radius: var(--spacing-1);
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-    }
-  }
-
-  @include m.breakpoint(tablet) {
-    .content {
-      padding: var(--spacing-3);
-    }
-  }
 
   @include m.breakpoint(mobile) {
-    min-height: auto;
-
-    .content {
-      padding: var(--spacing-3);
-    }
+    flex: 80% 0 0;
   }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+.title {
+  @include skeleton.skeleton-title;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  flex: 1;
+
+  .line {
+    @include skeleton.skeleton-line;
   }
-  50% {
-    opacity: 0.5;
+
+  .lineShort {
+    @include skeleton.skeleton-line-short;
   }
+}
+
+.tag {
+  @include skeleton.skeleton-tag;
+}
+
+.dateLine {
+  @include skeleton.skeleton-date;
+}
+
+.link {
+  @include skeleton.skeleton-button;
 }
 

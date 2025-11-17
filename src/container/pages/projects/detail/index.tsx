@@ -6,12 +6,13 @@ import { useTranslations } from 'next-intl';
 import Button from '@/components/button';
 import Icon from '@/components/icon';
 import { ICON_TYPE } from '@/components/icon/index.type';
+import ProjectContent from '@/components/projectContent';
 
 import { Project } from '@/types/project';
 
 import style from './index.module.scss';
 
-interface ProjectDetailProps {
+interface ProjectsDetailProps {
   project: Project | null;
   isOpen: boolean;
   onClose: () => void;
@@ -20,7 +21,7 @@ interface ProjectDetailProps {
 /**
  * 프로젝트 상세 팝업 컴포넌트
  */
-const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
+const ProjectsDetail = ({ project, isOpen, onClose }: ProjectsDetailProps) => {
   const t = useTranslations('projects.detail');
 
   if (!project) return null;
@@ -53,68 +54,13 @@ const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
           )}
 
           {/* 프로젝트 정보 */}
-          <div className={style.info}>
-            <div className={style.titleSection}>
-              <h2 className={style.title}>{project.title}</h2>
-              {project.isFavorite && (
-                <div className={style.pin}>
-                  <Icon
-                    type={ICON_TYPE.ICON_TYPE_PROJECT.pin}
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              )}
-            </div>
-
-            <p className={style.description}>{project.description}</p>
-
-            {/* 태그 */}
-            {project.tags && project.tags.length > 0 && (
-              <div className={style.tags}>
-                {project.tags.map((tag, index) => (
-                  <span key={index} className={style.tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* 기간 */}
-            {(project.startDate || project.endDate) && (
-              <div className={style.date}>
-                <span className={style.dateLabel}>{t('period')}:</span>
-                <span className={style.dateValue}>
-                  {project.startDate || '?'} ~ {project.endDate || '진행 중'}
-                </span>
-              </div>
-            )}
-
-            {/* 링크 */}
-            <div className={style.links}>
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.link}
-                >
-                  <Icon type={ICON_TYPE.ICON_TYPE_COMMON.github} />
-                  GitHub
-                </a>
-              )}
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.link}
-                >
-                  <Icon type={ICON_TYPE.ICON_TYPE_COMMON.external} />
-                  {t('viewSite')}
-                </a>
-              )}
-            </div>
+          <div className={`${style.info} detail`}>
+            <ProjectContent
+              project={project}
+              variant="detail"
+              showDateLabel
+              showThumbnail={false}
+            />
           </div>
         </div>
       </div>
@@ -122,4 +68,4 @@ const ProjectDetail = ({ project, isOpen, onClose }: ProjectDetailProps) => {
   );
 };
 
-export default ProjectDetail;
+export default ProjectsDetail;

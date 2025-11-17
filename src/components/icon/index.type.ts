@@ -9,7 +9,8 @@ import {
   PushpinFilled,
   CloseOutlined,
   GithubOutlined,
-  LinkOutlined
+  LinkOutlined,
+  EyeOutlined
 } from '@ant-design/icons';
 
 import fill from './svg/logo';
@@ -55,7 +56,8 @@ type ICON_TYPE_PROJECT =
 const ICON_TYPE_COMMON = {
   close: CloseOutlined,
   github: GithubOutlined,
-  external: LinkOutlined
+  external: LinkOutlined,
+  detail: EyeOutlined
 } as const;
 type ICON_TYPE_COMMON =
   (typeof ICON_TYPE_COMMON)[keyof typeof ICON_TYPE_COMMON];

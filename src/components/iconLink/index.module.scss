@@ -15,15 +15,16 @@
   }
 
   .label {
+    margin-left: 8px;
+    padding: 4px 8px;
     position: absolute;
     left: 100%;
-    margin-left: 8px;
-    white-space: nowrap;
-    padding: 4px 8px;
-    background-color: var(--theme-background-primary);
+    background: var(--theme-background-primary);
     color: var(--theme-text-primary);
+    border: 1px solid var(--theme-border-default);
     border-radius: 4px;
     font-size: 12px;
+    white-space: nowrap;
     pointer-events: none;
     opacity: 0;
     transform: translateX(-4px);
@@ -32,7 +33,6 @@
       transform 0.2s ease;
     z-index: 1000;
     visibility: hidden;
-    border: 1px solid var(--theme-border-default);
   }
 
   &.hovered .label,

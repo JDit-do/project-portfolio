@@ -19,20 +19,28 @@
     "title": "Projects",
     "description": "Projects are being prepared.",
     "tabs": {
-      "career": "Career Projects",
-      "side": "Side Projects"
+      "all": "All",
+      "career": "Career",
+      "side": "Side",
+      "toy": "Toy",
+      "study": "Study"
     },
     "favorites": {
       "title": "Favorite Projects"
     },
     "empty": "Content is being prepared. Please wait a moment, thank you :D",
     "card": {
-      "viewDetail": "View Detail"
+      "viewDetail": "View Detail",
+      "github": "GitHub"
     },
+    "count": " items",
+    "filter": "filter",
     "detail": {
       "close": "Close",
       "period": "Period",
-      "viewSite": "View Site"
+      "viewSite": "View Site",
+      "github": "GitHub",
+      "inProgress": "In Progress"
     }
   },
   "locale": {
@@ -55,6 +63,7 @@
   },
   "accessibility": {
     "sidebar": "Sidebar",
+    "globalNavigation": "Global navigation",
     "projectCategory": "Select project category",
     "project": "Project",
     "projectThumbnail": "No thumbnail",

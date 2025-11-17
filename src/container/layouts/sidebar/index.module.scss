@@ -13,7 +13,7 @@
     transparent,
     var(--theme-background-primary)
   );
-  z-index: 9998;
+  z-index: 9000;
 
   .gnbWrap {
     display: flex;
@@ -32,7 +32,7 @@
           color: var(--theme-active-text);
           font-weight: 600;
         }
-        
+
         &::before {
           content: '';
           position: absolute;
@@ -45,11 +45,13 @@
           border-radius: 2px;
         }
       }
-      
+
       a {
         display: block;
         padding: var(--spacing-4) var(--spacing-6);
-        transition: color 0.2s ease, font-weight 0.2s ease;
+        transition:
+          color 0.2s ease,
+          font-weight 0.2s ease;
 
         &:hover {
           background: var(--theme-background-secondary);

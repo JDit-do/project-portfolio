@@ -1,26 +1,69 @@
+@use '@/styles/_mixins.scss' as m;
+@use '@/styles/_skeleton.scss' as skeleton;
+
 .wrap {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 100%;
-  text-align: center;
+  gap: var(--spacing-5);
+  height: 100%;
 
-  .header {
-    width: 100%;
-    margin-bottom: var(--spacing-4);
-  }
+  .contents {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-2);
 
-  .title {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-2);
-  }
+    .tabs {
+      display: flex;
+      justify-content: flex-end;
 
-  .subtitle {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
+      .tabsSkeleton {
+        display: flex;
+        gap: var(--spacing-2);
+        justify-content: flex-end;
+      }
+
+      .tabSkeleton {
+        @include skeleton.skeleton-base;
+        width: 80px;
+        height: 36px;
+        border-radius: 20px;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+
+    .bottom {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: var(--spacing-4);
+
+      .bottomSkeleton {
+        @include skeleton.skeleton-base;
+        width: 120px;
+        height: 20px;
+      }
+
+      .indicators {
+        display: flex;
+        gap: var(--spacing-2);
+
+        .indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #999;
+          transition: all 0.3s ease;
+
+          &.active {
+            width: 24px;
+            border-radius: var(--spacing-1);
+            background: #1a1a1a;
+          }
+        }
+      }
+    }
   }
 }

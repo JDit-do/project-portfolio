@@ -1,4 +1,5 @@
 import { getLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 
 import { TLOCALE } from '@/types/common';
@@ -12,6 +13,7 @@ import style from './index.module.scss';
 export default async function GNB() {
   const path = await getPath();
   const locale = await getLocale();
+  const t = await getTranslations('accessibility');
 
   const response = await fetch(APIEndpoints.navigation.gnb.url, {
     next: { revalidate: 1800 }
@@ -20,7 +22,7 @@ export default async function GNB() {
 
   if (!(data.length > 0)) return <></>;
   return (
-    <nav className={style.wrap}>
+    <nav className={style.wrap} aria-label={t('globalNavigation')}>
       <ul className={style.wrapList}>
         {data.map(({ id, url, menu }) => {
           const _locale = locale as TLOCALE;

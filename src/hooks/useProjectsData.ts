@@ -6,52 +6,30 @@ import { APIEndpoints } from '@/constants/apiEndPoint';
 interface UseProjectsDataReturn {
   projects: Project[];
   isLoading: boolean;
-  error: Error | null;
 }
 
 /**
- * 프로젝트 데이터를 API에서 가져오는 Hook
+ * 프로젝트 데이터를 관리하는 Hook
+ * 
+ * - 서버에서 받은 초기 데이터를 사용
+ * - 백그라운드에서 재검증 수행 (데이터 갱신)
+ * - 필터링은 클라이언트에서 수행 (useProjects Hook 사용)
+ * 
  * @param initialProjects - 서버에서 미리 가져온 초기 프로젝트 데이터
  */
 export const useProjectsData = (initialProjects: Project[] = []): UseProjectsDataReturn => {
   const [projects, setProjects] = useState<Project[]>(initialProjects);
   const [isLoading, setIsLoading] = useState(initialProjects.length === 0);
-  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    // 초기 데이터가 있으면 클라이언트에서 재검증만 수행
-    if (initialProjects.length > 0) {
-      const revalidateProjects = async () => {
-        try {
-          const response = await fetch(APIEndpoints.projects.list.url, {
-            next: { revalidate: 1800 }
-          });
-
-          if (response.ok) {
-            const { data }: APIResponse<{ all: Project[] }> =
-              await response.json();
-            if (data?.all && data.all.length > 0) {
-              setProjects(data.all);
-            }
-          }
-        } catch (err) {
-          // 재검증 실패해도 초기 데이터는 유지
-          console.error('Failed to revalidate projects:', err);
-        }
-      };
-
-      // 백그라운드에서 재검증
-      revalidateProjects();
-      return;
-    }
-
-    // 초기 데이터가 없으면 클라이언트에서 가져오기
-    const fetchProjects = async () => {
+    // 프로젝트 데이터 가져오기 공통 함수
+    const fetchProjects = async (isRevalidation = false) => {
       try {
-        setIsLoading(true);
-        const response = await fetch(APIEndpoints.projects.list.url, {
-          next: { revalidate: 1800 }
-        });
+        if (!isRevalidation) {
+          setIsLoading(true);
+        }
+
+        const response = await fetch(APIEndpoints.projects.list.url);
 
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
@@ -59,18 +37,30 @@ export const useProjectsData = (initialProjects: Project[] = []): UseProjectsDat
 
         const { data }: APIResponse<{ all: Project[] }> =
           await response.json();
-        setProjects(data?.all || []);
-        setError(null);
+        
+        const projects = data?.all && data.all.length > 0 ? data.all : [];
+        setProjects(projects);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Unknown error'));
-        setProjects([]);
+        console.error('Failed to fetch projects:', err);
+        if (!isRevalidation) {
+          setProjects([]);
+        }
       } finally {
-        setIsLoading(false);
+        if (!isRevalidation) {
+          setIsLoading(false);
+        }
       }
     };
 
-    fetchProjects();
+    // 초기 데이터가 있으면 백그라운드에서 재검증만 수행
+    if (initialProjects.length > 0) {
+      fetchProjects(true);
+      return;
+    }
+
+    // 초기 데이터가 없으면 클라이언트에서 가져오기
+    fetchProjects(false);
   }, [initialProjects.length]);
 
-  return { projects, isLoading, error };
+  return { projects, isLoading };
 };

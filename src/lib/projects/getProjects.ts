@@ -1,120 +1,76 @@
-import { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints';
-
 import { NotionUtils } from '@/utils/notion';
 import { Project, ProjectType } from '@/types/project';
 import { getNotionQuery } from '@/lib/notion/client';
-import { NOTION_DB_PROJECTS_ID } from '@/lib/notion/config';
+import { NOTION_DB_PROJECT_ID } from '@/lib/notion/config';
 
 /**
  * Notion 응답을 Project 배열로 변환하는 공통 함수
+ *
+ * - `is_shareable`이 `true`인 프로젝트만 필터링
+ * - Notion 속성을 Project 타입으로 매핑
+ *
+ * @param response - Notion DB 쿼리 응답
+ * @returns 공유 가능한 프로젝트 배열
  */
 export const mapNotionResponseToProjects = (
   response: Awaited<ReturnType<typeof getNotionQuery>>
 ): Project[] => {
   return response
     .map((item) => {
-      const isShareable = NotionUtils.getBoolean(
-        item.properties.is_shareable
-      );
-      // 공유 가능한 프로젝트만 필터링
+      const isShareable = NotionUtils.getBoolean(item.properties.is_shareable);
+
       if (!isShareable) {
         return null;
       }
 
-      const type = NotionUtils.getString(
-        item.properties.type
-      ) as ProjectType;
+      const title = NotionUtils.getString(item.properties.title);
+      const description = NotionUtils.getString(item.properties.description);
+      const type = NotionUtils.getString(item.properties.type) as ProjectType;
 
-      const project = {
+      // 필수 필드 검증
+      if (!title || !description) {
+        return null;
+      }
+
+      const tags = NotionUtils.getMultiSelect(item.properties.tags);
+
+      const project: Project = {
         id: item.id,
-        title: NotionUtils.getString(item.properties.title),
-        description: NotionUtils.getString(item.properties.description),
-        thumbnail:
-          NotionUtils.getString(item.properties.thumbnail) || undefined,
-        type: type || ('career' as ProjectType), // 기본값 설정
+        title,
+        description,
+        thumbnail: NotionUtils.getString(item.properties.thumbnail, true),
+        type: type || ('career' as ProjectType), // 기본값: career
         isFavorite: NotionUtils.getBoolean(item.properties.is_favorite),
-        tags: NotionUtils.getMultiSelect(item.properties.tags),
-        link: NotionUtils.getString(item.properties.link) || undefined,
-        github: NotionUtils.getString(item.properties.github) || undefined,
-        startDate:
-          NotionUtils.getString(item.properties.start_date) || undefined,
-        endDate: NotionUtils.getString(item.properties.end_date) || undefined
-      } as Project;
+        tags,
+        link: NotionUtils.getString(item.properties.link, true),
+        github: NotionUtils.getString(item.properties.github, true),
+        startDate: NotionUtils.getString(item.properties.start_date, true),
+        endDate: NotionUtils.getString(item.properties.end_date, true)
+      };
 
       return project;
     })
     .filter((project): project is Project => project !== null);
 };
 
-interface GetProjectsOptions {
-  filterKey?: string;
-  filterValue?: string;
-}
-
 /**
- * 프로젝트 데이터를 가져오는 공통 함수
- * 서버 컴포넌트와 API Route에서 모두 사용 가능
+ * 프로젝트 데이터를 가져오는 함수
+ *
+ * @returns 전체 프로젝트 목록
  */
-export async function getProjects(
-  options: GetProjectsOptions = {}
-): Promise<{
-  all: Project[];
-  filtered?: Project[];
-}> {
-  const { filterKey, filterValue } = options;
-  let allData: Project[] = [];
-  let filteredData: Project[] = [];
-
-  if (!NOTION_DB_PROJECTS_ID) {
-    return { all: [] };
+export async function getProjects(): Promise<Project[]> {
+  if (!NOTION_DB_PROJECT_ID) {
+    return [];
   }
 
   try {
-    // 전체 데이터 가져오기
-    const allResponse = await getNotionQuery(NOTION_DB_PROJECTS_ID);
-    allData = mapNotionResponseToProjects(allResponse);
+    // 전체 데이터
+    const allResponse = await getNotionQuery(NOTION_DB_PROJECT_ID);
+    const projects = mapNotionResponseToProjects(allResponse);
 
-    // 필터가 있으면 필터링된 데이터도 가져오기
-    if (filterKey && filterValue) {
-      // 필터 타입 결정
-      let filterType = 'select';
-      if (filterKey === 'tags') {
-        filterType = 'multi_select';
-      } else if (filterKey === 'category' || filterKey === 'type') {
-        filterType = 'select';
-      }
-
-      const filter: QueryDatabaseParameters['filter'] = {
-        and: [
-          {
-            property: 'is_shareable',
-            checkbox: {
-              equals: true
-            }
-          },
-          {
-            property: filterKey,
-            [filterType]: {
-              equals: filterValue
-            }
-          }
-        ]
-      } as QueryDatabaseParameters['filter'];
-
-      const filteredResponse = await getNotionQuery(
-        NOTION_DB_PROJECTS_ID,
-        filter
-      );
-      filteredData = mapNotionResponseToProjects(filteredResponse);
-    }
-
-    return {
-      all: allData,
-      ...(filterKey && filterValue && { filtered: filteredData })
-    };
+    return projects;
   } catch (error) {
     console.error('Error fetching projects:', error);
-    return { all: [] };
+    return [];
   }
 }
-

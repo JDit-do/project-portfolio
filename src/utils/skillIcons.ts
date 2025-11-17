@@ -40,6 +40,8 @@ export const getSkillIconUrl = (skillName: string): string | null => {
     D3: 'd3js',
     // 'Chart.js': 'chartjs',
     Chartjs: 'chartjs',
+    ApexCharts: 'apexcharts',
+    'Apex Charts': 'apexcharts',
     
     // Backend
     'Spring Boot': 'spring',
@@ -72,6 +74,10 @@ export const getSkillIconUrl = (skillName: string): string | null => {
     Git: 'git',
     GitHub: 'github',
     
+    // API & Services
+    Notion: 'notion',
+    'Notion API': 'notion',
+    
     // Others
     Vite: 'vite',
     Webpack: 'webpack',
@@ -102,6 +108,7 @@ export const getSkillIconUrl = (skillName: string): string | null => {
     Keepalived: 'linux',
     HAProxy: 'linux',
     VMware: 'vmware',
+    'Notion API': 'notion',
   };
 
   const normalizedName = skillName.trim();

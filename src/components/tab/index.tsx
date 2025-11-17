@@ -15,20 +15,21 @@ const Tab = <T extends string | number>({
   const t = useTranslations('accessibility');
 
   return (
-    <div className={style.wrap} role="tablist" aria-label={t('projectCategory')}>
+    <ul className={style.wrap} role="tablist" aria-label={t('projectCategory')}>
       {options.map((option) => (
-        <Button
-          key={String(option.value)}
-          onClick={() => onChange(option.value)}
-          className={`${style.tab} ${value === option.value ? style.active : ''}`}
-          ariaLabel={`${option.label} ${t('tabView')}`}
-          aria-selected={value === option.value}
-          role="tab"
-        >
-          {option.label}
-        </Button>
+        <li key={String(option.value)}>
+          <Button
+            onClick={() => onChange(option.value)}
+            className={`${style.tab} ${value === option.value ? style.active : ''}`}
+            ariaLabel={`${option.label} ${t('tabView')}`}
+            aria-selected={value === option.value}
+            role="tab"
+          >
+            {option.label}
+          </Button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

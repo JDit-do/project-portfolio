@@ -3,53 +3,36 @@ import { getNotionQuery } from '@/lib/notion/client';
 import { NOTION_DB_PROJECT_CATEGORY_ID } from '@/lib/notion/config';
 
 /**
- * 프로젝트 카테고리 데이터를 가져오는 공통 함수
+ * 프로젝트 카테고리 데이터를 가져오는 함수
+ * Category DB 구조: Title, type (Select), is_active (Checkbox), 비고, projects (관계형)
  */
-export async function getProjectCategories(): Promise<Record<string, string[]>> {
-  const filterOptions: Record<string, string[]> = {};
+export async function getProjectCategories(): Promise<string[]> {
+  const categories: string[] = [];
 
   if (!NOTION_DB_PROJECT_CATEGORY_ID) {
-    return filterOptions;
+    return categories;
   }
 
   try {
-    const categoryResponse = await getNotionQuery(NOTION_DB_PROJECT_CATEGORY_ID);
+    const categoryResponse = await getNotionQuery(
+      NOTION_DB_PROJECT_CATEGORY_ID
+    );
 
-    // order 필드로 정렬 (있는 경우)
-    const sortedItems = [...categoryResponse].sort((a, b) => {
-      const orderA = NotionUtils.getNumber(a.properties.order || {});
-      const orderB = NotionUtils.getNumber(b.properties.order || {});
-      return orderA - orderB;
-    });
-
-    sortedItems.forEach((item) => {
-      const filterKey = NotionUtils.getString(
-        item.properties.filter_key || item.properties.key
-      );
-      const filterValue = NotionUtils.getString(
-        item.properties.filter_value || item.properties.value
-      );
+    categoryResponse.forEach((item) => {
+      const type = NotionUtils.getString(item.properties.type);
       const isActive = NotionUtils.getBoolean(
         item.properties.is_active || item.properties.active
       );
 
-      if (isActive === false || !filterKey || !filterValue) {
-        return;
-      }
-
-      if (!filterOptions[filterKey]) {
-        filterOptions[filterKey] = [];
-      }
-
-      if (!filterOptions[filterKey].includes(filterValue)) {
-        filterOptions[filterKey].push(filterValue);
+      // 활성화된 카테고리만 추가하고, type 값이 있어야 함
+      if (isActive && type && !categories.includes(type)) {
+        categories.push(type);
       }
     });
 
-    return filterOptions;
+    return categories;
   } catch (error) {
-    console.error('Error fetching project categories:', error);
-    return filterOptions;
+    console.error('[getProjectCategories] Error:', error);
+    return categories;
   }
 }
-

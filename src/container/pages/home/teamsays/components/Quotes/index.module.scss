@@ -14,8 +14,7 @@
     > * {
       flex: calc(50% - var(--spacing-3));
       aspect-ratio: 9 / 6;
-      background: var(--theme-background-primary);
-      background-color: rgba(rgb(248, 243, 217), 0.5);
+      background: rgba(rgb(248, 243, 217), 0.5);
       backdrop-filter: blur(30px);
       border-radius: var(--spacing-3);
       overflow: hidden;

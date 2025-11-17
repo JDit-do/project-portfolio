@@ -51,8 +51,7 @@ export async function withApiHandler<T>(
     const data = await handler();
     return createSuccessResponse(data);
   } catch (error) {
-    console.error(`API Handler Error: ${errorMessage}`, error);
+    console.error(`[withApiHandler] Error: ${errorMessage}`, error);
     return createErrorResponse(errorMessage, 500);
   }
 }
-
