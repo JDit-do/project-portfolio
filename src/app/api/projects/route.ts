@@ -1,5 +1,8 @@
-import { getProjects } from '@/lib/projects/getProjects';
-import { createSuccessResponse, createErrorResponse } from '@/lib/api/response';
+import { getProjects } from '@/features/projects/lib/getProjects';
+import {
+  createSuccessResponse,
+  createErrorResponse
+} from '@/shared/lib/api/response';
 
 /**
  * 프로젝트 목록 API Route

@@ -3,14 +3,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { useProjectsPage } from '@/hooks/useProjectsPage';
-import { Project } from '@/types/project';
-import { ProjectFilter } from '@/types/project';
+import Tab from '@/shared/components/ui/tab';
 
-import ProjectsHeader from '@/container/pages/projects/header';
-import ProjectsGallery from '@/container/pages/projects/gallery';
-import ProjectsDetail from '@/container/pages/projects/detail';
-import Tab from '@/components/tab';
+import { useProjectsPage } from '@/features/projects/hooks/useProjectsPage';
+import { Project } from '@/features/projects/types';
+import { ProjectFilter } from '@/features/projects/types';
+import ProjectsHeader from '@/features/projects/components/header';
+import ProjectsGallery from '@/features/projects/components/gallery';
+import ProjectsDetail from '@/features/projects/components/detail';
 
 import style from './page.module.scss';
 
@@ -121,4 +121,3 @@ export default function ProjectsPageClient({
     </section>
   );
 }
-

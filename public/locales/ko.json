@@ -78,7 +78,8 @@
     "blogOpen": "블로그 새 창에서 열기",
     "githubOpen": "GitHub 새 창에서 열기",
     "copyAddress": "주소 복사",
-    "contact": "연락처"
+    "contact": "연락처",
+    "projectImage": "프로젝트 이미지"
   },
   "story": {
     "hero": {
@@ -157,7 +158,7 @@
           "title": "팀원 성장 및 생산성 향상",
           "content": [
             "온보딩 시간 70% 단축 (2주 → 3일)",
-            "AngularJS 가이드 문서화",
+            "React & AngularJS 가이드 문서화",
             "기술 세미나 진행 (OAuth, HTTP2 등)",
             "코드 리뷰 문화 정착"
           ],

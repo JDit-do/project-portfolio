@@ -1,5 +1,5 @@
-@use '@/styles/_mixins.scss' as m;
-@use '@/styles/_skeleton.scss' as skeleton;
+@use '@/shared/styles/_mixins.scss' as m;
+@use '@/shared/styles/_skeleton.scss' as skeleton;
 
 .wrap {
   display: flex;

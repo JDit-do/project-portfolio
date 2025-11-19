@@ -1,12 +1,14 @@
-import Cursor from '@/components/cursor';
+import Cursor from '@/shared/components/layout/cursor';
 
-import NotFound404 from '@/container/error/NotFound404';
+import NotFound404 from '@/shared/components/error/NotFound404';
 
-import '@/styles/globals.scss';
+import '@/shared/styles/globals.scss';
 
 export default async function NotFound() {
-  return <>
-    <NotFound404 />
-    <Cursor />
-  </>;
+  return (
+    <>
+      <NotFound404 />
+      <Cursor />
+    </>
+  );
 }

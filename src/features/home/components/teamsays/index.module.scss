@@ -1,0 +1,21 @@
+@use '@/shared/styles/_mixins.scss' as m;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  header {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+
+    @include m.breakpoint(mobile) {
+      margin-bottom: 48px;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+  }
+}

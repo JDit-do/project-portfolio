@@ -1,0 +1,12 @@
+@use '@/shared/styles/_mixins.scss' as m;
+
+.wrap {
+  margin: 0;
+  height: 172px;
+
+  .title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+}

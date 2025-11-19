@@ -1,0 +1,27 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-6);
+  width: 100%;
+  padding-bottom: var(--spacing-5);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--theme-background-primary)
+  );
+  z-index: 9000;
+
+  .links {
+    display: flex;
+    gap: var(--spacing-2);
+
+    svg {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+}

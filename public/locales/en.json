@@ -78,7 +78,8 @@
     "blogOpen": "Open blog in new window",
     "githubOpen": "Open GitHub in new window",
     "copyAddress": "Copy address",
-    "contact": "Contact"
+    "contact": "Contact",
+    "projectImage": "Project image"
   },
   "story": {
     "hero": {
@@ -157,7 +158,7 @@
           "title": "Team member growth and productivity improvement",
           "content": [
             "Reduced onboarding time by 70% (2 weeks → 3 days)",
-            "Documented AngularJS guide",
+            "Documented React & AngularJS guide",
             "Conducted technical seminars (OAuth, HTTP2, etc.)",
             "Established code review culture"
           ],

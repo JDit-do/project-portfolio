@@ -1,0 +1,50 @@
+@use '@/shared/styles/_mixins.scss' as m;
+@use '@/shared/styles/_skeleton.scss' as skeleton;
+
+.wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 320px 0 0;
+  border-radius: var(--spacing-3);
+  background: #ffffff;
+  border: 1px solid var(--background-tertiary);
+  overflow: hidden;
+  height: 100%;
+
+  @include m.breakpoint(mobile) {
+    flex: 80% 0 0;
+  }
+}
+
+.title {
+  @include skeleton.skeleton-title;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  flex: 1;
+
+  .line {
+    @include skeleton.skeleton-line;
+  }
+
+  .lineShort {
+    @include skeleton.skeleton-line-short;
+  }
+}
+
+.tag {
+  @include skeleton.skeleton-tag;
+}
+
+.dateLine {
+  @include skeleton.skeleton-date;
+}
+
+.link {
+  @include skeleton.skeleton-button;
+}
+

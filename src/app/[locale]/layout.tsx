@@ -1,13 +1,12 @@
 import { notFound } from 'next/navigation';
 
-import { routing } from '@/i18n/routing';
-import { TLOCALE } from '@/types/common';
+import { routing } from '@/config/i18n/routing';
 
-import Cursor from '@/components/cursor';
-import ScrollRestore from '@/components/scrollRestore';
-
-import Main from '@/container/layouts/main';
-import Sidebar from '@/container/layouts/sidebar';
+import { TLOCALE } from '@/shared/types/common';
+import Cursor from '@/shared/components/layout/cursor';
+import ScrollRestore from '@/shared/components/layout/scrollRestore';
+import Main from '@/shared/components/layout/main';
+import Sidebar from '@/shared/components/layout/sidebar';
 
 import style from './layout.module.scss';
 

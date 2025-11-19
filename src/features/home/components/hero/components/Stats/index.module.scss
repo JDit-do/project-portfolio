@@ -1,0 +1,12 @@
+@use '@/shared/styles/_mixins.scss' as m;
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include m.breakpoint(mobile) {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+}

@@ -4,22 +4,22 @@ import { Suspense } from 'react';
 import style from './page.module.scss';
 
 // 동적 import로 코드 스플리팅 적용
-const HomeHero = dynamic(() => import('@/container/pages/home/hero'), {
+const HomeHero = dynamic(() => import('@/features/home/components/hero'), {
   ssr: true
 });
 
 const Achievements = dynamic(
-  () => import('@/container/pages/home/achievements'),
+  () => import('@/features/home/components/achievements'),
   {
     ssr: true
   }
 );
 
-const TeamSays = dynamic(() => import('@/container/pages/home/teamsays'), {
+const TeamSays = dynamic(() => import('@/features/home/components/teamsays'), {
   ssr: true
 });
 
-const CTA = dynamic(() => import('@/container/pages/home/cta'), {
+const CTA = dynamic(() => import('@/features/home/components/cta'), {
   ssr: true
 });
 

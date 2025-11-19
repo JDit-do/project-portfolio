@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin('./src/config/i18n/request.ts');
 const nextConfig: NextConfig = {
   // React Strict Mode 활성화 (개발 모드에서 추가 검사)
   reactStrictMode: true,
